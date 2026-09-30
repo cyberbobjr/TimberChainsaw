@@ -1,0 +1,11 @@
+{
+    "IGUI_CSB42_TooltipProvider": "Бензопила: двигатель и топливо",
+    "IGUI_CSB42_Engine": "Двигатель",
+    "IGUI_CSB42_Running": "Работает",
+    "IGUI_CSB42_Stopped": "Заглушен",
+    "IGUI_CSB42_Fuel": "Топливо",
+    "IGUI_CSB42_Jammed": "*Чих-пых* Бензопила не заводится...",
+    "IGUI_CSB42_OutOfFuel": "В бензопиле кончилось топливо",
+    "IGUI_CSB42_Broken": "Бензопила сломалась",
+    "IGUI_CSB42_Repaired": "Бензопила отремонтирована"
+}

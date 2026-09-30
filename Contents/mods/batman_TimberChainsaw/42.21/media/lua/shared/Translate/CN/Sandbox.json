@@ -1,0 +1,19 @@
+{
+    "Sandbox_ChainsawB42": "电锯 B42",
+    "Sandbox_ChainsawB42_FuelConsumption": "燃油消耗",
+    "Sandbox_ChainsawB42_FuelConsumption_tooltip": "单位为 %%。100 = 在 1 倍游戏速度下怠速时，满箱油约可用 16 分钟，锯木时更短。0 = 不消耗。",
+    "Sandbox_ChainsawB42_DamageMod": "伤害",
+    "Sandbox_ChainsawB42_DamageMod_tooltip": "单位为 %%，运转中的电锯的伤害。100 = 正常。",
+    "Sandbox_ChainsawB42_ConditionLossCombat": "战斗磨损",
+    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "用运转中的电锯每杀死一只丧尸损失的耐久（耐久 200）。20 = 约 10 只丧尸。0 = 无。",
+    "Sandbox_ChainsawB42_ConditionLossTree": "砍树磨损",
+    "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "每次锯切有八分之一的几率损失的耐久（每秒 2.5 次锯切）。0 = 无。",
+    "Sandbox_ChainsawB42_TreeCuttingSpeed": "砍树速度",
+    "Sandbox_ChainsawB42_TreeCuttingSpeed_tooltip": "单位为 %%。100 = 小树 1 到 3 秒倒下，最大的树约 11 秒。",
+    "Sandbox_ChainsawB42_NoiseMod": "噪音范围",
+    "Sandbox_ChainsawB42_NoiseMod_tooltip": "发动机运转时每 2 秒发出的吸引丧尸的噪音半径（格）。0 = 静音。",
+    "Sandbox_ChainsawB42_JamFrequency": "启动失败",
+    "Sandbox_ChainsawB42_JamFrequency_tooltip": "耐久低于一半的电锯启动失败的几率（%%）。0 = 从不。",
+    "Sandbox_ChainsawB42_LootChance": "电锯掉落",
+    "Sandbox_ChainsawB42_LootChance_tooltip": "3 = 默认（在伐木场、护林站、消防站、谷仓、车库等处每次抽取 1 到 3 %%）。0 = 无。开始游戏时生效。"
+}

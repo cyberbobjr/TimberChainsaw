@@ -1,0 +1,19 @@
+{
+    "Sandbox_ChainsawB42": "Chainsaw B42",
+    "Sandbox_ChainsawB42_FuelConsumption": "Fuel consumption",
+    "Sandbox_ChainsawB42_FuelConsumption_tooltip": "In %%. 100 = a full tank lasts about 16 minutes idling at game speed x1, less while cutting. 0 = no consumption.",
+    "Sandbox_ChainsawB42_DamageMod": "Damage",
+    "Sandbox_ChainsawB42_DamageMod_tooltip": "In %%, damage of a running chainsaw. 100 = normal.",
+    "Sandbox_ChainsawB42_ConditionLossCombat": "Combat wear",
+    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "Condition lost per zombie killed with a running chainsaw (condition 200). 20 = about 10 zombies. 0 = none.",
+    "Sandbox_ChainsawB42_ConditionLossTree": "Tree cutting wear",
+    "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "Condition lost, one chance in 8 per cut (2.5 cuts per second). 0 = none.",
+    "Sandbox_ChainsawB42_TreeCuttingSpeed": "Tree cutting speed",
+    "Sandbox_ChainsawB42_TreeCuttingSpeed_tooltip": "In %%. 100 = a small tree falls in 1 to 3 seconds, the biggest in about 11 seconds.",
+    "Sandbox_ChainsawB42_NoiseMod": "Noise radius",
+    "Sandbox_ChainsawB42_NoiseMod_tooltip": "Radius in tiles of the noise that attracts zombies while the engine runs, every 2 seconds. 0 = silent.",
+    "Sandbox_ChainsawB42_JamFrequency": "Starting failures",
+    "Sandbox_ChainsawB42_JamFrequency_tooltip": "Chance in %% that a chainsaw below half condition fails to start. 0 = never.",
+    "Sandbox_ChainsawB42_LootChance": "Chainsaw loot",
+    "Sandbox_ChainsawB42_LootChance_tooltip": "3 = default (1 to 3 %% per roll in logging sites, ranger stations, fire stations, barns, garages...). 0 = none. Applied when the game starts."
+}

@@ -1,0 +1,56 @@
+[h1]Timber! Chainsaw[/h1]
+
+[b]Build 42.21 · Einzelspieler & Mehrspieler[/b]
+
+Eine funktionierende Benzin-Kettensäge: anwerfen, Bäume in Sekunden fällen, sich durch Zombies sägen, mit Benzin betanken... und auf den Lärm achten.
+
+[h2]Inspiriert von Chainsaw B42[/h2]
+
+Diese Mod ist inspiriert von [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692027888]Chainsaw B42[/url] von Likit und wurde mit denselben Funktionen komplett neu gemacht: neuer Code, neue Sounds, neues Poster und neue Icons, dazu die unten aufgeführten Verbesserungen.
+
+Sie verwendet dieselben Gegenstandsnamen wie Chainsaw B42: In einem Spielstand mit Chainsaw B42 behalten deine Kettensägen ihren Kraftstoff. [b]Aktiviere nicht beide Mods gleichzeitig.[/b]
+
+[h2]Voraussetzungen[/h2]
+
+[list]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3694097672]TooltipLib[/url]
+[/list]
+
+[h2]Benutzung[/h2]
+
+[list]
+[*]Rechtsklick auf die Kettensäge: [b]Kettensäge starten[/b]. Sie wird mit beiden Händen gehalten und braucht Kraftstoff. Eine abgenutzte Kettensäge springt manchmal nicht an.
+[*]Angriffstaste gedrückt halten (Linksklick): Die Kettensäge bleibt mit Vollgas nach vorne gerichtet und schneidet, was vor dir ist, Zombies oder Bäume.
+[*]Bäume: Rechtsklick auf einen Baum, [b]Baum mit der Kettensäge fällen[/b]. Ein kleiner Baum fällt in 1 bis 3 Sekunden, der größte in etwa 11 Sekunden.
+[*][b]Kettensäge abstellen[/b], dann [b]Kettensäge betanken[/b] mit einem Behälter mit reinem Benzin.
+[*]Der Tooltip zeigt den Motorzustand und den Kraftstoff.
+[/list]
+
+[h2]Verbesserungen gegenüber dem Original[/h2]
+
+[list]
+[*]Bäume fallen wirklich (sie verloren nur 1 Punkt pro Treffer). Holz sägen verbraucht mehr Kraftstoff als der Leerlauf.
+[*]Beim Tanken werden nur die fehlenden Liter genommen, und nur Benzin (vorher wurde der ganze Behälter geleert, egal welche Flüssigkeit).
+[*]Die Optionen für Verbrauch, Lärm, Schaden und Beute werden angewendet.
+[*]Keine Fehler mehr beim Betrachten eines Flüssigkeitsbehälters (Wasserspender, Flaschen...).
+[*]Die Kettensägen-Sounds folgen der Soundeffekt-Lautstärke, und jeder lässt sich unter Optionen > Audio > Erweitert einstellen.
+[*]Eine kaputte Kettensäge bleibt kaputt, bis du sie reparierst; die Reparatur behält den Kraftstoff, ohne Begrenzung der Reparaturen.
+[*]Zu finden in Sägewerken, Försterstationen, Feuerwachen, Scheunen und Garagen.
+[/list]
+
+[h2]Mehrspieler[/h2]
+
+Der Server entscheidet alles: Starten und Abstellen, Kraftstoff, Verschleiß, gefällte Bäume. Der Motor geht aus, wenn die Kettensäge deine Hände verlässt, der Tank leer ist, sie kaputtgeht oder du in ein Fahrzeug steigst. Spieler in der Nähe hören deinen Motor laufen.
+
+[h2]Sandbox-Optionen[/h2]
+
+Kraftstoffverbrauch, Schaden, Verschleiß im Kampf, Verschleiß beim Fällen, Fällgeschwindigkeit, Lärmradius, Startaussetzer, Beute.
+
+[h2]Unterstütze das Projekt[/h2]
+
+Gefällt dir die Mod? Ein Kaffee hilft, neue Funktionen und Übersetzungen zu finanzieren.
+[url=https://ko-fi.com/Z8Z8QJV31][img]https://storage.ko-fi.com/cdn/kofi6.png?v=6[/img][/url]
+
+[h2]Credits[/h2]
+
+Inspiriert von Chainsaw B42 von Likit. Sounds: CC0-Aufnahmen von Joseph Sardin, [url=https://bigsoundbank.com]BigSoundBank[/url]. Modell, Textur und Animationen der Kettensäge: Project Zomboid.

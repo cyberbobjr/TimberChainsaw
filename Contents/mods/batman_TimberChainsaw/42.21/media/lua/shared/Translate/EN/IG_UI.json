@@ -1,0 +1,11 @@
+{
+    "IGUI_CSB42_TooltipProvider": "Chainsaw: engine and fuel",
+    "IGUI_CSB42_Engine": "Engine",
+    "IGUI_CSB42_Running": "Running",
+    "IGUI_CSB42_Stopped": "Stopped",
+    "IGUI_CSB42_Fuel": "Fuel",
+    "IGUI_CSB42_Jammed": "*Sputter* The chainsaw won't start...",
+    "IGUI_CSB42_OutOfFuel": "The chainsaw ran out of fuel",
+    "IGUI_CSB42_Broken": "The chainsaw broke",
+    "IGUI_CSB42_Repaired": "Chainsaw repaired"
+}

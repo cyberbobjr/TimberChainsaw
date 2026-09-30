@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Timber! Chainsaw: replaces the vanilla file of the same path (the mod file
+     wins, ZomboidFileSystem.resolveAllFiles + resolveFileOrGUID, 42.21).
+     Vanilla swings Bob_AttackChainsaw01_CritHit (2.5 s) at each attack; held
+     attacks looked like repeated swings. Here the chainsaw stays in the aiming
+     pose (Bob_IdleAimChainsaw, 0.67 s) and each cycle checks for a hit: a fixed
+     position while the attack button is held. No PlaySwingSound event: the
+     engine loop (CSB42_Sound.lua) plays full throttle while attacking. -->
+<animNode>
+	<m_Name>ChainsawDefault</m_Name>
+	<m_Priority>4</m_Priority>
+	<m_AnimName>Bob_IdleAimChainsaw</m_AnimName>
+	<m_Looped>false</m_Looped>
+	<m_BlendTime>0.15</m_BlendTime>
+	<m_SpeedScale>CombatSpeed</m_SpeedScale>
+	<m_Conditions>
+		<m_Name>Weapon</m_Name>
+		<m_Type>STRING</m_Type>
+		<m_Value>chainsaw</m_Value>
+	</m_Conditions>
+	<m_Conditions>
+		<m_Name>AimFloorAnim</m_Name>
+		<m_Type>BOOL</m_Type>
+		<m_Value>false</m_Value>
+	</m_Conditions>
+	<m_Events>
+		<m_EventName>SetVariable</m_EventName>
+		<m_TimePc>0.1</m_TimePc>
+		<m_ParameterValue>ZombieHitReaction=Chainsaw</m_ParameterValue>
+	</m_Events>
+	<m_Events>
+		<m_EventName>AttackCollisionCheck</m_EventName>
+		<m_TimePc>0.5</m_TimePc>
+		<m_ParameterValue>MeleeSwing</m_ParameterValue>
+	</m_Events>
+	<m_Transitions>
+		<m_Target>IdleChainsaw</m_Target>
+		<m_AnimName>Bob_AimToIdle_Chainsaw</m_AnimName>
+		<m_blendInTime>0.5</m_blendInTime>
+		<m_blendOutTime>0.5</m_blendOutTime>
+		<m_speedScale>1.3</m_speedScale>
+	</m_Transitions>
+</animNode>

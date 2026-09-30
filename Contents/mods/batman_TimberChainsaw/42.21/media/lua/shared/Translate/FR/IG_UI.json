@@ -1,0 +1,11 @@
+{
+    "IGUI_CSB42_TooltipProvider": "Tronçonneuse : moteur et carburant",
+    "IGUI_CSB42_Engine": "Moteur",
+    "IGUI_CSB42_Running": "En marche",
+    "IGUI_CSB42_Stopped": "Arrêté",
+    "IGUI_CSB42_Fuel": "Carburant",
+    "IGUI_CSB42_Jammed": "*Toussotement* La tronçonneuse ne démarre pas...",
+    "IGUI_CSB42_OutOfFuel": "La tronçonneuse n'a plus d'essence",
+    "IGUI_CSB42_Broken": "La tronçonneuse a cassé",
+    "IGUI_CSB42_Repaired": "Tronçonneuse réparée"
+}

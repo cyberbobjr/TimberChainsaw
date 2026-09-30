@@ -1,0 +1,56 @@
+[h1]Timber! Chainsaw[/h1]
+
+[b]Build 42.21 · Singleplayer & Multiplayer[/b]
+
+A working gasoline chainsaw: start it, fell trees in seconds, carve through zombies, refuel it with petrol... and mind the noise.
+
+[h2]Inspired by Chainsaw B42[/h2]
+
+This mod is inspired by [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692027888]Chainsaw B42[/url] by Likit and remade from scratch with the same features: new code, sounds, poster and icons, plus the improvements listed below.
+
+It uses the same item names as Chainsaw B42: in a save made with Chainsaw B42, your chainsaws keep their fuel. [b]Do not enable both mods at the same time.[/b]
+
+[h2]Requirements[/h2]
+
+[list]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3694097672]TooltipLib[/url]
+[/list]
+
+[h2]How to use[/h2]
+
+[list]
+[*]Right-click the chainsaw: [b]Start the chainsaw[/b]. It goes in both hands and needs fuel. A worn chainsaw may refuse to start.
+[*]Hold the attack button (left click): the chainsaw stays pointed forward at full throttle and cuts whatever is in front of you, zombies or trees.
+[*]Trees: right-click a tree, [b]Cut down the tree with the chainsaw[/b]. A small tree falls in 1 to 3 seconds, the biggest in about 11 seconds.
+[*][b]Stop the chainsaw[/b], then [b]Refuel the chainsaw[/b] with a container of pure petrol.
+[*]The tooltip shows the engine state and the fuel.
+[/list]
+
+[h2]Improvements over the original[/h2]
+
+[list]
+[*]Trees really fall (they only lost 1 point per hit). Cutting wood burns more fuel than idling.
+[*]Refuelling takes only the litres the tank needs, and only petrol (it emptied the whole container, whatever its liquid).
+[*]The fuel consumption, noise, damage and loot options are applied.
+[*]No more errors when looking at a liquid container (water dispenser, bottles...).
+[*]The chainsaw sounds follow the Sound effects volume, and each one can be set in Options > Audio > Advanced.
+[*]A broken chainsaw stays broken until you repair it; the repair keeps the fuel, with no limit on repairs.
+[*]Found in logging sites, ranger stations, fire stations, barns and garages.
+[/list]
+
+[h2]Multiplayer[/h2]
+
+The server decides everything: start and stop, fuel, wear, fallen trees. The engine stops when the chainsaw leaves your hands, runs dry, breaks, or when you get in a vehicle. Nearby players hear your engine running.
+
+[h2]Sandbox options[/h2]
+
+Fuel consumption, damage, combat wear, tree cutting wear, cutting speed, noise radius, starting failures, loot.
+
+[h2]Support the project[/h2]
+
+Enjoying the mod? A coffee helps fund new features and translations.
+[url=https://ko-fi.com/Z8Z8QJV31][img]https://storage.ko-fi.com/cdn/kofi6.png?v=6[/img][/url]
+
+[h2]Credits[/h2]
+
+Inspired by Chainsaw B42 by Likit. Sounds: CC0 recordings by Joseph Sardin, [url=https://bigsoundbank.com]BigSoundBank[/url]. Chainsaw model, texture and animations: Project Zomboid.

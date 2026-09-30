@@ -1,0 +1,56 @@
+[h1]Timber! Chainsaw[/h1]
+
+[b]Build 42.21 · Solo et multijoueur[/b]
+
+Une vraie tronçonneuse à essence : démarrez-la, abattez des arbres en quelques secondes, taillez dans les zombies, faites le plein d'essence... et gare au bruit.
+
+[h2]Inspiré de Chainsaw B42[/h2]
+
+Ce mod est inspiré de [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692027888]Chainsaw B42[/url] de Likit et a été refait entièrement avec les mêmes fonctionnalités : nouveau code, nouveaux sons, nouvelle affiche et nouvelles icônes, avec les améliorations listées plus bas.
+
+Il reprend les noms d'objets de Chainsaw B42 : dans une sauvegarde faite avec Chainsaw B42, vos tronçonneuses gardent leur carburant. [b]N'activez pas les deux mods en même temps.[/b]
+
+[h2]Prérequis[/h2]
+
+[list]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3694097672]TooltipLib[/url]
+[/list]
+
+[h2]Utilisation[/h2]
+
+[list]
+[*]Clic droit sur la tronçonneuse : [b]Démarrer la tronçonneuse[/b]. Elle se tient à deux mains et demande du carburant. Une tronçonneuse usée peut refuser de démarrer.
+[*]Maintenez le bouton d'attaque (clic gauche) : la tronçonneuse reste pointée devant vous, à plein régime, et coupe ce qui s'y trouve, zombies ou arbres.
+[*]Arbres : clic droit sur un arbre, [b]Abattre l'arbre à la tronçonneuse[/b]. Un petit arbre tombe en 1 à 3 secondes, le plus gros en 11 secondes environ.
+[*][b]Arrêter la tronçonneuse[/b], puis [b]Faire le plein de la tronçonneuse[/b] avec un récipient d'essence pure.
+[*]L'infobulle indique l'état du moteur et le carburant.
+[/list]
+
+[h2]Améliorations par rapport à l'original[/h2]
+
+[list]
+[*]Les arbres tombent vraiment (ils ne perdaient qu'1 point par coup). Couper du bois consomme plus d'essence que le ralenti.
+[*]Le plein ne prend que les litres qui manquent, et seulement de l'essence (il vidait tout le récipient, quel que soit le liquide).
+[*]Les options de consommation, de bruit, de dégâts et de butin sont appliquées.
+[*]Plus d'erreur en regardant un récipient de liquide (fontaine à eau, bouteilles...).
+[*]Les sons de la tronçonneuse suivent le volume des effets sonores, et chacun se règle dans Options > Audio > Avancé.
+[*]Une tronçonneuse cassée le reste jusqu'à sa réparation ; la réparation garde le carburant, sans limite de réparations.
+[*]On la trouve dans les scieries, postes de gardes forestiers, casernes de pompiers, granges et garages.
+[/list]
+
+[h2]Multijoueur[/h2]
+
+Le serveur décide de tout : démarrage et arrêt, carburant, usure, arbres abattus. Le moteur s'arrête quand la tronçonneuse quitte vos mains, tombe en panne sèche, casse, ou quand vous montez dans un véhicule. Les joueurs proches entendent votre moteur tourner.
+
+[h2]Options sandbox[/h2]
+
+Consommation de carburant, dégâts, usure au combat, usure à l'abattage, vitesse d'abattage, portée du bruit, ratés au démarrage, butin.
+
+[h2]Soutenir le projet[/h2]
+
+Le mod vous plaît ? Un café aide à financer de nouvelles fonctions et traductions.
+[url=https://ko-fi.com/Z8Z8QJV31][img]https://storage.ko-fi.com/cdn/kofi6.png?v=6[/img][/url]
+
+[h2]Crédits[/h2]
+
+Inspiré de Chainsaw B42 de Likit. Sons : enregistrements CC0 de Joseph Sardin, [url=https://bigsoundbank.com]BigSoundBank[/url]. Modèle, texture et animations de la tronçonneuse : Project Zomboid.

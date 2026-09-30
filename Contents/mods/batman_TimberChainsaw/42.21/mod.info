@@ -1,0 +1,9 @@
+name=batman_Timber! Chainsaw
+id=batman_TimberChainsaw
+description=Working gasoline chainsaw for Build 42.21, singleplayer and multiplayer: fell trees, shred zombies with a fixed stance and a roaring engine, burn and refuel petrol. Inspired by Chainsaw B42 by Likit (Workshop 3692027888) and remade from scratch with the same features. Do not enable both.
+poster=poster.png
+icon=icon.png
+require=\TooltipLib
+incompatible=\ChainsawB42
+versionMin=42.21
+modversion=1.0.0

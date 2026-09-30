@@ -1,0 +1,11 @@
+{
+    "IGUI_CSB42_TooltipProvider": "Motosega: motore e carburante",
+    "IGUI_CSB42_Engine": "Motore",
+    "IGUI_CSB42_Running": "Acceso",
+    "IGUI_CSB42_Stopped": "Spento",
+    "IGUI_CSB42_Fuel": "Carburante",
+    "IGUI_CSB42_Jammed": "*Scoppiettio* La motosega non parte...",
+    "IGUI_CSB42_OutOfFuel": "La motosega ha finito il carburante",
+    "IGUI_CSB42_Broken": "La motosega si è rotta",
+    "IGUI_CSB42_Repaired": "Motosega riparata"
+}

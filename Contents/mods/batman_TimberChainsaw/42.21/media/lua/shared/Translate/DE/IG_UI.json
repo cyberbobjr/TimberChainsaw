@@ -1,0 +1,11 @@
+{
+    "IGUI_CSB42_TooltipProvider": "Kettensäge: Motor und Kraftstoff",
+    "IGUI_CSB42_Engine": "Motor",
+    "IGUI_CSB42_Running": "Läuft",
+    "IGUI_CSB42_Stopped": "Aus",
+    "IGUI_CSB42_Fuel": "Kraftstoff",
+    "IGUI_CSB42_Jammed": "*Stotter* Die Kettensäge springt nicht an...",
+    "IGUI_CSB42_OutOfFuel": "Der Kettensäge ist der Kraftstoff ausgegangen",
+    "IGUI_CSB42_Broken": "Die Kettensäge ist kaputtgegangen",
+    "IGUI_CSB42_Repaired": "Kettensäge repariert"
+}

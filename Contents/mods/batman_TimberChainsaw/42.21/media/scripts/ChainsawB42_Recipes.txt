@@ -1,0 +1,63 @@
+/* Recipes of Chainsaw B42 (Likit). RepairChainsaw keeps the fuel, the
+   ModData and the name, without a repair limit (CSB42_Recipes.lua). */
+module Base
+{
+    craftRecipe ForgeChainsaw
+    {
+        time = 500,
+        SkillRequired = Blacksmith:5;MetalWelding:3,
+        NeedToBeLearn = true,
+        timedAction = HammerMetalStanding,
+        xpAward = Blacksmith:50;MetalWelding:25,
+        Tags = PrimitiveForge,
+        category = Blacksmithing,
+        inputs
+        {
+            item 4 [Base.SheetMetal],
+            item 2 [Base.SmallSheetMetal],
+            item 5 [Base.EngineParts],
+            item 5 [Base.ElectronicsScrap],
+            item 2 [Base.Wire],
+            item 2 [Base.MetalPipe],
+            item 10 [Base.Screws],
+            item 5 tags[base:charcoal],
+            item 2 [Base.BlowTorch],
+            item 1 tags[base:hammer] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 tags[base:metalworkingpliers;base:tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 [Base.HeavyChain],
+            item 1 tags[base:weldingmask] mode:keep,
+        }
+        outputs
+        {
+            item 1 ChainsawB42.ChainsawOff,
+        }
+    }
+
+    craftRecipe RepairChainsaw
+    {
+        time = 300,
+        SkillRequired = Mechanics:3,
+        NeedToBeLearn = true,
+        timedAction = Making,
+        xpAward = Mechanics:20,
+        Tags = AnySurfaceCraft,
+        category = Repair,
+        OnTest = CSB42_Recipes.canRepair,
+        OnCreate = CSB42_Recipes.onRepair,
+        inputs
+        {
+            item 1 [ChainsawB42.ChainsawOff] flags[AllowDestroyedItem],
+            item 2 [Base.EngineParts],
+            item 2 [Base.ElectronicsScrap],
+            item 2 [Base.ScrapMetal],
+            item 4 [Base.Screws],
+            item 1 [Base.BlowTorch],
+            item 1 tags[base:screwdriver] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:wrench] mode:keep flags[MayDegradeLight],
+        }
+        outputs
+        {
+            item 1 ChainsawB42.ChainsawOff,
+        }
+    }
+}

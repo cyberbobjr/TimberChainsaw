@@ -1,0 +1,19 @@
+{
+    "Sandbox_ChainsawB42": "Motosserra B42",
+    "Sandbox_ChainsawB42_FuelConsumption": "Consumo de combustível",
+    "Sandbox_ChainsawB42_FuelConsumption_tooltip": "Em %%. 100 = um tanque cheio dura cerca de 16 minutos em marcha lenta na velocidade x1, menos cortando. 0 = sem consumo.",
+    "Sandbox_ChainsawB42_DamageMod": "Dano",
+    "Sandbox_ChainsawB42_DamageMod_tooltip": "Em %%, dano de uma motosserra ligada. 100 = normal.",
+    "Sandbox_ChainsawB42_ConditionLossCombat": "Desgaste em combate",
+    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "Condição perdida por zumbi morto com a motosserra ligada (condição 200). 20 = cerca de 10 zumbis. 0 = nenhuma.",
+    "Sandbox_ChainsawB42_ConditionLossTree": "Desgaste ao derrubar",
+    "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "Condição perdida, uma chance em 8 por corte (2,5 cortes por segundo). 0 = nenhuma.",
+    "Sandbox_ChainsawB42_TreeCuttingSpeed": "Velocidade de derrubada",
+    "Sandbox_ChainsawB42_TreeCuttingSpeed_tooltip": "Em %%. 100 = uma árvore pequena cai em 1 a 3 segundos, a maior em cerca de 11 segundos.",
+    "Sandbox_ChainsawB42_NoiseMod": "Alcance do ruído",
+    "Sandbox_ChainsawB42_NoiseMod_tooltip": "Raio em quadrados do ruído que atrai zumbis enquanto o motor funciona, a cada 2 segundos. 0 = silencioso.",
+    "Sandbox_ChainsawB42_JamFrequency": "Falhas na partida",
+    "Sandbox_ChainsawB42_JamFrequency_tooltip": "Chance em %% de uma motosserra abaixo da metade da condição não ligar. 0 = nunca.",
+    "Sandbox_ChainsawB42_LootChance": "Motosserras no saque",
+    "Sandbox_ChainsawB42_LootChance_tooltip": "3 = padrão (1 a 3 %% por sorteio em serrarias, postos de guarda florestal, quartéis de bombeiros, celeiros, garagens...). 0 = nenhuma. Aplicado ao iniciar o jogo."
+}

@@ -1,0 +1,123 @@
+/* Same module and item names as Chainsaw B42 (Likit, Workshop 3692027888):
+   chainsaws from a save made with the original mod keep working.
+   ChainsawOff = engine stopped. Chainsaw = engine running: the engine only
+   gives the vanilla chainsaw animations and attack (WeaponType.CHAINSAW) to an
+   item whose type is exactly "Chainsaw", held in both hands. */
+module ChainsawB42
+{
+    imports
+    {
+        Base
+    }
+
+    item ChainsawOff
+    {
+        DisplayName = Chainsaw,
+        DisplayCategory = ToolWeapon,
+        ItemType = base:weapon,
+        Categories = Axe,
+        SubCategory = Swinging,
+        Icon = Chainsaw,
+        Weight = 15.0,
+        AttachmentType = BigBlade,
+        TwoHandWeapon = TRUE,
+        RequiresEquippedBothHands = TRUE,
+        WeaponSprite = ChainsawB42_Chainsaw,
+        WorldStaticModel = ChainsawB42_WorldItem_Chainsaw,
+
+        ConditionMax = 200,
+        ConditionLowerChanceOneIn = 200,
+
+        /* Engine stopped: a heavy club */
+        MinDamage = 0.1,
+        MaxDamage = 0.5,
+        TreeDamage = 1,
+        DoorDamage = 1,
+        CriticalChance = 0,
+        CritDmgMultiplier = 1,
+        KnockdownMod = 0,
+        KnockBackOnNoDeath = TRUE,
+        PushBackMod = 0.3,
+
+        MaxRange = 1.2,
+        MinRange = 0.6,
+        MinAngle = 0.72,
+        HitAngleMod = -30,
+        WeaponLength = 0.4,
+        SwingAmountBeforeImpact = 0.02,
+
+        SwingTime = 10,
+        MinimumSwingTime = 10,
+        BaseSpeed = 1,
+        SwingAnim = Bat,
+        RunAnim = Run_Weapon2,
+        IdleAnim = Idle_Weapon2,
+
+        SwingSound = BaseballBatSwing,
+        HitSound = BaseballBatHit,
+        DoorHitSound = BaseballBatHit,
+        HitFloorSound = BaseballBatHit,
+        BreakSound = BreakMetalItem,
+
+        MetalValue = 150,
+        Tags = base:hasmetal,
+    }
+
+    item Chainsaw
+    {
+        DisplayName = Chainsaw,
+        DisplayCategory = ToolWeapon,
+        ItemType = base:weapon,
+        Categories = Axe,
+        SubCategory = Swinging,
+        Icon = Chainsaw,
+        Weight = 15.0,
+        AttachmentType = BigBlade,
+        TwoHandWeapon = TRUE,
+        RequiresEquippedBothHands = TRUE,
+        WeaponSprite = ChainsawB42_Chainsaw,
+        WorldStaticModel = ChainsawB42_WorldItem_Chainsaw,
+
+        ConditionMax = 200,
+        /* Combat wear comes from the ConditionLossCombat sandbox option
+           (per zombie killed), as in the original mod. */
+        ConditionLowerChanceOneIn = 200,
+
+        /* Engine running. MinDamage and MaxDamage are scaled by the
+           DamageMod sandbox option when the engine starts. */
+        MinDamage = 0.6,
+        MaxDamage = 1.1,
+        TreeDamage = 67,
+        DoorDamage = 50,
+        CriticalChance = 25,
+        CritDmgMultiplier = 3,
+        KnockdownMod = 0,
+        KnockBackOnNoDeath = TRUE,
+        SplatBloodOnNoDeath = TRUE,
+        DamageMakeHole = TRUE,
+        PushBackMod = 0.5,
+
+        MaxRange = 1.2,
+        MinRange = 0.6,
+        MinAngle = 0.72,
+        HitAngleMod = -30,
+        WeaponLength = 0.4,
+        SwingAmountBeforeImpact = 0.02,
+
+        SwingTime = 3,
+        MinimumSwingTime = 3,
+        BaseSpeed = 1,
+        SwingAnim = Bat,
+        RunAnim = Run_Weapon2,
+        IdleAnim = Idle_Weapon2,
+
+        SwingSound = ChainsawB42_Attack,
+        HitSound = ChainsawB42_ZombieHit,
+        DoorHitSound = ChainsawB42_ZombieHit,
+        HitFloorSound = ChainsawB42_Attack,
+        BreakSound = BreakMetalItem,
+
+        MetalValue = 150,
+        Tags = base:hasmetal;base:cutplant,
+    }
+}

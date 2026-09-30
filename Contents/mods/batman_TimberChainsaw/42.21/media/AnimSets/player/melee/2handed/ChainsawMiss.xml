@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Timber! Chainsaw: same fixed aiming pose for a miss (see ChainsawDefault.xml);
+     events inherited, no hit reaction needed without a target. -->
+<animNode x_extends="ChainsawDefault.xml">
+	<m_Name>ChainsawMiss</m_Name>
+	<m_AnimName>Bob_IdleAimChainsaw</m_AnimName>
+	<m_Conditions>
+		<m_Name>AttackType</m_Name>
+		<m_Type>STRING</m_Type>
+		<m_Value>miss</m_Value>
+	</m_Conditions>
+</animNode>

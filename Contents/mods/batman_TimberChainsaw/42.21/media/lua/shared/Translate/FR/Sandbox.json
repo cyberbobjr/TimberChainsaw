@@ -1,0 +1,19 @@
+{
+    "Sandbox_ChainsawB42": "Tronçonneuse B42",
+    "Sandbox_ChainsawB42_FuelConsumption": "Consommation de carburant",
+    "Sandbox_ChainsawB42_FuelConsumption_tooltip": "En %%. 100 = un plein dure environ 16 minutes au ralenti à la vitesse x1, moins en coupant. 0 = aucune consommation.",
+    "Sandbox_ChainsawB42_DamageMod": "Dégâts",
+    "Sandbox_ChainsawB42_DamageMod_tooltip": "En %%, dégâts d'une tronçonneuse en marche. 100 = normal.",
+    "Sandbox_ChainsawB42_ConditionLossCombat": "Usure au combat",
+    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "État perdu par zombie tué avec une tronçonneuse en marche (état 200). 20 = environ 10 zombies. 0 = aucune.",
+    "Sandbox_ChainsawB42_ConditionLossTree": "Usure à l'abattage",
+    "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "État perdu, une chance sur 8 par coupe (2,5 coupes par seconde). 0 = aucune.",
+    "Sandbox_ChainsawB42_TreeCuttingSpeed": "Vitesse d'abattage",
+    "Sandbox_ChainsawB42_TreeCuttingSpeed_tooltip": "En %%. 100 = un petit arbre tombe en 1 à 3 secondes, le plus gros en 11 secondes environ.",
+    "Sandbox_ChainsawB42_NoiseMod": "Portée du bruit",
+    "Sandbox_ChainsawB42_NoiseMod_tooltip": "Rayon en cases du bruit qui attire les zombies tant que le moteur tourne, toutes les 2 secondes. 0 = silencieux.",
+    "Sandbox_ChainsawB42_JamFrequency": "Ratés au démarrage",
+    "Sandbox_ChainsawB42_JamFrequency_tooltip": "Chance en %% qu'une tronçonneuse sous la moitié de son état ne démarre pas. 0 = jamais.",
+    "Sandbox_ChainsawB42_LootChance": "Tronçonneuses trouvables",
+    "Sandbox_ChainsawB42_LootChance_tooltip": "3 = par défaut (1 à 3 %% par tirage dans les scieries, postes de gardes forestiers, casernes, granges, garages...). 0 = aucune. Appliqué au lancement de la partie."
+}

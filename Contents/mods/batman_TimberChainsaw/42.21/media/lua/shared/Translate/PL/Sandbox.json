@@ -1,0 +1,19 @@
+{
+    "Sandbox_ChainsawB42": "Piła łańcuchowa B42",
+    "Sandbox_ChainsawB42_FuelConsumption": "Zużycie paliwa",
+    "Sandbox_ChainsawB42_FuelConsumption_tooltip": "W %%. 100 = pełny zbiornik wystarcza na około 16 minut na biegu jałowym przy prędkości x1, krócej podczas cięcia. 0 = brak zużycia.",
+    "Sandbox_ChainsawB42_DamageMod": "Obrażenia",
+    "Sandbox_ChainsawB42_DamageMod_tooltip": "W %%, obrażenia włączonej piły. 100 = normalnie.",
+    "Sandbox_ChainsawB42_ConditionLossCombat": "Zużycie w walce",
+    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "Stan tracony za każdego zombie zabitego włączoną piłą (stan 200). 20 = około 10 zombie. 0 = brak.",
+    "Sandbox_ChainsawB42_ConditionLossTree": "Zużycie przy ścince",
+    "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "Utrata stanu, szansa 1 na 8 przy każdym cięciu (2,5 cięcia na sekundę). 0 = brak.",
+    "Sandbox_ChainsawB42_TreeCuttingSpeed": "Szybkość ścinki",
+    "Sandbox_ChainsawB42_TreeCuttingSpeed_tooltip": "W %%. 100 = małe drzewo pada w 1-3 sekundy, największe w około 11 sekund.",
+    "Sandbox_ChainsawB42_NoiseMod": "Zasięg hałasu",
+    "Sandbox_ChainsawB42_NoiseMod_tooltip": "Promień w polach hałasu przyciągającego zombie, gdy silnik pracuje, co 2 sekundy. 0 = cisza.",
+    "Sandbox_ChainsawB42_JamFrequency": "Nieudane rozruchy",
+    "Sandbox_ChainsawB42_JamFrequency_tooltip": "Szansa w %%, że piła poniżej połowy stanu nie zapali. 0 = nigdy.",
+    "Sandbox_ChainsawB42_LootChance": "Piły w łupach",
+    "Sandbox_ChainsawB42_LootChance_tooltip": "3 = domyślnie (1 do 3 %% na losowanie w tartakach, leśniczówkach, remizach, stodołach, garażach...). 0 = brak. Stosowane przy starcie gry."
+}

@@ -1,0 +1,15 @@
+/* Vanilla mesh and texture: media/models_X/Chainsaw.x, media/textures/chainsaw.png */
+module Base
+{
+    model ChainsawB42_Chainsaw
+    {
+        mesh = Chainsaw,
+        texture = chainsaw,
+    }
+
+    model ChainsawB42_WorldItem_Chainsaw
+    {
+        mesh = Chainsaw,
+        texture = chainsaw,
+    }
+}

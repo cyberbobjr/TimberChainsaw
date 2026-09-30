@@ -1,0 +1,11 @@
+{
+    "IGUI_CSB42_TooltipProvider": "Motosierra: motor y combustible",
+    "IGUI_CSB42_Engine": "Motor",
+    "IGUI_CSB42_Running": "En marcha",
+    "IGUI_CSB42_Stopped": "Apagado",
+    "IGUI_CSB42_Fuel": "Combustible",
+    "IGUI_CSB42_Jammed": "*Petardeo* La motosierra no arranca...",
+    "IGUI_CSB42_OutOfFuel": "La motosierra se quedó sin combustible",
+    "IGUI_CSB42_Broken": "La motosierra se ha roto",
+    "IGUI_CSB42_Repaired": "Motosierra reparada"
+}

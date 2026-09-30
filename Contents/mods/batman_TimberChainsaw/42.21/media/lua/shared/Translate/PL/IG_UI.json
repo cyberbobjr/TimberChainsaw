@@ -1,0 +1,11 @@
+{
+    "IGUI_CSB42_TooltipProvider": "Piła łańcuchowa: silnik i paliwo",
+    "IGUI_CSB42_Engine": "Silnik",
+    "IGUI_CSB42_Running": "Włączony",
+    "IGUI_CSB42_Stopped": "Wyłączony",
+    "IGUI_CSB42_Fuel": "Paliwo",
+    "IGUI_CSB42_Jammed": "*Krztuszenie* Piła nie chce zapalić...",
+    "IGUI_CSB42_OutOfFuel": "W pile skończyło się paliwo",
+    "IGUI_CSB42_Broken": "Piła łańcuchowa się zepsuła",
+    "IGUI_CSB42_Repaired": "Piła naprawiona"
+}

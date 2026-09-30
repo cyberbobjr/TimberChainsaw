@@ -1,0 +1,8 @@
+{
+    "GameSound_ChainsawB42_Idle": "Motosierra: motor",
+    "GameSound_ChainsawB42_Start": "Motosierra: arranque",
+    "GameSound_ChainsawB42_Stop": "Motosierra: apagado",
+    "GameSound_ChainsawB42_Attack": "Motosierra: ataque",
+    "GameSound_ChainsawB42_WoodCut": "Motosierra: cortar madera",
+    "GameSound_ChainsawB42_ZombieHit": "Motosierra: impacto"
+}

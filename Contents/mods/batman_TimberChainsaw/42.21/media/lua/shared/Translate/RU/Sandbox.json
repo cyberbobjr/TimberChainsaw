@@ -1,0 +1,19 @@
+{
+    "Sandbox_ChainsawB42": "Бензопила B42",
+    "Sandbox_ChainsawB42_FuelConsumption": "Расход топлива",
+    "Sandbox_ChainsawB42_FuelConsumption_tooltip": "В %%. 100 = полного бака хватает примерно на 16 минут холостого хода при скорости x1, при пилении меньше. 0 = без расхода.",
+    "Sandbox_ChainsawB42_DamageMod": "Урон",
+    "Sandbox_ChainsawB42_DamageMod_tooltip": "В %%, урон работающей бензопилы. 100 = обычный.",
+    "Sandbox_ChainsawB42_ConditionLossCombat": "Износ в бою",
+    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "Потеря состояния за каждого зомби, убитого работающей пилой (состояние 200). 20 = около 10 зомби. 0 = нет.",
+    "Sandbox_ChainsawB42_ConditionLossTree": "Износ при валке",
+    "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "Потеря состояния с шансом 1 из 8 за рез (2,5 реза в секунду). 0 = нет.",
+    "Sandbox_ChainsawB42_TreeCuttingSpeed": "Скорость валки",
+    "Sandbox_ChainsawB42_TreeCuttingSpeed_tooltip": "В %%. 100 = маленькое дерево падает за 1-3 секунды, самое большое примерно за 11 секунд.",
+    "Sandbox_ChainsawB42_NoiseMod": "Радиус шума",
+    "Sandbox_ChainsawB42_NoiseMod_tooltip": "Радиус в клетках шума, привлекающего зомби, пока работает двигатель, каждые 2 секунды. 0 = бесшумно.",
+    "Sandbox_ChainsawB42_JamFrequency": "Отказы запуска",
+    "Sandbox_ChainsawB42_JamFrequency_tooltip": "Шанс в %%, что бензопила с состоянием ниже половины не заведётся. 0 = никогда.",
+    "Sandbox_ChainsawB42_LootChance": "Бензопилы в добыче",
+    "Sandbox_ChainsawB42_LootChance_tooltip": "3 = по умолчанию (1-3 %% за бросок на лесопилках, в лесничествах, пожарных частях, амбарах, гаражах...). 0 = нет. Применяется при запуске игры."
+}

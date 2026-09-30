@@ -1,0 +1,19 @@
+module ChainsawB42
+{
+    imports { Base }
+
+    item ChainsawMaintenanceMagazine
+    {
+        DisplayName = Small Engine Repair & Maintenance,
+        DisplayCategory = SkillBook,
+        ItemType = base:literature,
+        Weight = 0.35,
+        Icon = Magazine,
+        BoredomChange = -10,
+        StressChange = -10,
+        LearnedRecipes = ForgeChainsaw;RepairChainsaw,
+        StaticModel = Magazine,
+        WorldStaticModel = MagazineGround,
+        Tags = base:magazine,
+    }
+}

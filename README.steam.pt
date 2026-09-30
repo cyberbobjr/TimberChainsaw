@@ -1,0 +1,56 @@
+[h1]Timber! Chainsaw[/h1]
+
+[b]Build 42.21 · Um jogador e multijogador[/b]
+
+Uma motosserra a gasolina que funciona: ligue-a, abata árvores em segundos, abra caminho entre os zombies, abasteça-a com gasolina... e cuidado com o barulho.
+
+[h2]Inspirado no Chainsaw B42[/h2]
+
+Este mod é inspirado no [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692027888]Chainsaw B42[/url] de Likit e foi refeito de raiz com as mesmas funcionalidades: código, sons, cartaz e ícones novos, mais as melhorias indicadas abaixo.
+
+Usa os mesmos nomes de objetos do Chainsaw B42: num jogo gravado com o Chainsaw B42, as suas motosserras mantêm o combustível. [b]Não ative os dois mods ao mesmo tempo.[/b]
+
+[h2]Requisitos[/h2]
+
+[list]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3694097672]TooltipLib[/url]
+[/list]
+
+[h2]Como usar[/h2]
+
+[list]
+[*]Clique direito na motosserra: [b]Ligar a motosserra[/b]. Segura-se com as duas mãos e precisa de combustível. Uma motosserra gasta pode não arrancar.
+[*]Mantenha o botão de ataque premido (clique esquerdo): a motosserra fica apontada em frente, a fundo, e corta o que estiver à sua frente, zombies ou árvores.
+[*]Árvores: clique direito numa árvore, [b]Abater a árvore com a motosserra[/b]. Uma árvore pequena cai em 1 a 3 segundos, a maior em cerca de 11 segundos.
+[*][b]Desligar a motosserra[/b] e depois [b]Abastecer a motosserra[/b] com um recipiente de gasolina pura.
+[*]A dica mostra o estado do motor e o combustível.
+[/list]
+
+[h2]Melhorias em relação ao original[/h2]
+
+[list]
+[*]As árvores caem mesmo (só perdiam 1 ponto por golpe). Cortar madeira gasta mais combustível do que o ralenti.
+[*]Abastecer só tira os litros em falta, e só gasolina (antes esvaziava o recipiente inteiro, fosse qual fosse o líquido).
+[*]As opções de consumo, ruído, dano e saque são aplicadas.
+[*]Acabaram os erros ao olhar para um recipiente de líquido (dispensador de água, garrafas...).
+[*]Os sons da motosserra seguem o volume dos efeitos sonoros, e cada um ajusta-se em Opções > Áudio > Avançado.
+[*]Uma motosserra avariada continua avariada até ser reparada; a reparação mantém o combustível, sem limite de reparações.
+[*]Encontra-se em serrações, postos de guardas florestais, quartéis de bombeiros, celeiros e garagens.
+[/list]
+
+[h2]Multijogador[/h2]
+
+O servidor decide tudo: ligar e desligar, combustível, desgaste, árvores abatidas. O motor desliga-se quando a motosserra sai das suas mãos, fica sem combustível, avaria ou quando entra num veículo. Os jogadores próximos ouvem o seu motor a trabalhar.
+
+[h2]Opções de sandbox[/h2]
+
+Consumo de combustível, dano, desgaste em combate, desgaste ao abater, velocidade de abate, alcance do ruído, falhas no arranque, saque.
+
+[h2]Apoie o projeto[/h2]
+
+Gosta do mod? Um café ajuda a financiar novas funcionalidades e traduções.
+[url=https://ko-fi.com/Z8Z8QJV31][img]https://storage.ko-fi.com/cdn/kofi6.png?v=6[/img][/url]
+
+[h2]Créditos[/h2]
+
+Inspirado no Chainsaw B42 de Likit. Sons: gravações CC0 de Joseph Sardin, [url=https://bigsoundbank.com]BigSoundBank[/url]. Modelo, textura e animações da motosserra: Project Zomboid.

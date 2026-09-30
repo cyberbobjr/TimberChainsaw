@@ -1,0 +1,11 @@
+{
+    "IGUI_CSB42_TooltipProvider": "电锯：发动机和燃油",
+    "IGUI_CSB42_Engine": "发动机",
+    "IGUI_CSB42_Running": "运转中",
+    "IGUI_CSB42_Stopped": "已关闭",
+    "IGUI_CSB42_Fuel": "燃油",
+    "IGUI_CSB42_Jammed": "*突突* 电锯打不着火……",
+    "IGUI_CSB42_OutOfFuel": "电锯没油了",
+    "IGUI_CSB42_Broken": "电锯坏了",
+    "IGUI_CSB42_Repaired": "电锯已修好"
+}

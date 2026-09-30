@@ -1,0 +1,98 @@
+/* Chainsaw sounds cut from CC0 recordings by Joseph Sardin (BigSoundBank
+   0707, 0982, 0983), see source/build_sounds.py. Category Weaponry: each sound can be set in
+   Options > Audio > Advanced (GameSound user volume).
+   Audio files do not go through the "Sound effects" volume of the game (the
+   slider drives the FMOD VCA Settings_Sfx, used by bank events only): the
+   engine loop is played by CSB42_Sound.lua at that volume. */
+module Base {
+    sound ChainsawB42_Idle {
+        category = Weaponry,
+        loop = true,
+        is3D = true,
+        maxInstancesPerEmitter = 1,
+        clip {
+            file = media/sound/Chainsaw/ChainsawIdle.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+            volume = 0.5,
+        }
+    }
+
+    sound ChainsawB42_Start {
+        category = Weaponry,
+        loop = false,
+        is3D = true,
+        maxInstancesPerEmitter = 2,
+        clip {
+            file = media/sound/Chainsaw/ChainsawStart.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+            volume = 0.5,
+        }
+    }
+
+    sound ChainsawB42_Stop {
+        category = Weaponry,
+        loop = false,
+        is3D = true,
+        maxInstancesPerEmitter = 2,
+        clip {
+            file = media/sound/Chainsaw/ChainsawStop.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+            volume = 0.5,
+        }
+    }
+
+    sound ChainsawB42_Attack {
+        category = Weaponry,
+        loop = false,
+        is3D = true,
+        maxInstancesPerEmitter = 2,
+        clip {
+            file = media/sound/Chainsaw/ChainsawAttack.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+            volume = 0.5,
+        }
+    }
+
+    sound ChainsawB42_Rev {
+        category = Weaponry,
+        loop = true,
+        is3D = true,
+        maxInstancesPerEmitter = 1,
+        clip {
+            file = media/sound/Chainsaw/ChainsawRev.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+            volume = 0.5,
+        }
+    }
+
+    sound ChainsawB42_WoodCut {
+        category = Weaponry,
+        loop = true,
+        is3D = true,
+        maxInstancesPerEmitter = 1,
+        clip {
+            file = media/sound/Chainsaw/ChainsawWoodCut.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+            volume = 0.5,
+        }
+    }
+
+    sound ChainsawB42_ZombieHit {
+        category = Weaponry,
+        loop = false,
+        is3D = true,
+        maxInstancesPerEmitter = 2,
+        clip {
+            file = media/sound/Chainsaw/ChainsawZombieHit.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+            volume = 0.5,
+        }
+    }
+}

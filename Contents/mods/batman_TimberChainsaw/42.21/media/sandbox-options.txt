@@ -1,0 +1,81 @@
+VERSION = 1,
+
+option ChainsawB42.FuelConsumption
+{
+    type = integer,
+    min = 0,
+    max = 500,
+    default = 100,
+    page = ChainsawB42,
+    translation = ChainsawB42_FuelConsumption,
+}
+
+option ChainsawB42.DamageMod
+{
+    type = integer,
+    min = 50,
+    max = 200,
+    default = 100,
+    page = ChainsawB42,
+    translation = ChainsawB42_DamageMod,
+}
+
+option ChainsawB42.ConditionLossCombat
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 20,
+    page = ChainsawB42,
+    translation = ChainsawB42_ConditionLossCombat,
+}
+
+option ChainsawB42.ConditionLossTree
+{
+    type = integer,
+    min = 0,
+    max = 20,
+    default = 1,
+    page = ChainsawB42,
+    translation = ChainsawB42_ConditionLossTree,
+}
+
+option ChainsawB42.TreeCuttingSpeed
+{
+    type = integer,
+    min = 25,
+    max = 400,
+    default = 100,
+    page = ChainsawB42,
+    translation = ChainsawB42_TreeCuttingSpeed,
+}
+
+option ChainsawB42.NoiseMod
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 50,
+    page = ChainsawB42,
+    translation = ChainsawB42_NoiseMod,
+}
+
+option ChainsawB42.JamFrequency
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 25,
+    page = ChainsawB42,
+    translation = ChainsawB42_JamFrequency,
+}
+
+option ChainsawB42.LootChance
+{
+    type = integer,
+    min = 0,
+    max = 10,
+    default = 3,
+    page = ChainsawB42,
+    translation = ChainsawB42_LootChance,
+}

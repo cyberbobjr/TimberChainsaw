@@ -1,0 +1,19 @@
+{
+    "Sandbox_ChainsawB42": "Kettensäge B42",
+    "Sandbox_ChainsawB42_FuelConsumption": "Kraftstoffverbrauch",
+    "Sandbox_ChainsawB42_FuelConsumption_tooltip": "In %%. 100 = ein voller Tank hält im Leerlauf bei Spielgeschwindigkeit x1 etwa 16 Minuten, beim Sägen weniger. 0 = kein Verbrauch.",
+    "Sandbox_ChainsawB42_DamageMod": "Schaden",
+    "Sandbox_ChainsawB42_DamageMod_tooltip": "In %%, Schaden einer laufenden Kettensäge. 100 = normal.",
+    "Sandbox_ChainsawB42_ConditionLossCombat": "Verschleiß im Kampf",
+    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "Zustandsverlust pro getötetem Zombie mit laufender Kettensäge (Zustand 200). 20 = etwa 10 Zombies. 0 = keiner.",
+    "Sandbox_ChainsawB42_ConditionLossTree": "Verschleiß beim Fällen",
+    "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "Zustandsverlust, mit einer Chance von 1 zu 8 pro Schnitt (2,5 Schnitte pro Sekunde). 0 = keiner.",
+    "Sandbox_ChainsawB42_TreeCuttingSpeed": "Fällgeschwindigkeit",
+    "Sandbox_ChainsawB42_TreeCuttingSpeed_tooltip": "In %%. 100 = ein kleiner Baum fällt in 1 bis 3 Sekunden, der größte in etwa 11 Sekunden.",
+    "Sandbox_ChainsawB42_NoiseMod": "Lärmradius",
+    "Sandbox_ChainsawB42_NoiseMod_tooltip": "Radius in Feldern des Lärms, der Zombies anlockt, solange der Motor läuft, alle 2 Sekunden. 0 = lautlos.",
+    "Sandbox_ChainsawB42_JamFrequency": "Startaussetzer",
+    "Sandbox_ChainsawB42_JamFrequency_tooltip": "Chance in %%, dass eine Kettensäge unter halbem Zustand nicht anspringt. 0 = nie.",
+    "Sandbox_ChainsawB42_LootChance": "Kettensägen als Beute",
+    "Sandbox_ChainsawB42_LootChance_tooltip": "3 = Standard (1 bis 3 %% pro Wurf in Sägewerken, Försterstationen, Feuerwachen, Scheunen, Garagen...). 0 = keine. Wird beim Spielstart angewendet."
+}

@@ -1,0 +1,19 @@
+{
+    "Sandbox_ChainsawB42": "Motosierra B42",
+    "Sandbox_ChainsawB42_FuelConsumption": "Consumo de combustible",
+    "Sandbox_ChainsawB42_FuelConsumption_tooltip": "En %%. 100 = un depósito lleno dura unos 16 minutos al ralentí a velocidad x1, menos al cortar. 0 = sin consumo.",
+    "Sandbox_ChainsawB42_DamageMod": "Daño",
+    "Sandbox_ChainsawB42_DamageMod_tooltip": "En %%, daño de una motosierra en marcha. 100 = normal.",
+    "Sandbox_ChainsawB42_ConditionLossCombat": "Desgaste en combate",
+    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "Estado perdido por zombi matado con la motosierra en marcha (estado 200). 20 = unos 10 zombis. 0 = ninguno.",
+    "Sandbox_ChainsawB42_ConditionLossTree": "Desgaste al talar",
+    "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "Estado perdido, una probabilidad entre 8 por corte (2,5 cortes por segundo). 0 = ninguno.",
+    "Sandbox_ChainsawB42_TreeCuttingSpeed": "Velocidad de tala",
+    "Sandbox_ChainsawB42_TreeCuttingSpeed_tooltip": "En %%. 100 = un árbol pequeño cae en 1 a 3 segundos, el más grande en unos 11 segundos.",
+    "Sandbox_ChainsawB42_NoiseMod": "Radio del ruido",
+    "Sandbox_ChainsawB42_NoiseMod_tooltip": "Radio en casillas del ruido que atrae a los zombis mientras el motor funciona, cada 2 segundos. 0 = silencioso.",
+    "Sandbox_ChainsawB42_JamFrequency": "Fallos de arranque",
+    "Sandbox_ChainsawB42_JamFrequency_tooltip": "Probabilidad en %% de que una motosierra por debajo de la mitad de su estado no arranque. 0 = nunca.",
+    "Sandbox_ChainsawB42_LootChance": "Motosierras en el botín",
+    "Sandbox_ChainsawB42_LootChance_tooltip": "3 = por defecto (1 a 3 %% por tirada en aserraderos, puestos de guardabosques, parques de bomberos, graneros, garajes...). 0 = ninguna. Se aplica al iniciar la partida."
+}
