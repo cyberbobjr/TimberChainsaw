@@ -16,6 +16,10 @@ It uses the same item names as Chainsaw B42: in a save made with Chainsaw B42, y
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3694097672]TooltipLib[/url]
 [/list]
 
+[b]Compatibility:[/b] If you use Better Item Info (EURY_ITEMINFO), load it before Timber! Chainsaw to avoid the reported missing Vorpal weapon tooltips. Better Item Info is optional. Restart the game completely after changing the order.
+
+[b]Weight and condition:[/b] Weight: 7, engine on or off. Maximum condition: 127, to prevent damaged chainsaws suddenly breaking when unequipped or reloaded. Wear settings are unchanged: durability is about 37% lower than with the old maximum of 200.
+
 [h2]How to use[/h2]
 
 [list]

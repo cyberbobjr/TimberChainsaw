@@ -16,6 +16,10 @@ Usa os mesmos nomes de objetos do Chainsaw B42: num jogo gravado com o Chainsaw 
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3694097672]TooltipLib[/url]
 [/list]
 
+[b]Compatibilidade:[/b] Se usares Better Item Info (EURY_ITEMINFO), carrega-o antes de Timber! Chainsaw para evitar o problema relatado de informações em falta nas armas Vorpal. Better Item Info é opcional. Reinicia completamente o jogo após alterares a ordem.
+
+[b]Peso e condição:[/b] Peso: 7, com o motor ligado ou desligado. Condição máxima: 127, para evitar que motosserras danificadas se partam subitamente ao desequipá-las ou carregar o jogo. As definições de desgaste mantêm-se: a durabilidade diminui cerca de 37% face ao máximo anterior de 200.
+
 [h2]Como usar[/h2]
 
 [list]

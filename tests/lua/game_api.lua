@@ -77,7 +77,9 @@ function core:getOptionSoundVolume() return api.soundVolume end
 function getCore() return core end
 
 function sendRemoveItemFromContainer(container, item) record("sendRemove", { item = item }) end
-function sendAddItemToContainer(container, item) record("sendAdd", { item = item }) end
+function sendAddItemToContainer(container, item)
+    record("sendAdd", { item = item, receivedCondition = api.savedCondition(item) })
+end
 function replaceItemInContainer(container, old, new)
     -- LuaManager.java:9753: (IsoPlayer) cast of the parent in singleplayer
     if not api.server and not api.client and container:getParent() ~= nil
@@ -122,11 +124,33 @@ local SCRIPTS = {
     ["ChainsawB42.Chainsaw"] = { min = 0.6, max = 1.1 },
 }
 
+-- Read condition maxima and weight from the actual item definitions: a mock
+-- with an independent safe maximum would miss the signed-byte regression.
+local itemDefinitions = readModFile("../scripts/ChainsawB42_Items.txt")
+for name, definition in itemDefinitions:gmatch("item%s+(%w+)%s*{(.-)}") do
+    local script = SCRIPTS["ChainsawB42." .. name]
+    if script then
+        script.conditionMax = tonumber(definition:match("ConditionMax%s*=%s*([%d.]+)"))
+        script.weight = tonumber(definition:match("Weight%s*=%s*([%d.]+)"))
+    end
+end
+
+-- InventoryItem.save omits condition when full, otherwise writes a SIGNED
+-- byte. load reads that byte, clamping negative values to zero (42.21).
+function api.savedCondition(item)
+    local condition, maximum = item:getCondition(), item:getConditionMax()
+    if condition == maximum then return maximum end
+    local signed = (condition + 128) % 256 - 128
+    return math.max(0, math.min(signed, maximum))
+end
+
 function api.item(fullType, fields)
     api.nextId = api.nextId + 1
     local script = SCRIPTS[fullType] or { min = 0, max = 0 }
     local item = {
-        fullType = fullType, id = api.nextId, modData = {}, condition = 200, conditionMax = 200,
+        fullType = fullType, id = api.nextId, modData = {},
+        condition = script.conditionMax or 100, conditionMax = script.conditionMax or 100,
+        weight = script.weight or 1,
         favorite = false, name = fullType, customName = false, blood = 0, repaired = 0,
         minDamage = script.min, maxDamage = script.max, syncs = 0,
         __classes = { InventoryItem = true },
@@ -136,8 +160,9 @@ function api.item(fullType, fields)
     function item:getID() return self.id end
     function item:getModData() return self.modData end
     function item:getCondition() return self.condition end
-    function item:setCondition(v) self.condition = v end
+    function item:setCondition(v) self.condition = math.max(0, math.min(v, self.conditionMax)) end
     function item:getConditionMax() return self.conditionMax end
+    function item:getActualWeight() return self.weight end
     function item:isBroken() return self.condition <= 0 end
     function item:getContainer() return self.container end
     function item:getWorldItem() return self.worldItem end

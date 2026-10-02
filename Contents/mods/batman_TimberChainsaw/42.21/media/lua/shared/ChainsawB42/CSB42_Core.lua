@@ -189,7 +189,14 @@ local function copyState(old, new)
     end
     newData.FuelCapacity = CSB42.getCapacity(old)
     newData.CurrentFuel = CSB42.getFuel(old)
-    new:setCondition(old:getCondition())
+    local condition = old:getCondition()
+    local oldMax, newMax = old:getConditionMax(), new:getConditionMax()
+    if condition > 0 and oldMax > 0 and oldMax ~= newMax then
+        -- Preserve the percentage for a legacy item or a modified condition
+        -- maximum. Do not round a usable item down to broken or repair a zero.
+        condition = math.max(1, math.floor(condition * newMax / oldMax + 0.5))
+    end
+    new:setCondition(condition)
     new:setHaveBeenRepaired(old:getHaveBeenRepaired())
     new:setFavorite(old:isFavorite())
     new:setBloodLevel(old:getBloodLevel())

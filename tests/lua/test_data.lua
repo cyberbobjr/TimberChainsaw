@@ -8,6 +8,25 @@ function T.setup()
     loadMod("client/ChainsawB42/CSB42_Sound.lua")
 end
 
+function T.both_script_variants_have_weight_seven_and_safe_condition()
+    for _, fullType in ipairs({ CSB42.FULLTYPE_OFF, CSB42.FULLTYPE_RUNNING }) do
+        local saw = API.item(fullType)
+        assertEq(saw:getActualWeight(), 7, "weight read from the item script")
+        assertEq(saw:getConditionMax(), 127, "maximum read from the item script")
+        for condition = 0, saw:getConditionMax() do
+            saw:setCondition(condition)
+            assertEq(API.savedCondition(saw), condition, "every condition survives signed-byte save/load")
+        end
+    end
+end
+
+function T.old_maximum_caused_signed_byte_damage_to_become_broken()
+    local old = API.item(CSB42.FULLTYPE_OFF, { condition = 200, conditionMax = 200 })
+    assertEq(API.savedCondition(old), 200, "full condition is omitted from the save")
+    old:setCondition(199)
+    assertEq(API.savedCondition(old), 0, "199 becomes -57, then is clamped to zero on load")
+end
+
 function T.repair_test_per_input_item()
     assertTrue(CSB42_Recipes.canRepair(API.item("Base.Screws")), "other inputs accepted")
     assertTrue(CSB42_Recipes.canRepair(API.item(CSB42.FULLTYPE_OFF, { condition = 50 })), "damaged chainsaw")
@@ -26,7 +45,7 @@ function T.repair_keeps_fuel_and_counts()
     local p = API.player()
     CSB42_Recipes.onRepair(data, p)
     assertEq(CSB42.getFuel(new), 0.5, "fuel kept (the original gave a full tank)")
-    assertEq(new:getCondition(), 200, "repaired")
+    assertEq(new:getCondition(), 127, "repaired to the byte-safe maximum")
     assertEq(API.last("halo").text, "IGUI_CSB42_Repaired", "message")
 end
 

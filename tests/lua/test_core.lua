@@ -93,6 +93,37 @@ function T.stop_on_the_ground_replaces_the_world_item()
     assertTrue(math.abs(square.ground[1].dx - 0.2) < 1e-6 and math.abs(square.ground[1].dy - 0.7) < 1e-6, "same place")
 end
 
+function T.replacement_preserves_percentage_when_the_maximum_changes()
+    local legacy = API.item(CSB42.FULLTYPE_OFF, { condition = 100, conditionMax = 200,
+        modData = { CurrentFuel = 2.5 } })
+    local p = API.holding(legacy)
+    local running = CSB42.replace(legacy, CSB42.FULLTYPE_RUNNING, p)
+    assertEq(running:getCondition(), 64, "half of 200 becomes half of 127, rounded")
+    assertEq(running:getConditionMax(), 127, "new script maximum")
+    local stopped = CSB42.replace(running, CSB42.FULLTYPE_OFF, p)
+    assertEq(stopped:getCondition(), 64, "no repeated scaling at the same maximum")
+    assertEq(CSB42.getFuel(stopped), 2.5, "fuel preserved")
+end
+
+function T.changed_maximum_does_not_break_a_usable_item_or_repair_a_broken_one()
+    for _, condition in ipairs({ 0, 1 }) do
+        local legacy = API.item(CSB42.FULLTYPE_RUNNING, { condition = condition, conditionMax = 200 })
+        local p = API.holding(legacy)
+        local stopped = CSB42.replace(legacy, CSB42.FULLTYPE_OFF, p)
+        assertEq(stopped:getCondition(), condition, "zero stays broken; one stays usable")
+    end
+end
+
+function T.damaged_condition_survives_repeated_start_stop_and_saving()
+    local p = API.holding(API.item(CSB42.FULLTYPE_OFF, { condition = 126 }))
+    for _ = 1, 5 do
+        local running = CSB42.replace(p:getPrimaryHandItem(), CSB42.FULLTYPE_RUNNING, p)
+        local stopped = CSB42.replace(running, CSB42.FULLTYPE_OFF, p)
+        assertEq(stopped:getCondition(), 126, "start/stop does not add wear")
+        assertEq(API.savedCondition(stopped), 126, "save/load retains damage")
+    end
+end
+
 function T.notify_goes_to_the_owner_in_multiplayer()
     API.server = true
     local p = API.player()

@@ -150,7 +150,7 @@ function T.combat_wear_per_zombie_killed()
     local p, saw = started()
     local zombie = { getAttackedBy = function() return p end }
     triggerEvent("OnZombieDead", zombie)
-    assertEq(saw:getCondition(), 180, "20 per kill")
+    assertEq(saw:getCondition(), 107, "20 per kill from the 127-point maximum")
     saw:setCondition(15)
     triggerEvent("OnZombieDead", zombie)
     assertEq(p:getPrimaryHandItem():getFullType(), CSB42.FULLTYPE_OFF, "broken: engine stopped")

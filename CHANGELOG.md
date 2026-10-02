@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.0.3 — 2026-10-02
+
+### Fixes
+- Limit both chainsaw variants to 127 condition points: a damaged chainsaw could become broken when unequipped in multiplayer or after saving and reloading because the game stores condition as a signed byte.
+- Preserve condition percentage when starting or stopping an item whose condition maximum differs from the replacement. Already broken items stay broken; damage already lost in an older save cannot be recovered automatically.
+
+### Balance
+- Reduce chainsaw weight from 15 to 7, whether the engine is running or stopped.
+- Keep the existing wear settings. With the lower condition maximum, chainsaws have approximately 37% less durability at the same settings.
+
+### Compatibility
+- Declare loading after Better Item Info (`EURY_ITEMINFO`) when both mods are enabled, following a player report that this order restored Vorpal weapon tooltips.
+- Document this load order in English, French and all Workshop description translations. Better Item Info remains optional.
+
+### Thanks
+- Thanks to **Django77** for reporting the chainsaw breaking when unequipped after cutting a tree, and for identifying the Better Item Info load order that restored Vorpal weapon tooltips.
+
 ## 1.0.1 — 2026-10-02
 
 ### Fixes

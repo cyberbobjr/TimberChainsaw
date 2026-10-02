@@ -80,12 +80,12 @@ end
 function T.worn_chainsaw_may_jam()
     SandboxVars.ChainsawB42.JamFrequency = 25
     API.rand = function() return 10 end -- 10 < 25
-    local worn = API.item(CSB42.FULLTYPE_OFF, { condition = 90 })
+    local worn = API.item(CSB42.FULLTYPE_OFF, { condition = 57 })
     local p = API.holding(worn)
     CSB42_StartAction:new(p, worn):complete()
     assertEq(p:getPrimaryHandItem(), worn, "did not start")
     assertEq(API.last("halo").text, "IGUI_CSB42_Jammed", "message")
-    local good = API.item(CSB42.FULLTYPE_OFF, { condition = 150 })
+    local good = API.item(CSB42.FULLTYPE_OFF, { condition = 95 })
     local q = API.holding(good)
     CSB42_StartAction:new(q, good):complete()
     assertEq(q:getPrimaryHandItem():getFullType(), CSB42.FULLTYPE_RUNNING, "above half condition: never jams")
@@ -175,6 +175,31 @@ function T.multiplayer_hits_come_from_the_server()
     assertEq(tree:getObjectIndex(), -1, "two hits of 20 fell a 40-point tree")
     assertTrue(action.netAction.completed, "server action completed")
     assertTrue(saw ~= nil, "unused")
+end
+
+function T.cutting_then_unequipping_keeps_condition_on_the_owning_client()
+    API.server = true
+    local p, saw = startedSaw()
+    API.setOnlinePlayers({ p })
+    local rolls = 0
+    API.rand = function(n)
+        rolls = rolls + 1
+        return rolls == 1 and 0 or n - 1
+    end
+    local tree = API.tree(40)
+    local action = CSB42_CutTreeAction:new(p, tree)
+    action:serverStart()
+    action:animEvent("CSB42Cut")
+    action:animEvent("CSB42Cut")
+    assertEq(tree:getObjectIndex(), -1, "tree fell")
+    assertEq(saw:getCondition(), 126, "one wear point from cutting")
+    p.primary, p.secondary = nil, nil
+    triggerEvent("OnTick")
+    local sent = API.last("sendAdd")
+    assertEq(sent.item:getFullType(), CSB42.FULLTYPE_OFF, "engine stopped when unequipped")
+    assertEq(sent.item:getCondition(), 126, "server retained damage")
+    assertEq(sent.receivedCondition, 126, "owning client retained damage after item serialization")
+    assertTrue(not sent.item:isBroken(), "chainsaw remains usable")
 end
 
 function T.server_refuses_a_distant_tree()

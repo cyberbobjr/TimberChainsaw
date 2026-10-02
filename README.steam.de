@@ -16,6 +16,10 @@ Sie verwendet dieselben Gegenstandsnamen wie Chainsaw B42: In einem Spielstand m
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3694097672]TooltipLib[/url]
 [/list]
 
+[b]Kompatibilität:[/b] Wenn ihr Better Item Info (EURY_ITEMINFO) verwendet, ladet es vor Timber! Chainsaw, um das gemeldete Problem mit fehlenden Vorpal-Waffen-Tooltips zu vermeiden. Better Item Info ist optional. Startet das Spiel nach einer Änderung der Reihenfolge vollständig neu.
+
+[b]Gewicht und Zustand:[/b] Gewicht: 7, bei laufendem oder ausgeschaltetem Motor. Maximaler Zustand: 127, damit beschädigte Kettensägen beim Ablegen oder Laden des Spielstands nicht plötzlich kaputtgehen. Die Verschleißeinstellungen bleiben gleich: Die Haltbarkeit sinkt gegenüber dem alten Maximum von 200 um etwa 37%.
+
 [h2]Benutzung[/h2]
 
 [list]

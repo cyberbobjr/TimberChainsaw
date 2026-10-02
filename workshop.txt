@@ -21,6 +21,10 @@ description=[list]
 description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3694097672]TooltipLib[/url]
 description=[/list]
 description=
+description=[b]Compatibility:[/b] If you use Better Item Info (EURY_ITEMINFO), load it before Timber! Chainsaw to avoid the reported missing Vorpal weapon tooltips. Better Item Info is optional. Restart the game completely after changing the order.
+description=
+description=[b]Weight and condition:[/b] Weight: 7, engine on or off. Maximum condition: 127, to prevent damaged chainsaws suddenly breaking when unequipped or reloaded. Wear settings are unchanged: durability is about 37% lower than with the old maximum of 200.
+description=
 description=[h2]How to use[/h2]
 description=
 description=[list]

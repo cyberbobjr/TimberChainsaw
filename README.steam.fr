@@ -16,6 +16,10 @@ Il reprend les noms d'objets de Chainsaw B42 : dans une sauvegarde faite avec Ch
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3694097672]TooltipLib[/url]
 [/list]
 
+[b]Compatibilité :[/b] Si vous utilisez Better Item Info (EURY_ITEMINFO), chargez-le avant Timber! Chainsaw pour éviter le problème signalé d'infobulles d'armes Vorpal absentes. Better Item Info reste facultatif. Redémarrez complètement le jeu après un changement d'ordre.
+
+[b]Poids et état :[/b] Poids : 7, moteur allumé ou arrêté. État maximal : 127, pour éviter qu'une tronçonneuse abîmée casse soudainement lorsqu'on la retire des mains ou recharge la partie. Les réglages d'usure sont conservés : la durée de vie diminue d'environ 37 % par rapport à l'ancien plafond de 200.
+
 [h2]Utilisation[/h2]
 
 [list]

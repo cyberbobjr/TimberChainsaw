@@ -5,7 +5,7 @@
 Working gasoline chainsaw for Project Zomboid: fell trees, shred zombies with a fixed stance and a roaring engine, burn and refuel petrol.
 
 Inspired by **Chainsaw B42** by **Likit** (Steam Workshop [3692027888](https://steamcommunity.com/sharedfiles/filedetails/?id=3692027888)) and remade from scratch with the same features.
-Only the idea, the item names and their game stats (kept for save compatibility) come from the original.
+Only the idea, the item names (kept for save compatibility) and the base weapon stats come from the original.
 No asset of the original is used: sounds cut from CC0 recordings by Joseph Sardin ([BigSoundBank](https://bigsoundbank.com) 0707, 0982, 0983, see `source/build_sounds.py`),
 new poster, preview and icons; the 3D model, texture and animations are vanilla Project Zomboid assets.
 
@@ -15,6 +15,18 @@ new poster, preview and icons; the 3D model, texture and animations are vanilla 
 
 - [TooltipLib](https://steamcommunity.com/sharedfiles/filedetails/?id=3694097672) (`TooltipLib`).
 - Incompatible with the original `ChainsawB42`: enable one or the other. Same item names (`ChainsawB42.ChainsawOff`, `ChainsawB42.Chainsaw`) and ModData keys: chainsaws of a save made with the original keep their fuel.
+
+## Compatibility and load order
+
+If you enable **Better Item Info** (`EURY_ITEMINFO`), load it **before Timber! Chainsaw**. Timber declares `loadModAfter=\EURY_ITEMINFO`; Better Item Info is optional. In Build 42.21, this metadata informs the load-order panel and its automatic sort; it does not force an existing saved order to change. Check the order in the Mods screen.
+
+A player reported missing Vorpal weapon tooltips and restored them by putting Timber after Better Item Info. Timber and Vorpal were also tested together without reproducing the issue. This order addresses the reported combination; the exact tooltip hook conflict has not been reproduced locally. Better Item Info is a different mod from Better Clothing Info (`EURY_CLOTHINGINFO`). Restart the game completely after changing the order.
+
+## Weight and condition
+
+Both stopped and running chainsaws weigh **7** and have **127 condition points**. The lower maximum avoids damaged chainsaws becoming broken when the game saves or transmits their condition as a signed byte. Existing wear settings are unchanged, so durability is approximately 37% lower than with the previous 200-point maximum.
+
+Starting and stopping preserve condition; when the source item's maximum differs, its remaining percentage is transferred to the new maximum. This is not a full migration of old saves: condition already lost while loading an older save cannot be recovered automatically, and broken chainsaws still need repairs.
 
 ## How to use
 
@@ -49,7 +61,9 @@ Also: `NoiseMod`, `DamageMod` and `LootChance` options were ignored; 10 of the 2
 python tests/run_tests.py
 ```
 
-luacheck, Lua 5.1 syntax, no `next()` (absent from Kahlua), translations (10 languages), keys used by the code, and 50 Lua tests under `lupa` with a simulated game API (`tests/lua/game_api.lua`). Not a substitute for an in-game test.
+luacheck, Lua 5.1 syntax, no `next()` (absent from Kahlua), translations (10 languages), keys used by the code, and 56 Lua tests under `lupa` with a simulated game API (`tests/lua/game_api.lua`). The regressions cover cutting then unequipping in multiplayer, signed-byte serialization, start/stop, repair, both item weights and changed condition maxima. Not a substitute for an in-game test.
+
+In-game verification on Build 42.21: restart completely, cut down a tree until condition decreases, then unequip the still-running chainsaw. Verify it stops without becoming broken; also start/stop manually, repair, and save/reload. In multiplayer, check the owning client's condition after unequipping and reconnecting. Check weight 7 for both variants on a freshly created or replaced item.
 
 ## License
 
@@ -63,5 +77,8 @@ Tronçonneuse à essence fonctionnelle, inspirée de **Chainsaw B42** de **Likit
 
 Utilisation : clic droit sur la tronçonneuse, **Démarrer** ; zombies : viser (clic droit) et frapper (clic gauche) ; arbres : clic droit sur l'arbre, **Abattre l'arbre à la tronçonneuse** ; **Arrêter**, puis **Faire le plein** avec un récipient d'essence pure.
 
-Corrections : les arbres tombent vraiment ; le plein ne prend que l'essence nécessaire, et seulement de l'essence ; l'option de consommation est lue ; plus d'erreur d'infobulle sur les jauges de liquide ; volume des sons réglé par le curseur des effets ; tout est décidé par le serveur en multijoueur.
+Compatibilité : si **Better Item Info** (`EURY_ITEMINFO`) est activé, il doit se charger **avant Timber! Chainsaw**. Cet ordre est déclaré dans le mod ; Better Item Info reste facultatif. En Build 42.21, la déclaration est reconnue par le panneau d'ordre et son tri automatique, mais ne modifie pas d'office une liste déjà enregistrée : vérifier l'ordre dans l'écran des mods. Un joueur a rétabli ses infobulles d'armes Vorpal en appliquant cet ordre. Timber et Vorpal seuls ont aussi été testés ensemble sans reproduire le problème ; le conflit exact n'a pas été reproduit localement. Ne pas confondre Better Item Info avec Better Clothing Info (`EURY_CLOTHINGINFO`). Redémarrer complètement le jeu après un changement d'ordre.
 
+Poids : **7**, moteur arrêté ou allumé. État maximal : **127**, pour éviter qu'une tronçonneuse abîmée devienne cassée lors de sa sauvegarde ou de sa transmission au client. Les réglages d'usure sont conservés : la durée de vie diminue donc d'environ 37 % par rapport au plafond de 200. Le remplacement au démarrage ou à l'arrêt conserve l'état, ou son pourcentage si les plafonds diffèrent. Il ne peut pas récupérer l'état déjà perdu au chargement d'une ancienne sauvegarde ; une tronçonneuse cassée doit toujours être réparée.
+
+Corrections : les arbres tombent vraiment ; le plein ne prend que l'essence nécessaire, et seulement de l'essence ; l'option de consommation est lue ; plus d'erreur d'infobulle sur les jauges de liquide ; volume des sons réglé par le curseur des effets ; tout est décidé par le serveur en multijoueur.

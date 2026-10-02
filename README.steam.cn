@@ -16,6 +16,10 @@
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3694097672]TooltipLib[/url]
 [/list]
 
+[b]兼容性：[/b]如果使用 Better Item Info（EURY_ITEMINFO），请将它放在 Timber! Chainsaw 之前加载，以避免玩家报告的 Vorpal 武器提示信息消失问题。Better Item Info 不是必需模组。调整加载顺序后，请完全退出并重新启动游戏。
+
+[b]重量与耐久：[/b] 无论引擎是否启动，重量均为 7。耐久上限为 127，避免受损的电锯在卸下或重新载入存档时突然损坏。磨损设置保持不变：与原来的 200 点上限相比，使用寿命约减少 37%。
+
 [h2]使用方法[/h2]
 
 [list]

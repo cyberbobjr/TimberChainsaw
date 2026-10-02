@@ -18,14 +18,15 @@ module ChainsawB42
         Categories = Axe,
         SubCategory = Swinging,
         Icon = Chainsaw,
-        Weight = 15.0,
+        Weight = 7.0,
         AttachmentType = BigBlade,
         TwoHandWeapon = TRUE,
         RequiresEquippedBothHands = TRUE,
         WeaponSprite = ChainsawB42_Chainsaw,
         WorldStaticModel = ChainsawB42_WorldItem_Chainsaw,
 
-        ConditionMax = 200,
+        /* Damaged condition is saved as a signed byte: never exceed 127. */
+        ConditionMax = 127,
         ConditionLowerChanceOneIn = 200,
 
         /* Engine stopped: a heavy club */
@@ -71,14 +72,15 @@ module ChainsawB42
         Categories = Axe,
         SubCategory = Swinging,
         Icon = Chainsaw,
-        Weight = 15.0,
+        Weight = 7.0,
         AttachmentType = BigBlade,
         TwoHandWeapon = TRUE,
         RequiresEquippedBothHands = TRUE,
         WeaponSprite = ChainsawB42_Chainsaw,
         WorldStaticModel = ChainsawB42_WorldItem_Chainsaw,
 
-        ConditionMax = 200,
+        /* Damaged condition is saved as a signed byte: never exceed 127. */
+        ConditionMax = 127,
         /* Combat wear comes from the ConditionLossCombat sandbox option
            (per zombie killed), as in the original mod. */
         ConditionLowerChanceOneIn = 200,
