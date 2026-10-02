@@ -6,4 +6,4 @@ icon=icon.png
 require=\TooltipLib
 incompatible=\ChainsawB42
 versionMin=42.21
-modversion=1.0.0
+modversion=1.0.1

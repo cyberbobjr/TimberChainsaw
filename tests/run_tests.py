@@ -19,6 +19,7 @@ import re
 import shutil
 import subprocess
 import sys
+import xml.etree.ElementTree as ET
 from collections import Counter
 from pathlib import Path
 
@@ -247,6 +248,41 @@ def check_lua_tests(report):
                 report.ok(label)
 
 
+def check_animations(report):
+    report.section("Animations et héritage XML sur Linux")
+    media = MOD_LUA.parent
+    files = sorted(media.rglob("*.xml"))
+    nodes = {}
+    for path in files:
+        try:
+            nodes[path.name] = ET.parse(path).getroot()
+        except ET.ParseError as error:
+            report.fail(f"{path.relative_to(REPO)} : XML invalide ({error})")
+    default = nodes.get("ChainsawDefault.xml")
+    miss = nodes.get("ChainsawMiss.xml")
+    if default is None or miss is None:
+        report.fail("nœuds de combat manquants")
+        return
+    # resolveRelativePath lowercases the full physical path in 42.21. A relative
+    # x_extends fails on Linux even if the referenced filename has matching case.
+    if "x_extends" in miss.attrib or "x_include" in miss.attrib:
+        report.fail("ChainsawMiss doit être autonome pour les chemins Linux")
+    def structure(node):
+        return node.tag, (node.text or "").strip(), tuple(structure(c) for c in node)
+    for tag in ("m_Priority", "m_AnimName", "m_Looped", "m_BlendTime",
+                "m_SpeedScale", "m_Events", "m_Transitions"):
+        if [structure(n) for n in miss.findall(tag)] != [structure(n) for n in default.findall(tag)]:
+            report.fail(f"ChainsawMiss : paramètres hérités différents pour {tag}")
+    conditions = [(n.findtext("m_Name"), n.findtext("m_Type"), n.findtext("m_Value"))
+                  for n in miss.findall("m_Conditions")]
+    # The old XML merge replaced condition index 0, retaining index 1.
+    if conditions != [("AttackType", "STRING", "miss"), ("AimFloorAnim", "BOOL", "false")]:
+        report.fail("ChainsawMiss : conditions différentes de l'ancien héritage")
+    if miss.findtext("m_Name") != "ChainsawMiss":
+        report.fail("ChainsawMiss : identifiant incorrect")
+    report.ok(f"{len(nodes)} XML analysés ; comportement du nœud miss vérifié")
+
+
 def main():
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
@@ -256,6 +292,7 @@ def main():
     check_translations(report)
     check_used_keys(report)
     check_steam_descriptions(report)
+    check_animations(report)
     check_lua_tests(report)
     print()
     if report.failures:

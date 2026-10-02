@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1 — 2026-10-02
+
+### Fixes
+- Fix chainsaw miss animations failing to load on Linux: remove relative XML inheritance that lowercased the mod path.
+- Preserve the existing combat animation parameters, collision events and idle transition.
+
 ## 1.0.0 — 2026-09-29
 
 First version of Timber! Chainsaw, inspired by Chainsaw B42 (Likit, Workshop 3692027888) and remade from scratch with the same features.
