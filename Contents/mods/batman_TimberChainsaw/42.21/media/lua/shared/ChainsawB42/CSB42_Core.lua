@@ -27,6 +27,59 @@ CSB42.FULLTYPE_OFF = "ChainsawB42.ChainsawOff"
 CSB42.FULLTYPE_RUNNING = "ChainsawB42.Chainsaw"
 CSB42.MAGAZINE = "ChainsawB42.ChainsawMaintenanceMagazine"
 
+-- Optional compatibility mods register existing off/on pairs; no new item IDs.
+CSB42.families = CSB42.families or {}
+function CSB42.registerFamily(family)
+    assert(family.off and family.running and family.off ~= family.running)
+    CSB42.families[family.off] = family
+    CSB42.families[family.running] = family
+end
+CSB42.registerFamily({ off = CSB42.FULLTYPE_OFF, running = CSB42.FULLTYPE_RUNNING })
+
+function CSB42.getFamily(item)
+    if not instanceof(item, "InventoryItem") then return nil end
+    return CSB42.families[item:getFullType()]
+end
+
+function CSB42.isStoppedType(item)
+    local family = CSB42.getFamily(item)
+    return family ~= nil and item:getFullType() == family.off
+end
+
+function CSB42.stateType(item, running)
+    local family = CSB42.getFamily(item)
+    if not family then return nil end
+    if running then return family.running end
+    return family.off
+end
+
+local function fuelData(item, create)
+    local data = item:getModData()
+    local family = CSB42.getFamily(item)
+    if not family or not family.dataKey then return data end
+    if type(data[family.dataKey]) ~= "table" then
+        if not create then return data end -- read legacy fuel without changing it
+        data[family.dataKey] = {
+            CurrentFuel = data.CurrentFuel, FuelCapacity = data.FuelCapacity,
+        }
+    end
+    return data[family.dataKey]
+end
+
+-- Compatibility wear is proportional to Timber's 127-point maximum.
+-- Fractional losses are retained so a 15-point saw does not lose 1 per tree hit.
+function CSB42.applyWear(item, amount)
+    local family = CSB42.getFamily(item)
+    if family and family.dataKey then
+        local data = fuelData(item, true)
+        local remainder = type(data.wearRemainder) == "number" and data.wearRemainder or 0
+        local total = remainder + amount * item:getConditionMax() / 127
+        amount = math.floor(total)
+        data.wearRemainder = total - amount
+    end
+    item:setCondition(math.max(0, item:getCondition() - amount))
+end
+
 CSB42.FUEL_CAPACITY = 4.0
 --- Fuel burnt per second of real time at game speed x1, before the
 --- FuelConsumption sandbox option: 4 L last ~16 min idle.
@@ -66,15 +119,12 @@ end
 -- ----------------------------------------------------------------------------
 
 function CSB42.isChainsaw(item)
-    if not instanceof(item, "InventoryItem") then
-        return false
-    end
-    local fullType = item:getFullType()
-    return fullType == CSB42.FULLTYPE_OFF or fullType == CSB42.FULLTYPE_RUNNING
+    return CSB42.getFamily(item) ~= nil
 end
 
 function CSB42.isRunningType(item)
-    return instanceof(item, "InventoryItem") and item:getFullType() == CSB42.FULLTYPE_RUNNING
+    local family = CSB42.getFamily(item)
+    return family ~= nil and item:getFullType() == family.running
 end
 
 --- The engine runs only while the running item is held in both hands.
@@ -82,7 +132,10 @@ function CSB42.isHeldRunning(character, item)
     if not character or not CSB42.isRunningType(item) then
         return false
     end
-    return character:getPrimaryHandItem() == item and character:getSecondaryHandItem() == item
+    local held = character:getPrimaryHandItem() == item and character:getSecondaryHandItem() == item
+    local family = CSB42.getFamily(item)
+    if held and family.prepareRunning then family.prepareRunning(item) end
+    return held
 end
 
 --- The running chainsaw a character holds, or nil.
@@ -103,7 +156,7 @@ end
 -- ----------------------------------------------------------------------------
 
 function CSB42.getCapacity(item)
-    local capacity = item:getModData().FuelCapacity
+    local capacity = fuelData(item, false).FuelCapacity
     if type(capacity) ~= "number" or capacity <= 0 then
         return CSB42.FUEL_CAPACITY
     end
@@ -111,7 +164,7 @@ function CSB42.getCapacity(item)
 end
 
 function CSB42.getFuel(item)
-    local fuel = item:getModData().CurrentFuel
+    local fuel = fuelData(item, false).CurrentFuel
     if type(fuel) ~= "number" then
         return CSB42.getCapacity(item)
     end
@@ -120,7 +173,7 @@ end
 
 --- Authority only: the value reaches clients with syncItemFields.
 function CSB42.setFuel(item, amount)
-    local modData = item:getModData()
+    local modData = fuelData(item, true)
     modData.FuelCapacity = CSB42.getCapacity(item)
     modData.CurrentFuel = math.max(0, math.min(amount, modData.FuelCapacity))
 end
@@ -187,8 +240,13 @@ local function copyState(old, new)
     for key, value in pairs(oldData) do
         newData[key] = value
     end
-    newData.FuelCapacity = CSB42.getCapacity(old)
-    newData.CurrentFuel = CSB42.getFuel(old)
+    local family = CSB42.getFamily(old)
+    if family and family.dataKey and type(oldData[family.dataKey]) == "table" then
+        local copy = {}
+        for key, value in pairs(oldData[family.dataKey]) do copy[key] = value end
+        newData[family.dataKey] = copy
+    end
+    CSB42.setFuel(new, CSB42.getFuel(old))
     local condition = old:getCondition()
     local oldMax, newMax = old:getConditionMax(), new:getConditionMax()
     if condition > 0 and oldMax > 0 and oldMax ~= newMax then
@@ -256,8 +314,11 @@ function CSB42.replace(item, fullType, character)
         return nil
     end
     copyState(item, new)
-    if fullType == CSB42.FULLTYPE_RUNNING then
-        applyDamageMod(new)
+    local family = CSB42.getFamily(new)
+    if family and fullType == family.running then
+        -- Compatibility families can keep native persistent damage values.
+        if not family.keepDamage then applyDamageMod(new) end
+        if family.prepareRunning then family.prepareRunning(new) end
     end
 
     local held = character and character:getPrimaryHandItem() == item

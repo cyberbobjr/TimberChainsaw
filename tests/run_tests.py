@@ -62,7 +62,7 @@ class Report:
 
 
 def mod_lua_files():
-    return sorted(MOD_LUA.rglob("*.lua"))
+    return sorted((REPO / "Contents").rglob("*.lua"))
 
 
 def strip_comments(line):
@@ -281,6 +281,13 @@ def check_animations(report):
     if miss.findtext("m_Name") != "ChainsawMiss":
         report.fail("ChainsawMiss : identifiant incorrect")
     report.ok(f"{len(nodes)} XML analysés ; comportement du nœud miss vérifié")
+    compatibility = REPO / "Contents/mods/batman_TimberAuthenticZCompatibility/42.21/media"
+    for name in ("ChainsawDefault.xml", "ChainsawMiss.xml"):
+        relative = Path("AnimSets/player/melee/2handed") / name
+        if not (compatibility / relative).is_file():
+            report.fail(f"compatibilité Authentic Z : animation {name} manquante")
+        elif (compatibility / relative).read_bytes() != (media / relative).read_bytes():
+            report.fail(f"compatibilité Authentic Z : animation {name} différente de Timber")
 
 
 def main():

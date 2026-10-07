@@ -123,6 +123,10 @@ local SCRIPTS = {
     ["ChainsawB42.ChainsawOff"] = { min = 0.1, max = 0.5 },
     ["ChainsawB42.Chainsaw"] = { min = 0.6, max = 1.1 },
 }
+for _, module in ipairs({ "AuthenticZClothing", "AuthenticZLite" }) do
+    SCRIPTS[module .. ".ChainsawOff"] = { min = 0.1, max = 0.5, conditionMax = 15, weight = 3 }
+    SCRIPTS[module .. ".Chainsaw"] = { min = 0.6, max = 1.1, conditionMax = 15, weight = 3 }
+end
 
 -- Read condition maxima and weight from the actual item definitions: a mock
 -- with an independent safe maximum would miss the signed-byte regression.
@@ -184,7 +188,12 @@ function api.item(fullType, fields)
     function item:setMinDamage(v) self.minDamage = v end
     function item:setMaxDamage(v) self.maxDamage = v end
     function item:syncItemFields() self.syncs = self.syncs + 1 end
-    function item:getTreeDamage() return fullType == "ChainsawB42.Chainsaw" and 67 or 1 end
+    function item:getTreeDamage() return self.treeDamage or (fullType == "ChainsawB42.Chainsaw" and 67 or 1) end
+    function item:setTreeDamage(v) self.treeDamage = v end
+    function item:setSwingSound(v) self.swingSound = v end
+    function item:setZombieHitSound(v) self.hitSound = v end
+    function item:setDoorHitSound(v) self.doorHitSound = v end
+    function item:setHitFloorSound(v) self.hitFloorSound = v end
     function item:setJobType() end
     function item:setJobDelta(v) self.jobDelta = v end
     return item

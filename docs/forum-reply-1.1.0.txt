@@ -1,0 +1,7 @@
+Thanks for the suggestion! Version 1.1.0 now includes an optional Authentic Z compatibility submod in the same Timber! Chainsaw download.
+
+Rather than replacing your finds, it makes existing Authentic Z chainsaws work with Timber's start/stop, petrol refuelling, engine sounds and tree cutting. Their original IDs, appearance, weight and durability are kept.
+
+Enable Authentic Z Current OR Lite, TooltipLib, Timber! Chainsaw, then "batman_Timber! Chainsaw - Authentic Z Compatibility". For an existing save, enable it in that save's mod settings too. Load Authentic Z before Timber and the compatibility submod after Timber, then fully restart the game/server. Don't combine it with AuthenticZChainsawFix.
+
+You can add/remove the compatibility submod between sessions while keeping Authentic Z enabled. Native combat damage is preserved. Tested and validated in game. Hope this makes those finds more enjoyable!

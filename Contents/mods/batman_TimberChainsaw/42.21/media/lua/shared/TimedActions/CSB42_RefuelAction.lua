@@ -13,7 +13,7 @@ CSB42_RefuelAction = ISBaseTimedAction:derive("CSB42_RefuelAction")
 local function canRefuel(character, chainsaw, petrol)
     local inventory = character:getInventory()
     return chainsaw ~= nil and petrol ~= nil
-        and chainsaw:getFullType() == CSB42.FULLTYPE_OFF
+        and CSB42.isStoppedType(chainsaw)
         and inventory:contains(chainsaw)
         and inventory:contains(petrol)
         and CSB42.refuelAmount(chainsaw, petrol) > 0

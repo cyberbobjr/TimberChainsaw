@@ -55,7 +55,7 @@ local function addChainsawOptions(player, context, chainsaw)
         context:addOptionOnTop(getText("ContextMenu_CSB42_Stop"), player, doStop, chainsaw)
         return
     end
-    if chainsaw:getFullType() ~= CSB42.FULLTYPE_OFF then
+    if not CSB42.isStoppedType(chainsaw) then
         return
     end
 

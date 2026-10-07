@@ -150,7 +150,7 @@ function CSB42_CutTreeAction:hit()
     -- Wear, as in the original mod: 1 chance in 8 per hit.
     local wear = CSB42.option("ConditionLossTree")
     if wear > 0 and ZombRand(8) == 0 then
-        chainsaw:setCondition(math.max(0, chainsaw:getCondition() - wear))
+        CSB42.applyWear(chainsaw, wear)
         if isServer() then
             chainsaw:syncItemFields()
         end

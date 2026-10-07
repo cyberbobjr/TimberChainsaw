@@ -12,7 +12,7 @@ CSB42_StartAction = ISBaseTimedAction:derive("CSB42_StartAction")
 
 local function canStart(character, chainsaw)
     return chainsaw ~= nil
-        and chainsaw:getFullType() == CSB42.FULLTYPE_OFF
+        and CSB42.isStoppedType(chainsaw)
         and not chainsaw:isBroken()
         and CSB42.hasFuel(chainsaw)
         and character:getPrimaryHandItem() == chainsaw
@@ -76,7 +76,7 @@ function CSB42_StartAction:complete()
         CSB42.notify(self.character, "IGUI_CSB42_Jammed")
         return true
     end
-    local running = CSB42.replace(self.chainsaw, CSB42.FULLTYPE_RUNNING, self.character)
+    local running = CSB42.replace(self.chainsaw, CSB42.stateType(self.chainsaw, true), self.character)
     if running and CSB42.onStarted then
         CSB42.onStarted(self.character, running)
     end

@@ -1,0 +1,8 @@
+name=batman_Timber! Chainsaw - Authentic Z Compatibility
+id=batman_TimberAuthenticZCompatibility
+description=Optional runtime compatibility for Timber! Chainsaw and Authentic Z Current or Lite. Keeps Authentic Z item IDs, models, weight and condition maximum. Requires Timber 1.1.0 or newer. Keep Authentic Z enabled when removing this compatibility mod.
+require=\batman_TimberChainsaw
+loadModAfter=\Authentic Z - Current,\AuthenticZLite,\Authentic Z - 42.15 FIX,\batman_TimberChainsaw
+incompatible=\AuthenticZChainsawFix,\ChainsawB42
+versionMin=42.21
+modversion=1.1.0

@@ -18,6 +18,16 @@ new poster, preview and icons; the 3D model, texture and animations are vanilla 
 
 ## Compatibility and load order
 
+Optional submod: **batman_Timber! Chainsaw - Authentic Z Compatibility**
+(`batman_TimberAuthenticZCompatibility`). With Authentic Z Current **or** Lite,
+existing Authentic Z chainsaws gain Timber's engine, fuel, sounds and tree cutting.
+Their original item IDs, appearance, weight and condition maximum are retained.
+Native combat damage is retained; `DamageMod` applies to Timber items only.
+Load the compatibility submod after Authentic Z, its optional translation patch
+and Timber. Do not enable AuthenticZChainsawFix alongside it. Add/remove between
+sessions with a full game/server restart, keeping Authentic Z enabled.
+See [details, limitations and in-game test protocol](docs/authenticz-compatibility.md).
+
 If you enable **Better Item Info** (`EURY_ITEMINFO`), load it **before Timber! Chainsaw**. Timber declares `loadModAfter=\EURY_ITEMINFO`; Better Item Info is optional. In Build 42.21, this metadata informs the load-order panel and its automatic sort; it does not force an existing saved order to change. Check the order in the Mods screen.
 
 A player reported missing Vorpal weapon tooltips and restored them by putting Timber after Better Item Info. Timber and Vorpal were also tested together without reproducing the issue. This order addresses the reported combination; the exact tooltip hook conflict has not been reproduced locally. Better Item Info is a different mod from Better Clothing Info (`EURY_CLOTHINGINFO`). Restart the game completely after changing the order.
@@ -61,7 +71,7 @@ Also: `NoiseMod`, `DamageMod` and `LootChance` options were ignored; 10 of the 2
 python tests/run_tests.py
 ```
 
-luacheck, Lua 5.1 syntax, no `next()` (absent from Kahlua), translations (10 languages), keys used by the code, and 56 Lua tests under `lupa` with a simulated game API (`tests/lua/game_api.lua`). The regressions cover cutting then unequipping in multiplayer, signed-byte serialization, start/stop, repair, both item weights and changed condition maxima. Not a substitute for an in-game test.
+luacheck, Lua 5.1 syntax, no `next()` (absent from Kahlua), translations (10 languages), keys used by the code, and 64 Lua tests under `lupa` with a simulated game API (`tests/lua/game_api.lua`). The regressions cover cutting then unequipping in multiplayer, signed-byte serialization, start/stop, repair, both item weights, changed condition maxima and Authentic Z Current/Lite compatibility. Not a substitute for an in-game test.
 
 In-game verification on Build 42.21: restart completely, cut down a tree until condition decreases, then unequip the still-running chainsaw. Verify it stops without becoming broken; also start/stop manually, repair, and save/reload. In multiplayer, check the owning client's condition after unequipping and reconnecting. Check weight 7 for both variants on a freshly created or replaced item.
 
@@ -72,6 +82,15 @@ Code under the MIT license (`LICENSE`). Sounds derived from CC0 recordings (Jose
 ---
 
 # Français
+
+Sous-mod facultatif : **batman_Timber! Chainsaw - Authentic Z Compatibility**
+(`batman_TimberAuthenticZCompatibility`), pour Authentic Z Current **ou** Lite.
+Les tronçonneuses Authentic Z existantes utilisent le moteur, l'essence, les sons
+et l'abattage Timber, en conservant leurs identifiants, leur apparence, leur poids
+et leur maximum d'état. Les dégâts de combat restent natifs (`DamageMod` ne règle
+que les objets Timber). Charger le sous-mod après Authentic Z et Timber ; ne pas
+activer AuthenticZChainsawFix. Ajout/retrait entre deux sessions, avec redémarrage
+complet ; Authentic Z doit rester actif. [Détails et validation](docs/authenticz-compatibility.md).
 
 Tronçonneuse à essence fonctionnelle, inspirée de **Chainsaw B42** de **Likit** (Workshop 3692027888) et refaite entièrement avec les mêmes fonctionnalités. Build 42.21, solo et multijoueur. Prérequis : TooltipLib. Incompatible avec l'original (mêmes objets, le carburant des sauvegardes est conservé). Aucune ressource de l'original n'est reprise : sons CC0 (Joseph Sardin, BigSoundBank), affiche et icônes nouvelles, modèle et animations du jeu.
 

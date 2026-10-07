@@ -18,6 +18,18 @@ It uses the same item names as Chainsaw B42: in a save made with Chainsaw B42, y
 
 [b]Compatibility:[/b] If you use Better Item Info (EURY_ITEMINFO), load it before Timber! Chainsaw to avoid the reported missing Vorpal weapon tooltips. Better Item Info is optional. Restart the game completely after changing the order.
 
+[h2]Authentic Z: optional compatibility[/h2]
+
+Included in this Workshop subscription: [b]batman_Timber! Chainsaw - Authentic Z Compatibility[/b]. No separate download is needed.
+[list]
+[*]Enable Authentic Z Current OR Lite, TooltipLib and Timber! Chainsaw, then enable the compatibility submod in your game's mod settings. For an existing save, enable it in that save's mod settings too.
+[*]Load Authentic Z (and its optional translation patch) before Timber, and the compatibility submod after Timber. Restart the game completely; restart the server in multiplayer.
+[*]Do not enable AuthenticZChainsawFix alongside this submod.
+[/list]
+Existing Authentic Z chainsaws gain start/stop, petrol refuelling, engine sounds and Timber tree cutting. Their original item IDs, appearance, weight and condition maximum are kept; wear is scaled accordingly. Native combat damage is kept: DamageMod affects Timber items only.
+You can add/remove this submod between sessions while keeping Authentic Z enabled. No compatibility-only item types are introduced. Fuel is retained for reactivation; normal wear, spent petrol and felled trees remain.
+[b]Servers:[/b] this Workshop ID stays the same. Add batman_TimberAuthenticZCompatibility after batman_TimberChainsaw in Mods=, alongside your Authentic Z variant and TooltipLib.
+
 [b]Weight and condition:[/b] Weight: 7, engine on or off. Maximum condition: 127, to prevent damaged chainsaws suddenly breaking when unequipped or reloaded. Wear settings are unchanged: durability is about 37% lower than with the old maximum of 200.
 
 [h2]How to use[/h2]

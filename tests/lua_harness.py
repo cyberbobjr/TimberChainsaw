@@ -127,6 +127,8 @@ def new_runtime():
         return source
 
     globals_.readModFile = read_mod_file
+    globals_.readCompatibilityFile = lambda rel: _read(
+        REPO / "Contents/mods/batman_TimberAuthenticZCompatibility/42.21/media/lua", rel)
     globals_.readVanillaFile = lambda rel: _read(VANILLA_LUA, rel)
     globals_.readTestFile = lambda rel: _read(REPO / "tests" / "lua", rel)
     globals_.hasVanilla = VANILLA_LUA.is_dir()

@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.1.0 ? 2026-10-07
+
+### Authentic Z compatibility
+- Add **batman_Timber! Chainsaw - Authentic Z Compatibility**, an optional submod included in this same Workshop subscription, for Authentic Z Current or Lite on Build 42.21.
+- Existing Authentic Z chainsaws now support Timber's start/stop, petrol refuelling, engine sounds, noise and tree cutting. Original item IDs, appearance, weight and maximum condition are retained. Wear is scaled to their native durability.
+- Keep compatibility fuel separately so it is available again after reactivation. No compatibility-only item types are introduced; add/remove the submod between sessions with a full restart, keeping Authentic Z enabled.
+- Keep native combat damage to avoid persistent damage overrides. DamageMod continues to affect Timber items only.
+
+### How to enable
+- Enable Authentic Z **Current OR Lite**, TooltipLib and Timber! Chainsaw, then enable **batman_Timber! Chainsaw - Authentic Z Compatibility**. For an existing save, also enable it in that save's mod settings.
+- Load Authentic Z (and its optional translation patch) before Timber, and the compatibility submod after Timber. Fully restart the game and multiplayer server.
+- Do not enable **AuthenticZChainsawFix** alongside the compatibility submod.
+- Servers: keep the same Workshop ID and add `batman_TimberAuthenticZCompatibility` after `batman_TimberChainsaw` in `Mods=`, alongside Authentic Z and TooltipLib.
+
+### Validation
+- Compatibility tested and validated in game by the mod author.
+- 64 automated Lua regression tests pass, including Current/Lite identity preservation, fuel, wear, client/server authority and simulated removal/reactivation.
+
 ## 1.0.3 — 2026-10-02
 
 ### Fixes

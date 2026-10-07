@@ -50,7 +50,7 @@ function CSB42.stopEngine(player, item, noticeKey)
     if player and player:getPrimaryHandItem() == item then
         holder = player
     end
-    local stopped = CSB42.replace(item, CSB42.FULLTYPE_OFF, holder)
+    local stopped = CSB42.replace(item, CSB42.stateType(item, false), holder)
     if player and noticeKey then
         CSB42.notify(player, noticeKey)
     end
@@ -196,7 +196,7 @@ local function onZombieDead(zombie)
     if wear <= 0 then
         return
     end
-    item:setCondition(math.max(0, item:getCondition() - wear))
+    CSB42.applyWear(item, wear)
     if item:isBroken() then
         CSB42.stopEngine(attacker, item, "IGUI_CSB42_Broken")
     elseif isServer() then

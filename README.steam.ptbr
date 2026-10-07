@@ -18,6 +18,18 @@ Ele usa os mesmos nomes de itens do Chainsaw B42: em um jogo salvo com o Chainsa
 
 [b]Compatibilidade:[/b] Se você usa Better Item Info (EURY_ITEMINFO), carregue-o antes de Timber! Chainsaw para evitar o problema relatado de dicas ausentes nas armas Vorpal. Better Item Info é opcional. Reinicie o jogo completamente após mudar a ordem.
 
+[h2]Authentic Z: compatibilidade opcional[/h2]
+
+Esta mesma inscri??o inclui [b]batman_Timber! Chainsaw - Authentic Z Compatibility[/b]. N?o precisa de outro download.
+[list]
+[*]Ative Authentic Z Current OU Lite, TooltipLib e Timber! Chainsaw, depois o submod de compatibilidade nas configura??es dos mods. Em uma partida existente, ative-o tamb?m nas configura??es dos mods dessa partida.
+[*]Carregue Authentic Z e seu eventual patch de tradu??o antes de Timber; a compatibilidade depois de Timber. Reinicie completamente o jogo e o servidor multijogador.
+[*]N?o ative AuthenticZChainsawFix junto com este submod.
+[/list]
+As motosserras Authentic Z existentes recebem ligar/desligar, abastecimento com gasolina, sons de motor e corte de ?rvores Timber. Mant?m identificadores, apar?ncia, peso e condi??o m?xima; o desgaste ? proporcional. O dano de combate original ? mantido: DamageMod s? afeta os objetos Timber.
+Pode adicionar/remover entre sess?es mantendo Authentic Z ativo. Nenhum tipo de objeto novo. O combust?vel fica salvo para reativa??o; desgaste, gasolina gasta e ?rvores cortadas permanecem.
+[b]Servidores:[/b] o ID Workshop continua igual. Adicione batman_TimberAuthenticZCompatibility ap?s batman_TimberChainsaw em Mods=, junto com Authentic Z e TooltipLib.
+
 [b]Peso e condição:[/b] Peso: 7, com o motor ligado ou desligado. Condição máxima: 127, para evitar que motosserras danificadas quebrem de repente ao desequipá-las ou carregar o jogo. As configurações de desgaste permanecem iguais: a durabilidade diminui cerca de 37% em relação ao máximo anterior de 200.
 
 [h2]Como usar[/h2]
