@@ -209,6 +209,20 @@ function CSB42.showNotice(character, key)
     end
 end
 
+--- Local player named by the server (split screen); player 0 when the
+--- server sent no ID (older version) or no local player has it.
+local function noticeTarget(onlineId)
+    if type(onlineId) == "number" then
+        for i = 0, getNumActivePlayers() - 1 do
+            local player = getSpecificPlayer(i)
+            if player and player:getOnlineID() == onlineId then
+                return player
+            end
+        end
+    end
+    return getSpecificPlayer(0)
+end
+
 local function onServerCommand(module, command, args)
     if module ~= CSB42.MODULE or command ~= "notify" or type(args) ~= "table" then
         return
@@ -217,7 +231,7 @@ local function onServerCommand(module, command, args)
         return
     end
     -- sendServerCommand(player, ...) only reaches that player's client.
-    CSB42.showNotice(getSpecificPlayer(0), args.key)
+    CSB42.showNotice(noticeTarget(args.playerOnlineId), args.key)
 end
 
 Events.OnTick.Add(onTick)

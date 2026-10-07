@@ -148,4 +148,15 @@ function T.server_message_only_for_this_mod()
     assertEq(API.count("halo"), 1, "foreign key ignored")
 end
 
+function T.server_message_shown_on_the_named_split_screen_player()
+    local first, second = API.player({ onlineId = 3 }), API.player({ onlineId = 4 })
+    API.setLocalPlayers({ first, second })
+    triggerEvent("OnServerCommand", "ChainsawB42", "notify", { key = "IGUI_CSB42_Broken", playerOnlineId = 4 })
+    assertEq(API.last("halo").player, second, "second local player")
+    triggerEvent("OnServerCommand", "ChainsawB42", "notify", { key = "IGUI_CSB42_Broken" })
+    assertEq(API.last("halo").player, first, "no ID (older server): player 0")
+    triggerEvent("OnServerCommand", "ChainsawB42", "notify", { key = "IGUI_CSB42_Broken", playerOnlineId = 9 })
+    assertEq(API.last("halo").player, first, "unknown ID: player 0")
+end
+
 return T

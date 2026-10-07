@@ -1,6 +1,6 @@
 # Timber! Chainsaw — Authentic Z Compatibility
 
-Build cible : 42.21.0. Sous-mod : `batman_TimberAuthenticZCompatibility` (1.1.0).
+Build cible : 42.21.0. Sous-mod : `batman_TimberAuthenticZCompatibility` (1.1.1).
 Requiert le cœur Timber 1.1.0 et TooltipLib. Activer Authentic Z Current **ou** Lite,
 puis Timber et le sous-mod ; ne pas activer les deux variantes Authentic Z ensemble.
 Le sous-mod n'exige pas une variante précise pour éviter d'activer Current derrière Lite.

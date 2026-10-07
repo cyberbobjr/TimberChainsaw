@@ -118,6 +118,38 @@ function T.disconnected_owner_is_forgotten_without_touching_the_item()
     assertEq(p:getPrimaryHandItem():getFullType(), CSB42.FULLTYPE_OFF, "stopped 5 s after the owner is back")
 end
 
+--- IsoDeadBody takes the dead player's inventory (IsoDeadBody.java:327-331).
+local function dieIntoCorpse(p)
+    local corpse = API.container({ __classes = { IsoDeadBody = true, IsoObject = true } })
+    for _, item in ipairs(p.inventory.items) do
+        corpse.items[#corpse.items + 1] = item
+        item.container = corpse
+    end
+    p.inventory = API.container(p)
+    return corpse
+end
+
+function T.dead_owner_gone_from_the_list_still_stops_the_engine()
+    API.server = true
+    local p, saw = started(nil, true)
+    p.dead = true
+    local corpse = dieIntoCorpse(p)
+    API.setOnlinePlayers({})
+    ticks(1)
+    assertEq(corpse.items[1]:getFullType(), CSB42.FULLTYPE_OFF, "stopped in the corpse")
+    assertTrue(corpse.items[1] ~= saw, "running item replaced")
+end
+
+function T.owner_gone_with_the_chainsaw_elsewhere_stops_the_engine()
+    -- Dead flag not visible any more, but the inventory went to the corpse.
+    API.server = true
+    local p = started(nil, true)
+    local corpse = dieIntoCorpse(p)
+    API.setOnlinePlayers({})
+    ticks(1)
+    assertEq(corpse.items[1]:getFullType(), CSB42.FULLTYPE_OFF, "stopped in the corpse")
+end
+
 function T.chainsaw_put_in_a_crate_is_stopped_without_error()
     local p, saw = started()
     local crate = API.container({ __classes = { IsoObject = true } })

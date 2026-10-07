@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.1.1 — 2026-10-07
+
+### Multiplayer fixes
+- A chainsaw left running when its owner died is now stopped in the corpse even when the dead player has already left the server's player list. Previously it could stay "running" in the corpse.
+- Split screen on a server: jam, empty tank, broken and repair messages now appear above the player concerned instead of always above the first local player.
+
+### Fixes
+- A renamed chainsaw no longer collects state words in its name ("Betty (Bloody, Worn) (Worn)") each time it is started, stopped or repaired; on a server these words were also written in the server's language. Names already affected are cleaned at the next start, stop or repair when the words match the language of the game (singleplayer) or of the server (multiplayer). Chainsaws that were never renamed are unaffected.
+
+### Validation
+- 72 automated Lua regression tests pass, including the cases above. Not yet tested in game.
+
 ## 1.1.0 ? 2026-10-07
 
 ### Authentic Z compatibility

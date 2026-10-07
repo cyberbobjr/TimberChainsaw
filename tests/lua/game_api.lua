@@ -61,7 +61,22 @@ function getTimestampMs() return api.now end
 function isClient() return api.client end
 function isServer() return api.server end
 function ZombRand(n) return api.rand(n) end
-function getText(key) return key end
+-- Mod keys come back raw (as on a server); a few vanilla keys are known.
+-- Translator.getText formats %1, %2... with the arguments (Translator.java:386).
+api.texts = {
+    IGUI_ClothingNaming = "%2 (%1)",
+    IGUI_ClothingName_Bloody = "Bloody",
+    IGUI_Name_Worn = "Worn",
+    Tooltip_broken = "Broken",
+}
+function getText(key, ...)
+    local text = api.texts[key] or key
+    local args = { ... }
+    return (string.gsub(text, "%%(%d)", function(n)
+        local value = args[tonumber(n)]
+        return value ~= nil and tostring(value) or ""
+    end))
+end
 function print() end
 
 SandboxVars = { ChainsawB42 = {} }
@@ -176,8 +191,21 @@ function api.item(fullType, fields)
     function item:setFavorite(v) self.favorite = v end
     function item:isCustomName() return self.customName end
     function item:setCustomName(v) self.customName = v end
-    function item:getName() return self.name end
-    function item:setName(v) self.name = v end
+    -- InventoryItem.getName adds state prefixes (InventoryItem.java:2170-2209);
+    -- getDisplayName returns the raw name (:2943).
+    function item:getName()
+        local prefix = {}
+        if self.blood > 0.25 then prefix[#prefix + 1] = getText("IGUI_ClothingName_Bloody") end
+        if self.condition <= 0 then
+            prefix[#prefix + 1] = getText("Tooltip_broken")
+        elseif self.condition < self.conditionMax / 3 then
+            prefix[#prefix + 1] = getText("IGUI_Name_Worn")
+        end
+        if #prefix == 0 then return self.name end
+        return getText("IGUI_ClothingNaming", table.concat(prefix, ", "), self.name)
+    end
+    function item:getDisplayName() return self.name end
+    function item:setName(v) self.name = string.sub(v, 1, 256) end
     function item:getBloodLevel() return self.blood end
     function item:setBloodLevel(v) self.blood = v end
     function item:getHaveBeenRepaired() return self.repaired end
@@ -301,6 +329,8 @@ function api.player(fields)
         if self.secondary == item then self.secondary = nil end
     end
     function p:isDead() return self.dead end
+    p.onlineId = p.onlineId or 0
+    function p:getOnlineID() return self.onlineId end
     function p:getVehicle() return self.vehicle end
     function p:getX() return self.x end
     function p:getY() return self.y end

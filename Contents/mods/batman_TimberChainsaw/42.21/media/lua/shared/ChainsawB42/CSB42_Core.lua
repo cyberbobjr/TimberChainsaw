@@ -235,6 +235,72 @@ end
 -- Pattern of the vanilla ISClothingExtraAction:complete (42.21).
 -- ----------------------------------------------------------------------------
 
+-- ----------------------------------------------------------------------------
+-- Custom name. getName() adds translated state prefixes ("Chainsaw (Bloody,
+-- Worn)", InventoryItem.getName:2170-2209, 42.21); getDisplayName() returns
+-- the raw name. Up to 1.1.0 the copy used getName(): every start, stop or
+-- repair froze the prefixes in the name, and they piled up (in the server's
+-- language in multiplayer). The stored name is cleaned at the next copy.
+-- ----------------------------------------------------------------------------
+
+-- Vanilla keys (known on a server too) of the prefixes of getName().
+local STATE_KEYS = {
+    "IGUI_ClothingName_Bloody", "Tooltip_broken", "IGUI_Name_Worn",
+    "Tooltip_blunt", "Tooltip_dull", "Tooltip_activated",
+}
+local PREFIX_MARK, NAME_MARK = "{CSB42_PREFIX}", "{CSB42_NAME}"
+
+--- Removes the "(Bloody, Worn)" suffixes frozen by older versions, in the
+--- current language only (IGUI_ClothingNaming = "%2 (%1)", "%2(%1)" in CN).
+--- A suffix is removed only when every word is a state prefix.
+function CSB42.stripStatePrefixes(name)
+    local template = getText("IGUI_ClothingNaming", PREFIX_MARK, NAME_MARK)
+    local nameStart, nameEnd = string.find(template, NAME_MARK, 1, true)
+    local prefixStart, prefixEnd = string.find(template, PREFIX_MARK, 1, true)
+    if nameStart ~= 1 or not prefixStart or prefixStart <= nameEnd + 1 then
+        return name -- unknown layout: keep the name
+    end
+    local lead = string.sub(template, nameEnd + 1, prefixStart - 1)
+    local tail = string.sub(template, prefixEnd + 1)
+    local words = {}
+    for i = 1, #STATE_KEYS do
+        local word = getText(STATE_KEYS[i])
+        if word ~= STATE_KEYS[i] and word ~= "" then words[word] = true end
+    end
+    while true do
+        if tail ~= "" and string.sub(name, -#tail) ~= tail then break end
+        local body = string.sub(name, 1, #name - #tail)
+        local start, from = nil, 1
+        while true do
+            local found = string.find(body, lead, from, true)
+            if not found then break end
+            start, from = found, found + 1
+        end
+        if not start or start == 1 then break end
+        local prefix = string.sub(body, start + #lead) .. ", "
+        local valid = prefix ~= ", "
+        for word in string.gmatch(prefix, "(.-), ") do
+            if not words[word] then valid = false end
+        end
+        if not valid then break end
+        name = string.sub(body, 1, start - 1)
+    end
+    return name
+end
+
+--- Authority: gives `new` the custom name of `old`, without state prefixes.
+--- A chainsaw that was never renamed keeps the translated script name.
+function CSB42.copyCustomName(old, new)
+    if not old:isCustomName() then
+        return
+    end
+    local name = CSB42.stripStatePrefixes(old:getDisplayName())
+    if name ~= "" then
+        new:setName(name)
+        new:setCustomName(true)
+    end
+end
+
 local function copyState(old, new)
     local oldData, newData = old:getModData(), new:getModData()
     for key, value in pairs(oldData) do
@@ -258,10 +324,7 @@ local function copyState(old, new)
     new:setHaveBeenRepaired(old:getHaveBeenRepaired())
     new:setFavorite(old:isFavorite())
     new:setBloodLevel(old:getBloodLevel())
-    if old:isCustomName() then
-        new:setName(old:getName())
-        new:setCustomName(true)
-    end
+    CSB42.copyCustomName(old, new)
 end
 
 --- Running item: MinDamage/MaxDamage scaled by the DamageMod option. Both are
@@ -349,12 +412,15 @@ end
 
 -- ----------------------------------------------------------------------------
 -- Messages (halo text above the player). In multiplayer the server sends them
--- to the owner, who translates them in their own language.
+-- to the owner, who translates them in their own language. The client of a
+-- split screen receives the message once for all its players:
+-- playerOnlineId names the one to show it on (vanilla ServerCommands.lua).
 -- ----------------------------------------------------------------------------
 
 function CSB42.notify(character, key)
     if isServer() then
-        sendServerCommand(character, CSB42.MODULE, "notify", { key = key })
+        sendServerCommand(character, CSB42.MODULE, "notify",
+            { key = key, playerOnlineId = character:getOnlineID() })
     elseif CSB42.showNotice then
         CSB42.showNotice(character, key)
     end

@@ -132,4 +132,46 @@ function T.notify_goes_to_the_owner_in_multiplayer()
     assertTrue(sent and sent.player == p and sent.command == "notify" and sent.args.key == "IGUI_CSB42_Jammed", "server command")
 end
 
+function T.notify_names_the_local_player_for_split_screen()
+    API.server = true
+    local p = API.player({ onlineId = 7 })
+    CSB42.notify(p, "IGUI_CSB42_Jammed")
+    assertEq(API.last("serverCommand").args.playerOnlineId, 7, "online ID joined")
+end
+
+function T.custom_name_is_copied_without_state_prefixes()
+    -- Bloody and worn: getName() = "Betty (Bloody, Worn)".
+    local off = API.item(CSB42.FULLTYPE_OFF, { condition = 20, blood = 0.8, customName = true, name = "Betty" })
+    local p = API.holding(off)
+    assertEq(off:getName(), "Betty (Bloody, Worn)", "mock adds the vanilla prefixes")
+    local item = off
+    for _ = 1, 3 do
+        item = CSB42.replace(item, CSB42.FULLTYPE_RUNNING, p)
+        item = CSB42.replace(item, CSB42.FULLTYPE_OFF, p)
+    end
+    assertEq(item:getDisplayName(), "Betty", "prefixes never frozen in the name")
+    assertTrue(item:isCustomName(), "still a custom name")
+end
+
+function T.uncustomised_name_is_not_copied()
+    local off = API.item(CSB42.FULLTYPE_OFF, { condition = 20, blood = 0.8 })
+    local p = API.holding(off)
+    local running = CSB42.replace(off, CSB42.FULLTYPE_RUNNING, p)
+    assertTrue(not running:isCustomName(), "script name kept, in the loader's language")
+    assertEq(running:getDisplayName(), CSB42.FULLTYPE_RUNNING, "name of the new item")
+end
+
+function T.accumulated_prefixes_from_older_versions_are_removed()
+    local off = API.item(CSB42.FULLTYPE_OFF, { customName = true,
+        name = "Betty (Worn) (Bloody, Worn) (Bloody)" })
+    local p = API.holding(off)
+    local running = CSB42.replace(off, CSB42.FULLTYPE_RUNNING, p)
+    assertEq(running:getDisplayName(), "Betty", "frozen suffixes stripped")
+    assertEq(CSB42.stripStatePrefixes("Saw (my precious)"), "Saw (my precious)", "player text kept")
+    assertEq(CSB42.stripStatePrefixes("Saw (Worn, sharp)"), "Saw (Worn, sharp)", "mixed suffix kept")
+    assertEq(CSB42.stripStatePrefixes("(Worn)"), "(Worn)", "never an empty name")
+    API.texts.IGUI_ClothingNaming = "%1 %2"
+    assertEq(CSB42.stripStatePrefixes("Betty (Worn)"), "Betty (Worn)", "unknown layout: unchanged")
+end
+
 return T

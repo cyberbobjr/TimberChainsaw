@@ -48,10 +48,7 @@ function CSB42_Recipes.onRepair(craftRecipeData, character)
     CSB42.setFuel(new, CSB42.getFuel(old))
     new:setCondition(new:getConditionMax())
     new:setFavorite(old:isFavorite())
-    if old:isCustomName() then
-        new:setName(old:getName())
-        new:setCustomName(true)
-    end
+    CSB42.copyCustomName(old, new)
     if isServer() then
         new:syncItemFields()
     end

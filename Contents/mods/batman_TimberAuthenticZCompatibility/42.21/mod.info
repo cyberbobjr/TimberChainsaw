@@ -5,4 +5,4 @@ require=\batman_TimberChainsaw
 loadModAfter=\Authentic Z - Current,\AuthenticZLite,\Authentic Z - 42.15 FIX,\batman_TimberChainsaw
 incompatible=\AuthenticZChainsawFix,\ChainsawB42
 versionMin=42.21
-modversion=1.1.0
+modversion=1.1.1

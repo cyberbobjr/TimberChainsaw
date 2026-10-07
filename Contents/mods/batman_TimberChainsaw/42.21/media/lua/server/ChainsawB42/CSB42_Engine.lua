@@ -6,7 +6,8 @@
 --     original mod never read), so fast-forward burns faster, like any engine;
 --   * noise attracts zombies every 2 s (NoiseMod option = radius in tiles);
 --   * the engine stops when the chainsaw leaves both hands, breaks, runs dry,
---     when its owner dies, disconnects or gets in a vehicle.
+--     when its owner dies (even if already gone from the player list),
+--     disconnects or gets in a vehicle.
 -- A running chainsaw held without having been started here (save reloaded,
 -- reconnection, taken from a bag) is stopped: engines do not survive a reload.
 -- On a server this waits RECONNECT_GRACE_MS: the item packets are not handled
@@ -84,11 +85,19 @@ end
 
 local function stopReason(entry, present)
     local player, item = entry.player, entry.item
-    if not present[player] then
-        return "gone"
-    end
+    -- Death first: a dead player can leave getOnlinePlayers() before this
+    -- check, and the chainsaw is then in the corpse (IsoDeadBody takes the
+    -- inventory, IsoDeadBody.java:327-331) or on the ground.
     if player:isDead() then
         return "dead"
+    end
+    if not present[player] then
+        -- Disconnected: the chainsaw is still in the player's inventory.
+        -- Anywhere else, the player died before leaving the list.
+        if item:getContainer() ~= player:getInventory() then
+            return "lost"
+        end
+        return "gone"
     end
     if not CSB42.isHeldRunning(player, item) then
         return "unequipped"
@@ -172,7 +181,7 @@ local function onTick()
         if reason == "gone" then
             -- Disconnected: the save keeps a Chainsaw, stopped at reconnection.
             running[entry.item:getID()] = nil
-        elseif reason == "dead" then
+        elseif reason == "dead" or reason == "lost" then
             CSB42.stopEngine(nil, entry.item)
         elseif string.sub(reason, 1, 5) == "IGUI_" then
             CSB42.stopEngine(entry.player, entry.item, reason)

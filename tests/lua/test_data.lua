@@ -49,6 +49,19 @@ function T.repair_keeps_fuel_and_counts()
     assertEq(API.last("halo").text, "IGUI_CSB42_Repaired", "message")
 end
 
+function T.repair_keeps_the_raw_custom_name()
+    -- A chainsaw waiting for repair is worn: getName() = "Betty (Worn)".
+    local old = API.item(CSB42.FULLTYPE_OFF, { condition = 10, customName = true, name = "Betty (Worn)" })
+    local new = API.item(CSB42.FULLTYPE_OFF)
+    local data = {
+        getAllConsumedItems = function() return API.list({ old }) end,
+        getAllCreatedItems = function() return API.list({ new }) end,
+    }
+    CSB42_Recipes.onRepair(data, API.player())
+    assertEq(new:getDisplayName(), "Betty", "no frozen or accumulated prefix")
+    assertTrue(new:isCustomName(), "custom name kept")
+end
+
 local function lists()
     ProceduralDistributions = { list = {} }
     for _, name in ipairs({ "LoggingFactoryTools", "GarageTools", "ToolStoreBooks" }) do
