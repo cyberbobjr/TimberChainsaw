@@ -20,15 +20,15 @@ Usa los mismos nombres de objetos que Chainsaw B42: en una partida hecha con Cha
 
 [h2]Authentic Z: compatibilidad opcional[/h2]
 
-Esta misma suscripci?n incluye [b]batman_Timber! Chainsaw - Authentic Z Compatibility[/b]. No hace falta otra descarga.
+Esta misma suscripción incluye [b]batman_Timber! Chainsaw - Authentic Z Compatibility[/b]. No hace falta otra descarga.
 [list]
-[*]Activa Authentic Z Current O Lite, TooltipLib y Timber! Chainsaw, y despu?s el submod de compatibilidad en los ajustes de mods. En una partida existente, act?valo tambi?n en los ajustes de mods de esa partida.
-[*]Carga Authentic Z y su parche de traducci?n opcional antes de Timber; la compatibilidad despu?s de Timber. Reinicia completamente el juego y el servidor multijugador.
+[*]Activa Authentic Z Current O Lite, TooltipLib y Timber! Chainsaw, y después el submod de compatibilidad en los ajustes de mods. En una partida existente, actívalo también en los ajustes de mods de esa partida.
+[*]Carga Authentic Z y su parche de traducción opcional antes de Timber; la compatibilidad después de Timber. Reinicia completamente el juego y el servidor multijugador.
 [*]No actives AuthenticZChainsawFix junto con este submod.
 [/list]
-Las motosierras Authentic Z existentes reciben encendido/apagado, repostaje con gasolina, sonidos de motor y tala Timber. Conservan sus identificadores, aspecto, peso y condici?n m?xima; el desgaste se adapta. El da?o de combate sigue siendo el original: DamageMod solo afecta a los objetos Timber.
-Se puede a?adir/quitar entre sesiones manteniendo Authentic Z activo. No introduce tipos de objeto nuevos. El combustible se conserva para reactivarlo; el desgaste, la gasolina gastada y los ?rboles talados permanecen.
-[b]Servidores:[/b] mismo ID Workshop. A?ade batman_TimberAuthenticZCompatibility despu?s de batman_TimberChainsaw en Mods=, junto con Authentic Z y TooltipLib.
+Las motosierras Authentic Z existentes reciben encendido/apagado, repostaje con gasolina, sonidos de motor y tala Timber. Conservan sus identificadores, aspecto, peso y condición máxima; el desgaste se adapta. El daño de combate sigue siendo el original: DamageMod solo afecta a los objetos Timber.
+Se puede añadir/quitar entre sesiones manteniendo Authentic Z activo. No introduce tipos de objeto nuevos. El combustible se conserva para reactivarlo; el desgaste, la gasolina gastada y los árboles talados permanecen.
+[b]Servidores:[/b] mismo ID Workshop. Añade batman_TimberAuthenticZCompatibility después de batman_TimberChainsaw en Mods=, junto con Authentic Z y TooltipLib.
 
 [b]Peso y estado:[/b] Peso: 7, con el motor encendido o apagado. Estado máximo: 127, para evitar que las motosierras dañadas se rompan de repente al desequiparlas o cargar la partida. Los ajustes de desgaste no cambian: la durabilidad se reduce aproximadamente un 37% respecto al máximo anterior de 200.
 

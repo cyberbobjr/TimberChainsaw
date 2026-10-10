@@ -18,17 +18,17 @@ Sie verwendet dieselben Gegenstandsnamen wie Chainsaw B42: In einem Spielstand m
 
 [b]Kompatibilität:[/b] Wenn ihr Better Item Info (EURY_ITEMINFO) verwendet, ladet es vor Timber! Chainsaw, um das gemeldete Problem mit fehlenden Vorpal-Waffen-Tooltips zu vermeiden. Better Item Info ist optional. Startet das Spiel nach einer Änderung der Reihenfolge vollständig neu.
 
-[h2]Authentic Z: optionale Kompatibilit?t[/h2]
+[h2]Authentic Z: optionale Kompatibilität[/h2]
 
-Dieses Workshop-Abonnement enth?lt auch [b]batman_Timber! Chainsaw - Authentic Z Compatibility[/b]. Kein separater Download n?tig.
+Dieses Workshop-Abonnement enthält auch [b]batman_Timber! Chainsaw - Authentic Z Compatibility[/b]. Kein separater Download nötig.
 [list]
-[*]Authentic Z Current ODER Lite, TooltipLib und Timber! Chainsaw aktivieren, danach das Kompatibilit?tsmodul in den Mod-Einstellungen. Bei einem bestehenden Spielstand auch dessen Mod-Einstellungen ?ndern.
-[*]Authentic Z und gegebenenfalls seinen ?bersetzungspatch vor Timber laden, das Kompatibilit?tsmodul danach. Spiel vollst?ndig neu starten; im Mehrspieler auch den Server.
+[*]Authentic Z Current ODER Lite, TooltipLib und Timber! Chainsaw aktivieren, danach das Kompatibilitätsmodul in den Mod-Einstellungen. Bei einem bestehenden Spielstand auch dessen Mod-Einstellungen ändern.
+[*]Authentic Z und gegebenenfalls seinen Übersetzungspatch vor Timber laden, das Kompatibilitätsmodul danach. Spiel vollständig neu starten; im Mehrspieler auch den Server.
 [*]AuthenticZChainsawFix nicht gleichzeitig aktivieren.
 [/list]
-Vorhandene Authentic-Z-Kettens?gen erhalten Start/Stopp, Benzinbetankung, Motorger?usche und Timber-Baumf?llen. Objekt-IDs, Aussehen, Gewicht und maximale Haltbarkeit bleiben erhalten; Verschlei? wird angepasst. Kampfschaden bleibt unver?ndert: DamageMod gilt nur f?r Timber-Objekte.
-Zwischen Sitzungen hinzuf?gen/entfernen; Authentic Z muss aktiv bleiben. Keine neuen Objekttypen. Kraftstoff bleibt f?r erneute Aktivierung gespeichert; Verschlei?, verbrauchtes Benzin und gef?llte B?ume bleiben bestehen.
-[b]Server:[/b] Workshop-ID unver?ndert. batman_TimberAuthenticZCompatibility nach batman_TimberChainsaw in Mods= erg?nzen, zusammen mit Authentic Z und TooltipLib.
+Vorhandene Authentic-Z-Kettensägen erhalten Start/Stopp, Benzinbetankung, Motorgeräusche und Timber-Baumfällen. Objekt-IDs, Aussehen, Gewicht und maximale Haltbarkeit bleiben erhalten; Verschleiß wird angepasst. Kampfschaden bleibt unverändert: DamageMod gilt nur für Timber-Objekte.
+Zwischen Sitzungen hinzufügen/entfernen; Authentic Z muss aktiv bleiben. Keine neuen Objekttypen. Kraftstoff bleibt für erneute Aktivierung gespeichert; Verschleiß, verbrauchtes Benzin und gefällte Bäume bleiben bestehen.
+[b]Server:[/b] Workshop-ID unverändert. batman_TimberAuthenticZCompatibility nach batman_TimberChainsaw in Mods= ergänzen, zusammen mit Authentic Z und TooltipLib.
 
 [b]Gewicht und Zustand:[/b] Gewicht: 7, bei laufendem oder ausgeschaltetem Motor. Maximaler Zustand: 127, damit beschädigte Kettensägen beim Ablegen oder Laden des Spielstands nicht plötzlich kaputtgehen. Die Verschleißeinstellungen bleiben gleich: Die Haltbarkeit sinkt gegenüber dem alten Maximum von 200 um etwa 37%.
 

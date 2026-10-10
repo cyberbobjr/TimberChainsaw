@@ -96,4 +96,4 @@ Test en jeu à effectuer sur une copie de sauvegarde :
    sous-mod, redémarrer, vérifier leur présence et leur état. Réactiver et vérifier
    la reprise du carburant. Authentic Z reste actif pendant tout le test.
 
-Validation en jeu : l?utilisateur a indiqu? avoir test? et valid? la compatibilit? le 2026-10-07. Les sc?narios pr?cis et le mode de jeu n?ont pas ?t? d?taill?s.
+Validation en jeu : l'utilisateur a indiqué avoir testé et validé la compatibilité le 2026-10-07. Les scénarios précis et le mode de jeu n'ont pas été détaillés.

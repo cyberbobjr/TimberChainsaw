@@ -18,17 +18,17 @@ Il reprend les noms d'objets de Chainsaw B42 : dans une sauvegarde faite avec Ch
 
 [b]Compatibilité :[/b] Si vous utilisez Better Item Info (EURY_ITEMINFO), chargez-le avant Timber! Chainsaw pour éviter le problème signalé d'infobulles d'armes Vorpal absentes. Better Item Info reste facultatif. Redémarrez complètement le jeu après un changement d'ordre.
 
-[h2]Authentic Z : compatibilit? facultative[/h2]
+[h2]Authentic Z : compatibilité facultative[/h2]
 
-Cette m?me souscription Workshop inclut [b]batman_Timber! Chainsaw - Authentic Z Compatibility[/b]. Aucun t?l?chargement s?par?.
+Cette même souscription Workshop inclut [b]batman_Timber! Chainsaw - Authentic Z Compatibility[/b]. Aucun téléchargement séparé.
 [list]
-[*]Activez Authentic Z Current OU Lite, TooltipLib et Timber! Chainsaw, puis le sous-mod de compatibilit? dans les r?glages des mods. Pour une partie existante, activez-le aussi dans les r?glages des mods de cette sauvegarde.
-[*]Chargez Authentic Z (et son ?ventuel correctif de traduction) avant Timber, puis la compatibilit? apr?s Timber. Red?marrez compl?tement le jeu et, en multijoueur, le serveur.
+[*]Activez Authentic Z Current OU Lite, TooltipLib et Timber! Chainsaw, puis le sous-mod de compatibilité dans les réglages des mods. Pour une partie existante, activez-le aussi dans les réglages des mods de cette sauvegarde.
+[*]Chargez Authentic Z (et son éventuel correctif de traduction) avant Timber, puis la compatibilité après Timber. Redémarrez complètement le jeu et, en multijoueur, le serveur.
 [*]N'activez pas AuthenticZChainsawFix avec ce sous-mod.
 [/list]
-Les tron?onneuses Authentic Z existantes gagnent d?marrage/arr?t, plein d'essence, sons de moteur et abattage Timber. Identifiants, apparence, poids et maximum d'?tat restent d'origine ; l'usure est proportionn?e. Les d?g?ts de combat restent natifs : DamageMod ne r?gle que les objets Timber.
-Ajout/retrait entre deux sessions en gardant Authentic Z actif. Aucun type d'objet propre ? la compatibilit?. Le carburant est conserv? pour une r?activation ; usure normale, essence d?pens?e et arbres abattus restent acquis.
-[b]Serveurs :[/b] l'ID Workshop reste identique. Ajoutez batman_TimberAuthenticZCompatibility apr?s batman_TimberChainsaw dans Mods=, avec votre variante Authentic Z et TooltipLib.
+Les tronçonneuses Authentic Z existantes gagnent démarrage/arrêt, plein d'essence, sons de moteur et abattage Timber. Identifiants, apparence, poids et maximum d'état restent d'origine ; l'usure est proportionnée. Les dégâts de combat restent natifs : DamageMod ne règle que les objets Timber.
+Ajout/retrait entre deux sessions en gardant Authentic Z actif. Aucun type d'objet propre à la compatibilité. Le carburant est conservé pour une réactivation ; usure normale, essence dépensée et arbres abattus restent acquis.
+[b]Serveurs :[/b] l'ID Workshop reste identique. Ajoutez batman_TimberAuthenticZCompatibility après batman_TimberChainsaw dans Mods=, avec votre variante Authentic Z et TooltipLib.
 
 [b]Poids et état :[/b] Poids : 7, moteur allumé ou arrêté. État maximal : 127, pour éviter qu'une tronçonneuse abîmée casse soudainement lorsqu'on la retire des mains ou recharge la partie. Les réglages d'usure sont conservés : la durée de vie diminue d'environ 37 % par rapport à l'ancien plafond de 200.
 
