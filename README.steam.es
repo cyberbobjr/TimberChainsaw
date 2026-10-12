@@ -60,7 +60,7 @@ El servidor lo decide todo: arranque y apagado, combustible, desgaste, árboles 
 
 [h2]Opciones de sandbox[/h2]
 
-Consumo de combustible, daño, desgaste en combate, desgaste al talar, velocidad de tala, radio del ruido, fallos de arranque, botín.
+Consumo de combustible, daño, desgaste en combate, desgaste al talar, velocidad de tala, coste de resistencia, radio del ruido (ralentí, y mayor al atacar o talar), fallos de arranque, botín.
 
 [h2]Apoya el proyecto[/h2]
 

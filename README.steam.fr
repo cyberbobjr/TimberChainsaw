@@ -60,7 +60,7 @@ Le serveur décide de tout : démarrage et arrêt, carburant, usure, arbres abat
 
 [h2]Options sandbox[/h2]
 
-Consommation de carburant, dégâts, usure au combat, usure à l'abattage, vitesse d'abattage, portée du bruit, ratés au démarrage, butin.
+Consommation de carburant, dégâts, usure au combat, usure à l'abattage, vitesse d'abattage, coût en endurance, portée du bruit (ralenti, et plus forte en attaque ou en coupe), ratés au démarrage, butin.
 
 [h2]Soutenir le projet[/h2]
 

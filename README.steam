@@ -60,7 +60,7 @@ The server decides everything: start and stop, fuel, wear, fallen trees. The eng
 
 [h2]Sandbox options[/h2]
 
-Fuel consumption, damage, combat wear, tree cutting wear, cutting speed, noise radius, starting failures, loot.
+Fuel consumption, damage, combat wear, tree cutting wear, cutting speed, endurance cost, noise radius (idle, and louder when attacking or cutting), starting failures, loot.
 
 [h2]Support the project[/h2]
 

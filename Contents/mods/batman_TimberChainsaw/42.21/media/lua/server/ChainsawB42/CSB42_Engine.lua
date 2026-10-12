@@ -4,7 +4,9 @@
 -- Each tick, for every chainsaw started with CSB42_StartAction:
 --   * fuel burns in game time (FuelConsumption sandbox option, which the
 --     original mod never read), so fast-forward burns faster, like any engine;
---   * noise attracts zombies every 2 s (NoiseMod option = radius in tiles);
+--   * idle noise attracts zombies every 2 s (NoiseIdle option = radius in
+--     tiles); the louder NoiseWorking radius while attacking or cutting comes
+--     from the player's own client (CSB42_Noise.lua);
 --   * the engine stops when the chainsaw leaves both hands, breaks, runs dry,
 --     when its owner dies (even if already gone from the player list),
 --     disconnects or gets in a vehicle.
@@ -77,7 +79,7 @@ local function currentPlayers()
 end
 
 local function makeNoise(player)
-    local radius = CSB42.option("NoiseMod")
+    local radius = CSB42.option("NoiseIdle")
     if radius > 0 then
         addSound(player, player:getX(), player:getY(), player:getZ(), radius, radius)
     end

@@ -61,9 +61,11 @@ Also: `NoiseMod`, `DamageMod` and `LootChance` options were ignored; 10 of the 2
 ## Multiplayer design
 
 - **Running state = item type**: `ChainsawOff` (stopped) is replaced by `Chainsaw` (running) in both hands by the server (`CSB42_StartAction:complete`). The game gives the vanilla chainsaw animations and attack to an item of type `Chainsaw` held in both hands (`WeaponType.java:63, 100`).
-- **Server tick** (`server/ChainsawB42/CSB42_Engine.lua`): fuel in game time, noise every 2 s, stop when the chainsaw leaves the hands, breaks, runs dry, owner dies/disconnects/enters a vehicle. Fuel sent to the owner every 0.05 L (`syncItemFields`).
+- **Server tick** (`server/ChainsawB42/CSB42_Engine.lua`): fuel in game time, idle noise (`NoiseIdle`) every 2 s, stop when the chainsaw leaves the hands, breaks, runs dry, owner dies/disconnects/enters a vehicle. Fuel sent to the owner every 0.05 L (`syncItemFields`).
 - **Tree cutting**: hits on the server via `emulateAnimEvent` (like the vanilla `ISChopTreeAction`).
 - **Engine sound**: each client plays the loop of nearby players holding a running chainsaw, without network messages.
+- **Working noise** (`client/ChainsawB42/CSB42_Noise.lua`): the client of a local player attacking or cutting with a running chainsaw emits `NoiseWorking` every 2 s (`addSound`, sent to the server); only the attacker's machine knows its attack.
+- **Endurance cost**: `EnduranceCost` scales the script `EnduranceMod` whenever the running chainsaw is found held in both hands (`CSB42.isHeldRunning`). `HandWeapon.save` does not write it, so every machine sets it again.
 
 ## Tests
 
@@ -71,7 +73,7 @@ Also: `NoiseMod`, `DamageMod` and `LootChance` options were ignored; 10 of the 2
 python tests/run_tests.py
 ```
 
-luacheck, Lua 5.1 syntax, no `next()` (absent from Kahlua), translations (10 languages), keys used by the code, and 64 Lua tests under `lupa` with a simulated game API (`tests/lua/game_api.lua`). The regressions cover cutting then unequipping in multiplayer, signed-byte serialization, start/stop, repair, both item weights, changed condition maxima and Authentic Z Current/Lite compatibility. Not a substitute for an in-game test.
+luacheck, Lua 5.1 syntax, no `next()` (absent from Kahlua), translations (10 languages), keys used by the code, and the Lua tests under `lupa` with a simulated game API (`tests/lua/game_api.lua`). The regressions cover cutting then unequipping in multiplayer, signed-byte serialization, start/stop, repair, both item weights, changed condition maxima and Authentic Z Current/Lite compatibility. Not a substitute for an in-game test.
 
 In-game verification on Build 42.21: restart completely, cut down a tree until condition decreases, then unequip the still-running chainsaw. Verify it stops without becoming broken; also start/stop manually, repair, and save/reload. In multiplayer, check the owning client's condition after unequipping and reconnecting. Check weight 7 for both variants on a freshly created or replaced item.
 

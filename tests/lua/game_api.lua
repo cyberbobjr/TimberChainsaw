@@ -151,6 +151,9 @@ for name, definition in itemDefinitions:gmatch("item%s+(%w+)%s*{(.-)}") do
     if script then
         script.conditionMax = tonumber(definition:match("ConditionMax%s*=%s*([%d.]+)"))
         script.weight = tonumber(definition:match("Weight%s*=%s*([%d.]+)"))
+        script.min = tonumber(definition:match("MinDamage%s*=%s*([%d.]+)"))
+        script.max = tonumber(definition:match("MaxDamage%s*=%s*([%d.]+)"))
+        script.endurance = tonumber(definition:match("EnduranceMod%s*=%s*([%d.]+)")) or 1
     end
 end
 
@@ -172,6 +175,7 @@ function api.item(fullType, fields)
         weight = script.weight or 1,
         favorite = false, name = fullType, customName = false, blood = 0, repaired = 0,
         minDamage = script.min, maxDamage = script.max, syncs = 0,
+        enduranceMod = script.endurance or 1, enduranceSets = 0,
         __classes = { InventoryItem = true },
     }
     for k, v in pairs(fields or {}) do item[k] = v end
@@ -211,8 +215,16 @@ function api.item(fullType, fields)
     function item:getHaveBeenRepaired() return self.repaired end
     function item:setHaveBeenRepaired(v) self.repaired = v end
     function item:getScriptItem()
-        return { getMinDamage = function() return script.min end, getMaxDamage = function() return script.max end }
+        return {
+            getMinDamage = function() return script.min end,
+            getMaxDamage = function() return script.max end,
+            getEnduranceMod = function() return script.endurance or 1 end,
+        }
     end
+    -- HandWeapon.save does not write enduranceMod (42.21): a reloaded item has
+    -- the script value again.
+    function item:getEnduranceMod() return self.enduranceMod end
+    function item:setEnduranceMod(v) self.enduranceMod = v; self.enduranceSets = self.enduranceSets + 1 end
     function item:setMinDamage(v) self.minDamage = v end
     function item:setMaxDamage(v) self.maxDamage = v end
     function item:syncItemFields() self.syncs = self.syncs + 1 end

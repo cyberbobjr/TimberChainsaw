@@ -13,8 +13,8 @@ option ChainsawB42.FuelConsumption
 option ChainsawB42.DamageMod
 {
     type = integer,
-    min = 50,
-    max = 200,
+    min = 25,
+    max = 500,
     default = 100,
     page = ChainsawB42,
     translation = ChainsawB42_DamageMod,
@@ -50,14 +50,34 @@ option ChainsawB42.TreeCuttingSpeed
     translation = ChainsawB42_TreeCuttingSpeed,
 }
 
-option ChainsawB42.NoiseMod
+option ChainsawB42.EnduranceCost
+{
+    type = integer,
+    min = 0,
+    max = 200,
+    default = 50,
+    page = ChainsawB42,
+    translation = ChainsawB42_EnduranceCost,
+}
+
+option ChainsawB42.NoiseIdle
 {
     type = integer,
     min = 0,
     max = 100,
-    default = 50,
+    default = 20,
     page = ChainsawB42,
-    translation = ChainsawB42_NoiseMod,
+    translation = ChainsawB42_NoiseIdle,
+}
+
+option ChainsawB42.NoiseWorking
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 40,
+    page = ChainsawB42,
+    translation = ChainsawB42_NoiseWorking,
 }
 
 option ChainsawB42.JamFrequency

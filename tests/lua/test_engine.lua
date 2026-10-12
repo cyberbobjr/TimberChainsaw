@@ -47,8 +47,14 @@ function T.empty_tank_stops_the_engine()
     assertEq(API.last("halo").text, "IGUI_CSB42_OutOfFuel", "message")
 end
 
+function T.idle_noise_by_default_is_twenty_tiles()
+    started()
+    ticks(1)
+    assertEq(API.last("addSound").radius, 20, "NoiseIdle default (50 up to 1.1.1)")
+end
+
 function T.noise_every_two_seconds_with_the_option_radius()
-    SandboxVars.ChainsawB42.NoiseMod = 35
+    SandboxVars.ChainsawB42.NoiseIdle = 35
     started()
     ticks(1)
     assertEq(API.count("addSound"), 1, "noise as soon as the engine runs")
@@ -56,8 +62,8 @@ function T.noise_every_two_seconds_with_the_option_radius()
     assertEq(API.count("addSound"), 1, "less than 2 s later: no new noise")
     ticks(3)
     assertEq(API.count("addSound"), 2, "every 2 s")
-    assertEq(API.last("addSound").radius, 35, "NoiseMod = radius (ignored by the original mod)")
-    SandboxVars.ChainsawB42.NoiseMod = 0
+    assertEq(API.last("addSound").radius, 35, "NoiseIdle = radius (NoiseMod ignored by the original mod)")
+    SandboxVars.ChainsawB42.NoiseIdle = 0
     ticks(240)
     assertEq(API.count("addSound"), 2, "0 = silent")
 end

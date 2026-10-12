@@ -100,7 +100,9 @@ local DEFAULTS = {
     ConditionLossCombat = 20,
     ConditionLossTree = 1,
     TreeCuttingSpeed = 100,
-    NoiseMod = 50,
+    EnduranceCost = 50,
+    NoiseIdle = 20,
+    NoiseWorking = 40,
     JamFrequency = 25,
     LootChance = 3,
 }
@@ -127,6 +129,20 @@ function CSB42.isRunningType(item)
     return family ~= nil and item:getFullType() == family.running
 end
 
+--- Held running item: EnduranceMod of the script scaled by the EnduranceCost
+--- option. The 7 kg chainsaw repeats its attack every 0.67 s (ChainsawDefault.xml)
+--- and each cycle costs endurance (CombatManager.processWeaponEndurance, plus
+--- applyMeleeEnduranceLoss on a hit; both multiply by EnduranceMod, 42.21).
+--- HandWeapon.save does not write enduranceMod: every machine sets it again
+--- while the chainsaw is held, the attacker's machine included.
+local function applyEnduranceCost(item)
+    local script = item:getScriptItem()
+    local wanted = script:getEnduranceMod() * CSB42.option("EnduranceCost") / 100
+    if math.abs(item:getEnduranceMod() - wanted) > 0.0001 then
+        item:setEnduranceMod(wanted)
+    end
+end
+
 --- The engine runs only while the running item is held in both hands.
 function CSB42.isHeldRunning(character, item)
     if not character or not CSB42.isRunningType(item) then
@@ -134,7 +150,10 @@ function CSB42.isHeldRunning(character, item)
     end
     local held = character:getPrimaryHandItem() == item and character:getSecondaryHandItem() == item
     local family = CSB42.getFamily(item)
-    if held and family.prepareRunning then family.prepareRunning(item) end
+    if held then
+        applyEnduranceCost(item)
+        if family.prepareRunning then family.prepareRunning(item) end
+    end
     return held
 end
 

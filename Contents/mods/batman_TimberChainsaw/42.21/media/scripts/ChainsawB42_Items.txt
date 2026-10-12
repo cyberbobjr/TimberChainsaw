@@ -86,9 +86,12 @@ module ChainsawB42
         ConditionLowerChanceOneIn = 200,
 
         /* Engine running. MinDamage and MaxDamage are scaled by the
-           DamageMod sandbox option when the engine starts. */
-        MinDamage = 0.6,
-        MaxDamage = 1.1,
+           DamageMod sandbox option when the engine starts. Above the vanilla
+           Axe (0.8-2.0), below the Wood Axe (1.3-3.0): up to 1.1.1 the running
+           chainsaw (0.6-1.1) hit softer than an axe. Endurance cost: the
+           EnduranceCost sandbox option scales EnduranceMod while it is held. */
+        MinDamage = 1.2,
+        MaxDamage = 2.4,
         TreeDamage = 67,
         DoorDamage = 50,
         CriticalChance = 25,

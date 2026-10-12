@@ -10,6 +10,7 @@ function T.setup()
     loadMod("shared/ChainsawB42/CSB42_Core.lua")
     loadMod("client/ChainsawB42/CSB42_Sound.lua")
     loadMod("client/ChainsawB42/CSB42_Tooltip.lua")
+    loadMod("client/ChainsawB42/CSB42_Noise.lua")
 end
 
 local function ticks(n)
@@ -157,6 +158,44 @@ function T.server_message_shown_on_the_named_split_screen_player()
     assertEq(API.last("halo").player, first, "no ID (older server): player 0")
     triggerEvent("OnServerCommand", "ChainsawB42", "notify", { key = "IGUI_CSB42_Broken", playerOnlineId = 9 })
     assertEq(API.last("halo").player, first, "unknown ID: player 0")
+end
+
+function T.working_noise_while_attacking_every_two_seconds()
+    local p = API.holding(API.item(CSB42.FULLTYPE_RUNNING))
+    API.setLocalPlayers({ p })
+    ticks(240)
+    assertEq(API.count("addSound"), 0, "idle: the authority makes the noise, not the client")
+    p.attacking = true
+    ticks(1)
+    assertEq(API.count("addSound"), 1, "noise as soon as the attack starts")
+    assertEq(API.last("addSound").radius, 40, "NoiseWorking default")
+    ticks(119)
+    assertEq(API.count("addSound"), 1, "less than 2 s later: no new noise")
+    ticks(2)
+    assertEq(API.count("addSound"), 2, "every 2 s while attacking")
+    p.attacking = false
+    ticks(30)
+    assertEq(API.count("addSound"), 2, "kept between two attack cycles")
+    ticks(300)
+    assertEq(API.count("addSound"), 2, "stops after the attack")
+end
+
+function T.working_noise_while_cutting_a_tree()
+    SandboxVars.ChainsawB42.NoiseWorking = 30
+    local p = API.holding(API.item(CSB42.FULLTYPE_RUNNING), { vars = { PerformingAction = "CSB42CutTree" } })
+    API.setLocalPlayers({ p })
+    ticks(1)
+    assertEq(API.last("addSound").radius, 30, "cutting action")
+    SandboxVars.ChainsawB42.NoiseWorking = 0
+    ticks(240)
+    assertEq(API.count("addSound"), 1, "0 = idle noise only")
+end
+
+function T.no_working_noise_without_a_running_chainsaw()
+    local p = API.holding(API.item(CSB42.FULLTYPE_OFF), { attacking = true })
+    API.setLocalPlayers({ p })
+    ticks(240)
+    assertEq(API.count("addSound"), 0, "stopped chainsaw: no engine noise")
 end
 
 return T

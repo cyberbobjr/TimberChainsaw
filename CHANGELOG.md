@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.2.0 — 2026-10-12
+
+### Combat balance
+Players reported that the running chainsaw got them killed: weak hits, a crowd of zombies and no stamina left to switch weapons.
+- **Damage**: a running chainsaw now deals 1.2 to 2.4 instead of 0.6 to 1.1. This is more than the vanilla axe (0.8 to 2.0) and less than the wood axe (1.3 to 3.0). The `Damage` option now ranges from 25 to 500 % (previously 50 to 200 %).
+- **New option: endurance cost** (default 50 %). The 7 kg chainsaw repeats its attack every 0.67 s and used to drain endurance about 2 to 3 times faster than an axe. 100 % restores the previous cost; 0 % removes it. The option also applies to Authentic Z chainsaws when the compatibility submod is enabled.
+- **Noise split into two options**: **idle** (default 20 tiles) and **attacking or cutting** (default 40 tiles), each repeated every 2 seconds. The previous single setting (`Noise radius`, 50 tiles even when idling) is removed. If you had changed it, set the two new options instead; existing saves use the new defaults.
+
+### Not changed
+- Zombies are still not knocked back by the running chainsaw. Build 42.21 never reads the weapon's `KnockdownMod`, and the zombie's hit reaction animation decides whether it falls.
+
+### Validation
+- The automated Lua tests pass, including the new options.
+- Tested in game in singleplayer by the mod author (damage, endurance, noise, tree cutting). Not yet tested in multiplayer.
+
 ## 1.1.1 — 2026-10-07
 
 ### Multiplayer fixes

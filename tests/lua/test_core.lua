@@ -67,8 +67,37 @@ function T.start_replaces_the_held_item_and_keeps_its_state()
     assertEq(running:getCondition(), 120, "condition copied")
     assertTrue(running:isFavorite() and running:getName() == "Betty", "favorite and name copied")
     assertEq(API.count("sendEquip"), 1, "hands sent to clients")
-    assertTrue(math.abs(running.minDamage - 0.9) < 1e-9 and math.abs(running.maxDamage - 1.65) < 1e-9, "DamageMod 150 %")
+    assertTrue(math.abs(running.minDamage - 1.8) < 1e-9 and math.abs(running.maxDamage - 3.6) < 1e-9, "DamageMod 150 %")
     assertTrue(CSB42.isHeldRunning(p, running), "held running")
+end
+
+function T.running_chainsaw_hits_harder_than_a_vanilla_axe()
+    local running = API.item(CSB42.FULLTYPE_RUNNING)
+    -- Vanilla Base.Axe 42.21: MinDamage 0.8, MaxDamage 2.0.
+    assertTrue(running.minDamage > 0.8 and running.maxDamage > 2.0, "base damage above the axe")
+end
+
+function T.held_running_chainsaw_gets_the_endurance_cost()
+    local running = API.item(CSB42.FULLTYPE_RUNNING)
+    local p = API.holding(running)
+    assertTrue(CSB42.isHeldRunning(p, running), "held running")
+    assertTrue(math.abs(running:getEnduranceMod() - 0.5) < 1e-9, "EnduranceCost default 50 %")
+    CSB42.isHeldRunning(p, running)
+    assertEq(running.enduranceSets, 1, "not set again while unchanged")
+    SandboxVars.ChainsawB42.EnduranceCost = 0
+    CSB42.isHeldRunning(p, running)
+    assertEq(running:getEnduranceMod(), 0, "0 = no endurance cost")
+    SandboxVars.ChainsawB42.EnduranceCost = 200
+    CSB42.isHeldRunning(p, running)
+    assertTrue(math.abs(running:getEnduranceMod() - 2) < 1e-9, "200 %")
+end
+
+function T.endurance_cost_needs_both_hands()
+    local running = API.item(CSB42.FULLTYPE_RUNNING)
+    local p = API.holding(running)
+    p.secondary = nil
+    assertTrue(not CSB42.isHeldRunning(p, running), "one hand: not running")
+    assertEq(running.enduranceSets, 0, "script value kept")
 end
 
 function T.one_handed_holder_keeps_the_other_hand()
