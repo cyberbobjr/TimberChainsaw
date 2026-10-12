@@ -11,10 +11,6 @@ Players reported that the running chainsaw got them killed: weak hits, a crowd o
 ### Not changed
 - Zombies are still not knocked back by the running chainsaw. Build 42.21 never reads the weapon's `KnockdownMod`, and the zombie's hit reaction animation decides whether it falls.
 
-### Validation
-- The automated Lua tests pass, including the new options.
-- Tested in game in singleplayer by the mod author (damage, endurance, noise, tree cutting). Not yet tested in multiplayer.
-
 ## 1.1.1 — 2026-10-07
 
 ### Multiplayer fixes
