@@ -29,7 +29,8 @@ Abréviations des chemins :
 - **Preuve** : `M/lua/shared/Translate/EN/Sandbox.json:8` (et la même clé dans les 9 autres langues) ; source `source/build_translations.py:63, 127` ; `M/scripts/ChainsawB42_Items.txt:83` (`ConditionMax = 127`) ; `CSB42_Engine.lua:197-216` (20 points par zombie tué).
 - **Risque** : traduction et équilibrage (un administrateur règle mal l'option, des joueurs voient l'outil casser « trop vite »).
 - **Correction** : corriger le texte dans `build_translations.py` (« état 127 ; 20 = environ 6 zombies ») puis regénérer les 10 fichiers. Décider séparément, avec l'utilisateur, si la valeur par défaut doit passer à 12 (environ 10 zombies, comme avant la 1.0.3) : c'est un changement d'équilibrage à annoncer.
-- **Statut : corrigé (commit 2936d86), à vérifier en jeu**. Texte seul ; la valeur par défaut (20) reste à trancher avec l'utilisateur.
+- **Statut : corrigé (commit 2936d86), à vérifier en jeu**. Texte seul.
+- **Décision de l'utilisateur (2026-10-21)** : valeur par défaut abaissée de 20 à 12 (environ 10 zombies). **Statut : corrigé (commit 29ebaa4), à vérifier en jeu** (option, infobulles des 10 langues, wiki, spécifications, CHANGELOG). Les serveurs ayant réglé l'option et les parties existantes gardent leur valeur.
 - **Priorité** : haute. **Effort** : faible (30 min).
 
 ### C03 — Deux vitesses d'abattage : l'attaque tenue va deux fois plus vite que le menu et ignore `TreeCuttingSpeed`
