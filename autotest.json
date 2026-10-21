@@ -1,0 +1,45 @@
+// pz-autotest configuration of Timber! Chainsaw (.claude/tools/pz-autotest/README.md; docs/annexes/tests/autotest.md).
+// Nominal path driven by autotest/timber_hooks.lua: start, fuel, cut a tree from the menu, combat wear, stop,
+// restart, attach the running chainsaw on the back (C01).
+//   python .claude/tools/pz-autotest/pz_autotest.py check TimberChainsaw
+//   python .claude/tools/pz-autotest/pz_autotest.py sp    TimberChainsaw --wait-idle 3600
+//   python .claude/tools/pz-autotest/pz_autotest.py mp    TimberChainsaw --client-run --wait-idle 3600
+{
+  "name": "TimberChainsaw",
+  "gameVersion": "42.21",
+  // Load order: requirement first. TooltipLib is only READ from the Steam Workshop folder and copied.
+  "mods": [
+    {"workshop": "3694097672", "id": "TooltipLib"},
+    {"path": "Contents/mods/batman_TimberChainsaw"}
+  ],
+  "hooks": "autotest/timber_hooks.lua",
+  "params": {},
+  "sp": {
+    // Any Sandbox save works: a tree is planted next to the player when none stands within 12 tiles.
+    "save": "2026-10-17_17-50-04",
+    "gameMode": "Sandbox",
+    "saveMods": "replace",
+    "timeoutSec": 900,
+    "startDelaySec": 5
+  },
+  "server": {
+    "serverName": "pzat_timber",
+    "port": 17381,
+    "timeoutSec": 600,
+    "ini": {"Map": "Muldraugh, KY", "MaxPlayers": 4}
+  },
+  "mp": {
+    "serverName": "pzat_timber_mp",
+    "port": 17391,
+    // Medium house of Muldraugh (media/maps/Muldraugh, KY/spawnpoints.lua): fixed spawn, no spawn choice screen.
+    "spawn": "10656,10137,0",
+    "clients": 1,
+    "clientXmx": "4096m",
+    "serverRun": true,
+    // The client drives the gestures; the server checks its own copy of the player (client command "check").
+    "clientRun": true,
+    "timeoutSec": 1800,
+    "joinTimeoutSec": 600,
+    "ini": {"Map": "Muldraugh, KY", "MaxPlayers": 4}
+  }
+}

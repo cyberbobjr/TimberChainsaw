@@ -12,5 +12,6 @@ Tronçonneuse à essence fonctionnelle pour Project Zomboid Build 42.21 (solo et
 | [wiki/fr/Home.md](wiki/fr/Home.md) | Même wiki en français. |
 | [images/screenshots/](images/screenshots/) | Captures en jeu utilisées par le wiki et le README. |
 | [annexes/recherches/authenticz-compatibility.md](annexes/recherches/authenticz-compatibility.md) | Note détaillée du sous-mod de compatibilité Authentic Z : fonctionnement, ajout/retrait, preuves statiques et protocole de test en jeu. |
+| [annexes/tests/autotest.md](annexes/tests/autotest.md) | Test en jeu automatique `pz-autotest` (solo et MP) : commandes, parcours nominal, contrôles client et serveur, limites. |
 
 Hors de `docs/` : [README.md](../README.md) (présentation GitHub), [CHANGELOG.md](../CHANGELOG.md), `README.steam*` et `workshop.txt` (descriptions Workshop), `tests/` (vérifications automatiques), `source/` (générateurs des sons et des traductions).
