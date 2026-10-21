@@ -133,7 +133,7 @@ Abréviations des chemins :
 - **Preuve** : `tests/run_tests.py:1-16` ; `CHANGELOG.md` (1.0.1, 1.0.3, 1.1.1 « Not yet tested in game »).
 - **Risque** : régressions MP et de persistance non détectées.
 - **Correction** : ajouter un scénario `pz-autotest` (outil `.claude/tools/pz-autotest` du dossier de travail) : démarrer, abattre un arbre, déséquiper, accrocher au dos (C01), sauvegarder et recharger, puis la même suite en `--mp` avec reconnexion. Vérifier l'état, le type d'objet et le carburant.
-- **Statut** : constat.
+- **Statut : corrigé (commit e8039ec), à vérifier en jeu** — scénario `autotest.json` + `autotest/timber_hooks.lua` (solo et MP, contrôles client et serveur ; voir `docs/annexes/tests/autotest.md`). Sauvegarde/rechargement et reconnexion restent à ajouter.
 - **Priorité** : moyenne. **Effort** : moyen (1 j).
 
 ### C16 — Documentation : versions et chemins à resynchroniser
