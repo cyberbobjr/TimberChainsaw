@@ -104,6 +104,10 @@ function replaceItemInContainer(container, old, new)
     record("replaceQueued", { old = old, new = new })
 end
 function sendEquip(player) record("sendEquip", { player = player }) end
+function sendAttachedItem(character, location, item)
+    record("sendAttached", { character = character, location = location, item = item })
+end
+function syncItemFields(character, item) record("syncItemFields", { character = character, item = item }) end
 function sendServerCommand(player, module, command, args)
     record("serverCommand", { player = player, module = module, command = command, args = args })
 end
@@ -236,6 +240,14 @@ function api.item(fullType, fields)
     function item:setHitFloorSound(v) self.hitFloorSound = v end
     function item:setJobType() end
     function item:setJobDelta(v) self.jobDelta = v end
+    -- Attachment fields, saved and sent with the item (InventoryItem.java:1620-1631).
+    item.attachedSlot = -1
+    function item:getAttachedSlot() return self.attachedSlot end
+    function item:setAttachedSlot(v) self.attachedSlot = v end
+    function item:getAttachedSlotType() return self.attachedSlotType end
+    function item:setAttachedSlotType(v) self.attachedSlotType = v end
+    function item:getAttachedToModel() return self.attachedToModel end
+    function item:setAttachedToModel(v) self.attachedToModel = v end
     return item
 end
 
@@ -341,6 +353,37 @@ function api.player(fields)
         if self.secondary == item then self.secondary = nil end
     end
     function p:isDead() return self.dead end
+    -- AttachedItems: one item per location (AttachedItems.java:43-62).
+    p.attached = {}
+    function p:getAttachedItems()
+        local list = {}
+        for _, entry in ipairs(self.attached) do
+            list[#list + 1] = { getLocation = function() return entry.location end,
+                getItem = function() return entry.item end }
+        end
+        return { size = function() return #list end, get = function(_, i) return list[i + 1] end,
+            getLocation = function(_, item)
+                for _, entry in ipairs(self.attached) do
+                    if entry.item == item then return entry.location end
+                end
+                return nil
+            end }
+    end
+    function p:setAttachedItem(location, item)
+        for i, entry in ipairs(self.attached) do
+            if entry.location == location then
+                if item then entry.item = item else table.remove(self.attached, i) end
+                return
+            end
+        end
+        if item then self.attached[#self.attached + 1] = { location = location, item = item } end
+    end
+    function p:getAttachedItem(location)
+        for _, entry in ipairs(self.attached) do
+            if entry.location == location then return entry.item end
+        end
+        return nil
+    end
     p.onlineId = p.onlineId or 0
     function p:getOnlineID() return self.onlineId end
     function p:getVehicle() return self.vehicle end

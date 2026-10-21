@@ -195,4 +195,74 @@ function T.combat_wear_per_zombie_killed()
     assertEq(p:getPrimaryHandItem():getCondition(), 0, "broken item kept")
 end
 
+local function attachOnBack(p, saw)
+    -- ISAttachItemHotbar: attach, slot fields, then out of the hands.
+    p:setAttachedItem("Rifle On Back", saw)
+    saw:setAttachedSlot(1)
+    saw:setAttachedSlotType("Back")
+    saw:setAttachedToModel("Rifle On Back")
+    p.primary, p.secondary = nil, nil
+end
+
+function T.running_chainsaw_attached_on_the_back_stays_attached_once_stopped()
+    local p, saw = started()
+    attachOnBack(p, saw)
+    ticks(1)
+    local stopped = p:getAttachedItem("Rifle On Back")
+    assertEq(stopped:getFullType(), CSB42.FULLTYPE_OFF, "replacement attached")
+    assertTrue(p.inventory:contains(stopped) and not p.inventory:contains(saw), "attached item in the inventory")
+    assertEq(stopped:getAttachedSlot(), 1, "hotbar slot kept")
+    assertEq(stopped:getAttachedSlotType(), "Back", "slot type kept")
+    assertEq(stopped:getAttachedToModel(), "Rifle On Back", "model location kept")
+    assertEq(stopped:getModData()[CSB42.PREVIOUS_ID_KEY], saw:getID(), "replaced ID recorded")
+end
+
+function T.server_sends_the_new_attachment_to_other_clients()
+    API.server = true
+    local p, saw = started(nil, true)
+    attachOnBack(p, saw)
+    ticks(1)
+    local sent = API.last("sendAttached")
+    assertTrue(sent ~= nil and sent.location == "Rifle On Back", "attachment sent")
+    assertEq(sent.item, p:getAttachedItem("Rifle On Back"), "new item sent")
+    assertEq(sent.item:getFullType(), CSB42.FULLTYPE_OFF, "stopped type")
+end
+
+function T.client_attaches_the_replacement_it_receives_later()
+    API.client = true
+    loadMod("client/ChainsawB42/CSB42_Attached.lua")
+    local p = API.player()
+    API.setLocalPlayers({ p })
+    local old = API.item(CSB42.FULLTYPE_RUNNING)
+    old:setAttachedSlot(1)
+    old:setAttachedSlotType("Back")
+    old:setAttachedToModel("Rifle On Back")
+    p:setAttachedItem("Rifle On Back", old) -- removed by the server, not in the inventory
+    ticks(3)
+    assertEq(p:getAttachedItem("Rifle On Back"), old, "nothing to attach yet")
+    local new = API.item(CSB42.FULLTYPE_OFF, { modData = { [CSB42.PREVIOUS_ID_KEY] = old:getID() } })
+    p.inventory:AddItem(new)
+    ticks(1)
+    assertEq(p:getAttachedItem("Rifle On Back"), new, "replacement attached")
+    assertEq(new:getAttachedSlot(), 1, "slot fields copied")
+    assertEq(API.last("syncItemFields").item, new, "slot fields sent to the server")
+    local other = API.item(CSB42.FULLTYPE_OFF, { modData = { [CSB42.PREVIOUS_ID_KEY] = 12345 } })
+    p.inventory:AddItem(other)
+    ticks(1)
+    assertEq(p:getAttachedItem("Rifle On Back"), new, "unrelated chainsaw ignored")
+end
+
+function T.missing_replacement_is_searched_for_ten_seconds_only()
+    local p = API.player()
+    local old = API.item(CSB42.FULLTYPE_RUNNING)
+    p:setAttachedItem("Rifle On Back", old)
+    local searches = 0
+    local fixed, missing = CSB42.repairAttached(p, function() searches = searches + 1; return false end)
+    assertEq(#fixed + #missing, 0, "skipped search")
+    assertEq(searches, 1, "asked once")
+    fixed, missing = CSB42.repairAttached(p)
+    assertEq(#fixed, 0, "nothing found")
+    assertEq(missing[1], old:getID(), "reported missing")
+end
+
 return T

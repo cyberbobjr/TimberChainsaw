@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Fixes
+- A running chainsaw put on your back (or returned to its hotbar slot) stops as before, but now stays attached: the stopped chainsaw is shown on the back and in the hotbar, also in multiplayer.
+
 ## 1.2.0 — 2026-10-12
 
 ### Combat balance

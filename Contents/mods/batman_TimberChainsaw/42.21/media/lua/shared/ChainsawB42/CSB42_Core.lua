@@ -385,6 +385,77 @@ local function replaceOnGround(worldItem, old, new)
     return true
 end
 
+-- ----------------------------------------------------------------------------
+-- Attached chainsaw (back, belt). The vanilla attach and unequip actions keep
+-- the same item (ISAttachItemHotbar.lua:67-70, ISUnequipAction.lua:70, 101):
+-- when the engine then replaces it, the attachment would still point to the
+-- old item, gone from the inventory. The new item records the ID it replaces,
+-- so the client that drives the attachment can find it again.
+-- ----------------------------------------------------------------------------
+
+CSB42.PREVIOUS_ID_KEY = "CSB42_PreviousID"
+
+local function copyAttachedSlot(old, new)
+    if old:getAttachedSlot() >= 0 then
+        new:setAttachedSlot(old:getAttachedSlot())
+        new:setAttachedSlotType(old:getAttachedSlotType())
+        new:setAttachedToModel(old:getAttachedToModel())
+    end
+end
+
+--- Location where `owner` has `item` attached, or nil.
+local function attachedLocation(owner, item)
+    local attached = owner and owner.getAttachedItems and owner:getAttachedItems()
+    if not attached then
+        return nil
+    end
+    return attached:getLocation(item)
+end
+
+--- Attaches the replacement of each chainsaw that `player` has attached but
+--- that is no longer in the inventory. `shouldSearch(oldId)` (optional) can
+--- skip a search. Returns the new items attached and the old IDs not found.
+function CSB42.repairAttached(player, shouldSearch)
+    local attached = player:getAttachedItems()
+    local fixed, missing = {}, {}
+    if not attached or attached:size() == 0 then
+        return fixed, missing
+    end
+    local inventory = player:getInventory()
+    local stale = {}
+    for i = 0, attached:size() - 1 do
+        local entry = attached:get(i)
+        local item = entry and entry:getItem()
+        if item and CSB42.getFamily(item) and item:getContainer() ~= inventory
+                and (not shouldSearch or shouldSearch(item:getID())) then
+            stale[#stale + 1] = { location = entry:getLocation(), item = item }
+        end
+    end
+    for _, entry in ipairs(stale) do
+        local oldId = entry.item:getID()
+        local found = inventory:getAllEvalRecurse(function(candidate)
+            return candidate:getContainer() == inventory and CSB42.getFamily(candidate) ~= nil
+                and candidate:getModData()[CSB42.PREVIOUS_ID_KEY] == oldId
+        end)
+        local new = found:size() > 0 and found:get(0) or nil
+        if new then
+            if new:getAttachedSlot() < 0 then
+                copyAttachedSlot(entry.item, new)
+            end
+            -- On a client, setAttachedItem also sends the attachment to the
+            -- server (IsoGameCharacter.java:3199-3201), which relays it.
+            player:setAttachedItem(entry.location, new)
+            if isClient() then
+                syncItemFields(player, new)
+            end
+            fixed[#fixed + 1] = new
+        else
+            missing[#missing + 1] = oldId
+        end
+    end
+    return fixed, missing
+end
+
 --- Replaces `item` by a new item of `fullType`. `character` holds it or owns
 --- it (may be nil for a chainsaw lying elsewhere). Returns the new item.
 function CSB42.replace(item, fullType, character)
@@ -403,10 +474,21 @@ function CSB42.replace(item, fullType, character)
         if family.prepareRunning then family.prepareRunning(new) end
     end
 
+    new:getModData()[CSB42.PREVIOUS_ID_KEY] = item:getID()
+
     local held = character and character:getPrimaryHandItem() == item
     local bothHands = held and character:getSecondaryHandItem() == item
     local worldItem = item:getWorldItem()
     local container = item:getContainer()
+    local owner = character
+    if not owner and container and instanceof(container:getParent(), "IsoPlayer") then
+        owner = container:getParent()
+    end
+    local location = not worldItem and attachedLocation(owner, item) or nil
+    if not worldItem then
+        -- Before the add: the slot fields are saved and sent with the item.
+        copyAttachedSlot(item, new)
+    end
     if held then
         character:removeFromHands(item)
     end
@@ -416,6 +498,14 @@ function CSB42.replace(item, fullType, character)
         end
     elseif container then
         replaceInContainer(container, item, new)
+        if location then
+            owner:setAttachedItem(location, new)
+            if isServer() then
+                -- Other clients; the owner's client repairs its own attachment
+                -- (the packet skips local players, GameCharacterAttachedItemPacket.java:107).
+                sendAttachedItem(owner, location, new)
+            end
+        end
     else
         return nil
     end
