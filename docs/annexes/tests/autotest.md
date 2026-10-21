@@ -43,6 +43,8 @@ Les gestes passent par les vrais menus du mod (événements `OnFillInventoryObje
 Une étape critique (`prepare`, `started`, `stopped`, `restarted`) en échec arrête le parcours. Le serveur termine quand
 le client envoie `finished`. Réussite : 8 PASS côté client (ou `sp`), 8 PASS côté serveur en MP.
 
+Au départ, le client pose « Les zombies n'attaquent pas » (`setZombiesDontAttack(true)`, envoyé au serveur par `sendPlayerExtraInfo` en MP) : le point d'apparition MP de Muldraugh a des zombies, attirés par le moteur. Le passage MP `20261021-160907` est mort à l'arbre (`Logs/pvp.txt` : 14 coups de zombie ; `user.txt` : « died »), ce qui faisait échouer `tree`, puis `combat` et `stopped` (« no running chainsaw held »). Un joueur mort arrête désormais le parcours avec « player died during the step », et l'étape `tree` écrit des lignes `INFO` (action en cours, position, santé de l'arbre) au départ, au début de la découpe et au délai dépassé.
+
 ## Limites
 
 - Non couverts : sauvegarde puis rechargement, reconnexion MP, plein d'essence, panne d'essence, enrayage, bruit,

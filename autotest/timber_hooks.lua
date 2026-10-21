@@ -32,6 +32,10 @@ local function newReport()
     return { lines = {}, ok = true, pass = 0, fail = 0 }
 end
 
+local function info(report, text)
+    report.lines[#report.lines + 1] = "INFO " .. tostring(text)
+end
+
 local function rec(report, ok, name, detail)
     if ok then
         report.pass = report.pass + 1
@@ -322,6 +326,25 @@ local function startFromMenu()
     return inventoryMenu(saw, "ContextMenu_CSB42_Start")
 end
 
+--- Current timed action of the local player, or "none".
+local function currentAction()
+    local queue = ISTimedActionQueue.queues and ISTimedActionQueue.queues[C.player]
+    local action = queue and queue.queue and queue.queue[1]
+    return action and tostring(action.Type) or "none"
+end
+
+--- One-line state of the cut: player, position, held item, current action, tree.
+local function treeState()
+    local p = C.player
+    local a = C.treeArgs or {}
+    local sq = a.x and getCell():getGridSquare(a.x, a.y, a.z)
+    local tree = sq and sq:getTree()
+    return string.format("dead=%s pos=%.1f,%.1f,%d held=%s action=%s tree=%s health=%s/%s",
+        tostring(p:isDead()), p:getX(), p:getY(), math.floor(p:getZ()), describe(p:getPrimaryHandItem()),
+        currentAction(), tostring(tree ~= nil), tree and tostring(tree:getHealth()) or "-",
+        tree and tostring(tree:getMaxHealth()) or "-")
+end
+
 local function runningHeld()
     local held, both = heldBoth(C.player)
     return CSB42.isRunningType(held) and both and held or nil
@@ -366,14 +389,24 @@ local STEPS = {
         enter = function()
             if not C.tree or C.tree:getObjectIndex() < 0 then return false, "tree gone before the cut" end
             local tree = C.tree
-            return selectMenuOption(function(context)
+            C.cutSeen = false
+            info(C.report, "tree before the cut: " .. treeState())
+            local ok, reason = selectMenuOption(function(context)
                 triggerEvent("OnFillWorldObjectContextMenu", 0, context, { tree }, false)
             end, "ContextMenu_CSB42_CutTree")
+            info(C.report, "tree option selected=" .. tostring(ok) .. " action=" .. currentAction())
+            return ok, reason
         end,
         ready = function()
+            if not C.cutSeen and currentAction() == "CSB42_CutTreeAction" then
+                C.cutSeen = true
+                info(C.report, string.format("tree cut action started after %.1f s: %s",
+                    (now() - C.stepAt) / 1000, treeState()))
+            end
             local sq = getCell():getGridSquare(C.treeArgs.x, C.treeArgs.y, C.treeArgs.z)
             return sq ~= nil and sq:getTree() == nil and ISTimedActionQueue.isPlayerDoingAction(C.player) == false
         end,
+        diagnose = function() return "cutActionSeen=" .. tostring(C.cutSeen) .. " " .. treeState() end,
         check = function() return stepCheck("tree", C.treeArgs) end },
     { name = "combat", timeout = 30,
         enter = function()
@@ -454,6 +487,13 @@ function H.client.start(ctx)
     C.player = getSpecificPlayer(0)
     if not C.player then return false, "no local player" end
     C.report, C.mem, C.replies, C.index, C.finished, C.tree = newReport(), {}, {}, 0, false, nil
+    -- The multiplayer spawn (Muldraugh) has ambient zombies, drawn by the engine noise: run
+    -- 20261021-160907 died at the tree (Logs/pvp.txt: 14 zombie hits, user.txt "died") and every
+    -- later step failed. Same switch as the admin power "Zombies don't attack" (ISAdminPowerUI),
+    -- read by the zombie owner (IsoZombie target test) and sent to the server in MP.
+    C.player:setZombiesDontAttack(true)
+    if isClient() then sendPlayerExtraInfo(C.player) end
+    info(C.report, "zombiesDontAttack=" .. tostring(C.player:isZombiesDontAttack()))
     if not C.subscribed then
         C.subscribed = true
         Events.OnServerCommand.Add(onServerCommand)
@@ -466,6 +506,14 @@ function H.client.done()
     if C.finished then return true end
     local step = STEPS[C.index]
     if C.waiting then
+        if C.player:isDead() then
+            -- A dead player drops everything: every later step would fail for this reason only.
+            rec(C.report, false, step.name, "player died during the step (zombies?)")
+            C.index = #STEPS
+            C.waiting = false
+            nextStep()
+            return C.finished
+        end
         local ok, ready = pcall(step.ready)
         if not ok then
             rec(C.report, false, step.name, "error: " .. tostring(ready))
@@ -478,7 +526,12 @@ function H.client.done()
             end
             if not passed and step.critical then C.index = #STEPS end
         elseif now() - C.stepAt > step.timeout * 1000 then
-            rec(C.report, false, step.name, "timeout after " .. tostring(step.timeout) .. " s")
+            local detail = "timeout after " .. tostring(step.timeout) .. " s"
+            if step.diagnose then
+                local _, text = pcall(step.diagnose)
+                detail = detail .. " - " .. tostring(text)
+            end
+            rec(C.report, false, step.name, detail)
             if step.critical then C.index = #STEPS end
         else
             return false
