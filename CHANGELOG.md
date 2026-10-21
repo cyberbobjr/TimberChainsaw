@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.3.0 — 2026-10-21
 
 ### Balance
 - The default **Combat wear** is now 12 instead of 20: a running chainsaw lasts about 10 zombie kills instead of about 6. Servers that set this option keep their value, and existing saves keep the value stored in their sandbox settings.
