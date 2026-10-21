@@ -62,6 +62,11 @@ El servidor lo decide todo: arranque y apagado, combustible, desgaste, árboles 
 
 Consumo de combustible, daño, desgaste en combate, desgaste al talar, velocidad de tala, coste de resistencia, radio del ruido (ralentí, y mayor al atacar o talar), fallos de arranque, botín.
 
+[h2]Discord[/h2]
+
+¿Preguntas, errores o ideas? Únete al Discord:
+[url=https://discord.gg/QEsBya7hUA]https://discord.gg/QEsBya7hUA[/url]
+
 [h2]Apoya el proyecto[/h2]
 
 ¿Te gusta el mod? Un café ayuda a financiar nuevas funciones y traducciones.

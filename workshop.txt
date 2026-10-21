@@ -67,6 +67,11 @@ description=[h2]Sandbox options[/h2]
 description=
 description=Fuel consumption, damage, combat wear, tree cutting wear, cutting speed, endurance cost, noise radius (idle, and louder when attacking or cutting), starting failures, loot.
 description=
+description=[h2]Discord[/h2]
+description=
+description=Questions, bug reports or ideas? Join the Discord:
+description=[url=https://discord.gg/QEsBya7hUA]https://discord.gg/QEsBya7hUA[/url]
+description=
 description=[h2]Support the project[/h2]
 description=
 description=Enjoying the mod? A coffee helps fund new features and translations.
