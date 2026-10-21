@@ -26,7 +26,7 @@ Native combat damage is retained; `DamageMod` applies to Timber items only.
 Load the compatibility submod after Authentic Z, its optional translation patch
 and Timber. Do not enable AuthenticZChainsawFix alongside it. Add/remove between
 sessions with a full game/server restart, keeping Authentic Z enabled.
-See [details, limitations and in-game test protocol](docs/authenticz-compatibility.md).
+See [details, limitations and in-game test protocol](docs/annexes/recherches/authenticz-compatibility.md).
 
 If you enable **Better Item Info** (`EURY_ITEMINFO`), load it **before Timber! Chainsaw**. Timber declares `loadModAfter=\EURY_ITEMINFO`; Better Item Info is optional. In Build 42.21, this metadata informs the load-order panel and its automatic sort; it does not force an existing saved order to change. Check the order in the Mods screen.
 
@@ -92,7 +92,7 @@ et l'abattage Timber, en conservant leurs identifiants, leur apparence, leur poi
 et leur maximum d'état. Les dégâts de combat restent natifs (`DamageMod` ne règle
 que les objets Timber). Charger le sous-mod après Authentic Z et Timber ; ne pas
 activer AuthenticZChainsawFix. Ajout/retrait entre deux sessions, avec redémarrage
-complet ; Authentic Z doit rester actif. [Détails et validation](docs/authenticz-compatibility.md).
+complet ; Authentic Z doit rester actif. [Détails et validation](docs/annexes/recherches/authenticz-compatibility.md).
 
 Tronçonneuse à essence fonctionnelle, inspirée de **Chainsaw B42** de **Likit** (Workshop 3692027888) et refaite entièrement avec les mêmes fonctionnalités. Build 42.21, solo et multijoueur. Prérequis : TooltipLib. Incompatible avec l'original (mêmes objets, le carburant des sauvegardes est conservé). Aucune ressource de l'original n'est reprise : sons CC0 (Joseph Sardin, BigSoundBank), affiche et icônes nouvelles, modèle et animations du jeu.
 
