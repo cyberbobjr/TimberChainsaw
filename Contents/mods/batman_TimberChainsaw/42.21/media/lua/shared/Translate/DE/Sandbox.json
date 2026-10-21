@@ -5,7 +5,7 @@
     "Sandbox_ChainsawB42_DamageMod": "Schaden",
     "Sandbox_ChainsawB42_DamageMod_tooltip": "In %%, Schaden einer laufenden Kettensäge. 100 = normal.",
     "Sandbox_ChainsawB42_ConditionLossCombat": "Verschleiß im Kampf",
-    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "Zustandsverlust pro getötetem Zombie mit laufender Kettensäge (Zustand 127). 20 = etwa 6 Zombies. 0 = keiner.",
+    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "Zustandsverlust pro getötetem Zombie mit laufender Kettensäge (Zustand 127). 12 = etwa 10 Zombies. 0 = keiner.",
     "Sandbox_ChainsawB42_ConditionLossTree": "Verschleiß beim Fällen",
     "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "Zustandsverlust, mit einer Chance von 1 zu 8 pro Schnitt (2,5 Schnitte pro Sekunde). 0 = keiner.",
     "Sandbox_ChainsawB42_TreeCuttingSpeed": "Fällgeschwindigkeit",

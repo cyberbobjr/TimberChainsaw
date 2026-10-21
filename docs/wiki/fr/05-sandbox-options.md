@@ -8,7 +8,7 @@ Les options se trouvent sur la page **Tronçonneuse B42** des réglages sandbox.
 |---|---|---|---|
 | Consommation de carburant | 100 % | 0–500 | 100 = un plein dure environ 16 minutes au ralenti à ×1, moins en coupant. 0 = aucune consommation. |
 | Dégâts | 100 % | 25–500 | Dégâts d'une tronçonneuse Timber en marche, appliqués au démarrage. |
-| Usure au combat | 20 | 0–100 | État perdu par zombie tué avec une tronçonneuse en marche (sur 127). 0 = aucune. |
+| Usure au combat | 12 | 0–100 | État perdu par zombie tué avec une tronçonneuse en marche (sur 127). 0 = aucune. |
 | Usure à l'abattage | 1 | 0–20 | État perdu, une chance sur 8 par coupe. 0 = aucune. |
 | Vitesse d'abattage | 100 % | 25–400 | 100 = un petit arbre en 1 à 3 s, le plus gros en 11 s environ (action d'abattage). Règle aussi les dégâts des attaques sur un arbre (67 points par coup à 100 %). |
 | Coût en endurance | 50 % | 0–200 | Part du coût d'endurance d'une arme de 7 kg frappant toutes les 0,67 s. 0 = aucun. |
@@ -17,7 +17,7 @@ Les options se trouvent sur la page **Tronçonneuse B42** des réglages sandbox.
 | Ratés au démarrage | 25 % | 0–100 | Chance qu'une tronçonneuse sous la moitié de son état ne démarre pas. 0 = jamais. |
 | Tronçonneuses trouvables | 3 | 0–10 | 3 = défaut (1 à 3 % par tirage). 0 = aucune. Appliqué au lancement de la partie ; le magazine n'est pas concerné. |
 
-Remarque : avec 127 points d'état, l'**Usure au combat** par défaut de 20 par zombie tué casse la tronçonneuse après environ 6 zombies, plus l'usure vanilla par coup.
+Remarque : avec 127 points d'état, l'**Usure au combat** par défaut de 12 par zombie tué casse la tronçonneuse après environ 10 zombies, plus l'usure vanilla par coup.
 
 > Capture à faire : la page sandbox Tronçonneuse B42.
 

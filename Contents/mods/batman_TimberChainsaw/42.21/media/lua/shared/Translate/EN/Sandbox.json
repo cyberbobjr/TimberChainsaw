@@ -5,7 +5,7 @@
     "Sandbox_ChainsawB42_DamageMod": "Damage",
     "Sandbox_ChainsawB42_DamageMod_tooltip": "In %%, damage of a running chainsaw. 100 = normal.",
     "Sandbox_ChainsawB42_ConditionLossCombat": "Combat wear",
-    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "Condition lost per zombie killed with a running chainsaw (condition 127). 20 = about 6 zombies. 0 = none.",
+    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "Condition lost per zombie killed with a running chainsaw (condition 127). 12 = about 10 zombies. 0 = none.",
     "Sandbox_ChainsawB42_ConditionLossTree": "Tree cutting wear",
     "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "Condition lost, one chance in 8 per cut (2.5 cuts per second). 0 = none.",
     "Sandbox_ChainsawB42_TreeCuttingSpeed": "Tree cutting speed",

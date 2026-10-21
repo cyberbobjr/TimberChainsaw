@@ -2,9 +2,12 @@
 
 ## Unreleased
 
+### Balance
+- The default **Combat wear** is now 12 instead of 20: a running chainsaw lasts about 10 zombie kills instead of about 6. Servers that set this option keep their value, and existing saves keep the value stored in their sandbox settings.
+
 ### Fixes
 - A running chainsaw put on your back (or returned to its hotbar slot) stops as before, but now stays attached: the stopped chainsaw is shown on the back and in the hotbar, also in multiplayer.
-- The **Combat wear** sandbox tooltip now gives the right figures in every language: condition 127, and the default 20 means about 6 zombies (it said condition 200 and about 10 zombies). The default value is unchanged.
+- The **Combat wear** sandbox tooltip now gives the right figures in every language: condition 127, and the default 12 means about 10 zombies (it said condition 200).
 - The **Tree cutting speed** option now also applies to attacks on a tree with a running chainsaw, not only to the cut tree action.
 
 ## 1.2.0 — 2026-10-12

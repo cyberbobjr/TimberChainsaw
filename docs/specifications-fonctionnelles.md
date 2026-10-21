@@ -21,7 +21,7 @@ Version décrite : 1.2.0, Build 42.21. Les valeurs chiffrées sont celles des op
 
 - En marche et tenue à deux mains, la tronçonneuse est une vraie arme de mêlée du jeu : viser (clic droit), attaquer (clic gauche).
 - Bouton d'attaque maintenu : la lame reste pointée devant, à plein régime, et chaque cycle de 0,67 s cherche une cible (pose fixe au lieu des grands mouvements vanilla).
-- **Usure au combat** : `ConditionLossCombat` (20) points d'état par zombie tué avec la tronçonneuse en marche.
+- **Usure au combat** : `ConditionLossCombat` (12) points d'état par zombie tué avec la tronçonneuse en marche.
 - **Endurance** : coût d'endurance de l'arme réduit à `EnduranceCost` % (50 %).
 - Les zombies ne sont pas renversés par la tronçonneuse (la Build 42.21 ne lit pas `KnockdownMod` ; la chute dépend de l'animation de réaction).
 
@@ -110,7 +110,7 @@ Avec **batman_Timber! Chainsaw - Authentic Z Compatibility**, les tronçonneuses
 |---|---|---|---|
 | Consommation de carburant | 100 % | 0–500 | Multiplie la consommation au ralenti et en coupe ; 0 = aucune. |
 | Dégâts | 100 % | 25–500 | Dégâts d'une tronçonneuse Timber en marche (appliqué au démarrage). |
-| Usure au combat | 20 | 0–100 | Points d'état perdus par zombie tué. |
+| Usure au combat | 12 | 0–100 | Points d'état perdus par zombie tué. |
 | Usure à l'abattage | 1 | 0–20 | Points perdus, 1 chance sur 8 par coupe. |
 | Vitesse d'abattage | 100 % | 25–400 | Points d'arbre par coupe (20 × %). |
 | Coût en endurance | 50 % | 0–200 | Part du coût d'endurance de l'arme. |
@@ -132,4 +132,3 @@ Avec **batman_Timber! Chainsaw - Authentic Z Compatibility**, les tronçonneuses
 - L'état maximal de 127 réduit la durée de vie d'environ 37 % par rapport à l'ancien plafond de 200 ; l'état déjà perdu au chargement d'une ancienne sauvegarde n'est pas récupéré.
 - La recette de réparation ne vise que la tronçonneuse Timber arrêtée (`ChainsawB42.ChainsawOff`), pas les objets Authentic Z.
 - L'ordre de chargement déclaré (`loadModAfter`) ne réordonne pas une liste de mods déjà enregistrée.
-- L'infobulle de l'option « Usure au combat » parle encore d'un état de 200 (voir les points à confirmer de [specifications-techniques.md](specifications-techniques.md#points-à-confirmer)).

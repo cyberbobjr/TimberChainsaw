@@ -5,7 +5,7 @@
     "Sandbox_ChainsawB42_DamageMod": "Danno",
     "Sandbox_ChainsawB42_DamageMod_tooltip": "In %%, danno di una motosega accesa. 100 = normale.",
     "Sandbox_ChainsawB42_ConditionLossCombat": "Usura in combattimento",
-    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "Condizione persa per zombie ucciso con la motosega accesa (condizione 127). 20 = circa 6 zombie. 0 = nessuna.",
+    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "Condizione persa per zombie ucciso con la motosega accesa (condizione 127). 12 = circa 10 zombie. 0 = nessuna.",
     "Sandbox_ChainsawB42_ConditionLossTree": "Usura nel taglio",
     "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "Condizione persa, una probabilità su 8 per taglio (2,5 tagli al secondo). 0 = nessuna.",
     "Sandbox_ChainsawB42_TreeCuttingSpeed": "Velocità di abbattimento",

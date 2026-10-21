@@ -35,7 +35,7 @@ Les gestes passent par les vrais menus du mod (événements `OnFillInventoryObje
 | `started` | Menu d'inventaire « Démarrer » (équipement à deux mains + `CSB42_StartAction`). | `Chainsaw` dans les deux mains, **nouvel objet** (ID différent de la `ChainsawOff`), aucune `ChainsawOff` restante. |
 | `fuel` | Moteur au ralenti. | Carburant (`CurrentFuel`) inférieur à celui du démarrage (synchronisé tous les 0,05 L en MP). |
 | `tree` | Menu du monde « Abattre l'arbre » (marche, `CSB42_CutTreeAction`). | Plus d'arbre sur la case. |
-| `combat` | L'autorité fait apparaître un zombie et le tue au nom du joueur (solo `Kill(arme, joueur)`, serveur `setAttackedBy` + `die()`), ce qui passe par l'abonné `OnZombieDead` du moteur. | État diminué d'exactement `ConditionLossCombat` (20 par défaut). |
+| `combat` | L'autorité fait apparaître un zombie et le tue au nom du joueur (solo `Kill(arme, joueur)`, serveur `setAttackedBy` + `die()`), ce qui passe par l'abonné `OnZombieDead` du moteur. | État diminué d'exactement `ConditionLossCombat` (12 par défaut). |
 | `stopped` | Menu d'inventaire « Arrêter ». | `ChainsawOff` dans les deux mains, aucune `Chainsaw` restante. |
 | `restarted` | « Démarrer » de nouveau. | Comme `started`. |
 | `attached` | Accroche au dos par `ISHotbar:attachItem(…, true)` (action vanilla `ISAttachItemHotbar`), 5 s d'attente. | Un seul objet tronçonneuse accroché, de type `ChainsawOff`, **différent de l'objet en marche**, présent dans l'inventaire, emplacement ≥ 0 ; aucune `Chainsaw` restante, rien en main (bug C01). |
