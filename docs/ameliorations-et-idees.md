@@ -21,7 +21,7 @@ Abréviations des chemins :
 - **Preuve** : `V/shared/TimedActions/ISAttachItemHotbar.lua:82-92` (accroche puis `removeFromHands`), `:67-70` (champs d'accroche) ; `M/lua/server/ChainsawB42/CSB42_Engine.lua:104-105` (arrêt au déséquipement) et `:52-56` (`holder` nul si l'objet n'est pas dans la main principale) ; `M/lua/shared/ChainsawB42/CSB42_Core.lua:390-430` (aucun traitement de `getAttachedSlot`/`setAttachedItem`). Aucune occurrence de `Attached` dans le Lua du mod.
 - **Risque** : bug visible, persistance (objet accroché qui n'existe plus), MP (le serveur et le propriétaire divergent).
 - **Correction** : dans `CSB42.replace`, retrouver le propriétaire lorsque le conteneur est l'inventaire d'un `IsoPlayer`, même si l'objet n'est pas en main. Si `item:getAttachedSlot() >= 0`, retirer l'ancien objet de l'emplacement (`character:removeAttachedItem(old)`), puis accrocher le nouveau au même emplacement (`setAttachedItem`, `setAttachedSlot`, `setAttachedSlotType`, `setAttachedToModel`, comme `ISAttachItemHotbar.lua:67-70`), puis transmettre l'accroche (voie réseau à confirmer en 42.21). Autre possibilité, plus simple : arrêter le moteur avant l'accroche en enveloppant `ISAttachItemHotbar:new` ou `isValid` pour une tronçonneuse en marche. Ajouter un test lupa sur ce scénario.
-- **Statut** : déduit statiquement, **à vérifier en jeu** (solo et MP : accrocher au dos une tronçonneuse en marche, puis la décrocher, la démarrer, sauvegarder et recharger).
+- **Statut : corrigé (commit 1875766), à vérifier en jeu** (solo et MP : accrocher au dos une tronçonneuse en marche, puis la décrocher, la démarrer, sauvegarder et recharger). Correction retenue : le nouvel objet reprend les champs d'accroche et l'ID remplacé (`CSB42_PreviousID` en ModData) ; l'autorité réaccroche et relaie (`sendAttachedItem`) ; le client propriétaire réaccroche l'objet reçu (`CSB42_Attached.lua`, 10 s d'essais), car le paquet d'accroche ignore le joueur local.
 - **Priorité** : haute. **Effort** : moyen (0,5 à 1 j avec les tests).
 
 ### C02 — Infobulle « Usure au combat » périmée dans les 10 langues
@@ -29,7 +29,7 @@ Abréviations des chemins :
 - **Preuve** : `M/lua/shared/Translate/EN/Sandbox.json:8` (et la même clé dans les 9 autres langues) ; source `source/build_translations.py:63, 127` ; `M/scripts/ChainsawB42_Items.txt:83` (`ConditionMax = 127`) ; `CSB42_Engine.lua:197-216` (20 points par zombie tué).
 - **Risque** : traduction et équilibrage (un administrateur règle mal l'option, des joueurs voient l'outil casser « trop vite »).
 - **Correction** : corriger le texte dans `build_translations.py` (« état 127 ; 20 = environ 6 zombies ») puis regénérer les 10 fichiers. Décider séparément, avec l'utilisateur, si la valeur par défaut doit passer à 12 (environ 10 zombies, comme avant la 1.0.3) : c'est un changement d'équilibrage à annoncer.
-- **Statut** : confirmé statiquement.
+- **Statut : corrigé (commit 2936d86), à vérifier en jeu**. Texte seul ; la valeur par défaut (20) reste à trancher avec l'utilisateur.
 - **Priorité** : haute. **Effort** : faible (30 min).
 
 ### C03 — Deux vitesses d'abattage : l'attaque tenue va deux fois plus vite que le menu et ignore `TreeCuttingSpeed`
@@ -37,7 +37,7 @@ Abréviations des chemins :
 - **Preuve** : `M/lua/shared/TimedActions/CSB42_CutTreeAction.lua:255-265` ; `M/scripts/ChainsawB42_Items.txt:95` (`TreeDamage = 67`) et `:71` (`Categories = Axe`) ; `J/iso/objects/IsoTree.java:217-232` (dégâts × 1,5 avec `AXEMAN`) ; cycle de 0,67 s : `M/AnimSets/player/melee/2handed/ChainsawDefault.xml:46` (`Bob_IdleAimChainsaw`).
 - **Risque** : équilibrage et cohérence des options. L'infobulle de `TreeCuttingSpeed` promet des durées que l'attaque tenue ne respecte pas.
 - **Correction** : appliquer `TreeCuttingSpeed` au `TreeDamage` de l'objet en marche, sur chaque machine, là où `applyEnduranceCost` est déjà appliqué. `TreeDamage` n'est pas sérialisé (`HandWeapon.save`), comme `EnduranceMod`. Pour le menu, appliquer le même bonus `AXEMAN` × 1,5, voire le métier `LUMBERJACK`, afin que les deux chemins suivent la même règle. Adapter les infobulles.
-- **Statut** : confirmé statiquement (vitesses déduites des durées d'animation, à mesurer en jeu).
+- **Statut : corrigé (commit 96a4141), à vérifier en jeu** pour `TreeCuttingSpeed` sur l'attaque tenue (et infobulle). Non fait : alignement des deux vitesses et bonus `AXEMAN`/métier sur le menu (choix d'équilibrage, voir I14).
 - **Priorité** : moyenne. **Effort** : faible à moyen.
 
 ### C04 — L'abattage par le menu ne coûte ni endurance ni effort et n'a aucun retour visuel
