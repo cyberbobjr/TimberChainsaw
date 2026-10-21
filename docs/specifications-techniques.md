@@ -164,6 +164,5 @@ Table globale `CSB42` (partagée sauf mention).
 
 ## Points à confirmer
 
-- L'infobulle `Sandbox_ChainsawB42_ConditionLossCombat_tooltip` (toutes langues) indique « condition 200 » et « 20 = about 10 zombies » ; avec l'état maximal de 127, 20 points correspondent à environ 6 zombies.
 - La capture `images/screenshots/tooltip-engine-fuel.png` montre une ancienne version (poids 15, mode debug) : à refaire avec la 1.2.0.
 - Le multijoueur des versions 1.1.1 et 1.2.0 est couvert par les tests Lua ; aucun test MP en jeu n'est consigné.

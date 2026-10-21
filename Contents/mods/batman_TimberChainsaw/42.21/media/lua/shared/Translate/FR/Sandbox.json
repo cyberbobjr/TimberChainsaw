@@ -5,7 +5,7 @@
     "Sandbox_ChainsawB42_DamageMod": "Dégâts",
     "Sandbox_ChainsawB42_DamageMod_tooltip": "En %%, dégâts d'une tronçonneuse en marche. 100 = normal.",
     "Sandbox_ChainsawB42_ConditionLossCombat": "Usure au combat",
-    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "État perdu par zombie tué avec une tronçonneuse en marche (état 200). 20 = environ 10 zombies. 0 = aucune.",
+    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "État perdu par zombie tué avec une tronçonneuse en marche (état 127). 20 = environ 6 zombies. 0 = aucune.",
     "Sandbox_ChainsawB42_ConditionLossTree": "Usure à l'abattage",
     "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "État perdu, une chance sur 8 par coupe (2,5 coupes par seconde). 0 = aucune.",
     "Sandbox_ChainsawB42_TreeCuttingSpeed": "Vitesse d'abattage",

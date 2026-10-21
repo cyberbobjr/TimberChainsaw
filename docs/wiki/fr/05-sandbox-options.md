@@ -17,7 +17,7 @@ Les options se trouvent sur la page **Tronçonneuse B42** des réglages sandbox.
 | Ratés au démarrage | 25 % | 0–100 | Chance qu'une tronçonneuse sous la moitié de son état ne démarre pas. 0 = jamais. |
 | Tronçonneuses trouvables | 3 | 0–10 | 3 = défaut (1 à 3 % par tirage). 0 = aucune. Appliqué au lancement de la partie ; le magazine n'est pas concerné. |
 
-Remarque : l'infobulle de **Usure au combat** dans le jeu indique encore « état 200 … 20 = environ 10 zombies ». Avec 127 points d'état, 20 par zombie tué font environ 6 zombies.
+Remarque : avec 127 points d'état, l'**Usure au combat** par défaut de 20 par zombie tué casse la tronçonneuse après environ 6 zombies, plus l'usure vanilla par coup.
 
 > Capture à faire : la page sandbox Tronçonneuse B42.
 

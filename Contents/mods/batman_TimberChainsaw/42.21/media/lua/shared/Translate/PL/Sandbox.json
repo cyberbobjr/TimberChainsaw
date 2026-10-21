@@ -5,7 +5,7 @@
     "Sandbox_ChainsawB42_DamageMod": "Obrażenia",
     "Sandbox_ChainsawB42_DamageMod_tooltip": "W %%, obrażenia włączonej piły. 100 = normalnie.",
     "Sandbox_ChainsawB42_ConditionLossCombat": "Zużycie w walce",
-    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "Stan tracony za każdego zombie zabitego włączoną piłą (stan 200). 20 = około 10 zombie. 0 = brak.",
+    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "Stan tracony za każdego zombie zabitego włączoną piłą (stan 127). 20 = około 6 zombie. 0 = brak.",
     "Sandbox_ChainsawB42_ConditionLossTree": "Zużycie przy ścince",
     "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "Utrata stanu, szansa 1 na 8 przy każdym cięciu (2,5 cięcia na sekundę). 0 = brak.",
     "Sandbox_ChainsawB42_TreeCuttingSpeed": "Szybkość ścinki",

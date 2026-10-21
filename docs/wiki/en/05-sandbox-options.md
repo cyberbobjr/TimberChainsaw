@@ -17,7 +17,7 @@ The options are on the **Chainsaw B42** page of the sandbox settings. They keep 
 | Starting failures | 25 % | 0–100 | Chance that a chainsaw below half condition fails to start. 0 = never. |
 | Chainsaw loot | 3 | 0–10 | 3 = default (1 to 3 % per roll). 0 = none. Applied when the game starts; the magazine is not affected. |
 
-Note: the in-game tooltip of **Combat wear** still says "condition 200 … 20 = about 10 zombies". With 127 condition points, 20 per kill is about 6 zombies.
+Note: with 127 condition points, the default **Combat wear** of 20 per kill breaks the chainsaw after about 6 zombies, plus the vanilla wear per hit.
 
 > Capture à faire : the Chainsaw B42 sandbox page.
 

@@ -5,7 +5,7 @@
     "Sandbox_ChainsawB42_DamageMod": "Daño",
     "Sandbox_ChainsawB42_DamageMod_tooltip": "En %%, daño de una motosierra en marcha. 100 = normal.",
     "Sandbox_ChainsawB42_ConditionLossCombat": "Desgaste en combate",
-    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "Estado perdido por zombi matado con la motosierra en marcha (estado 200). 20 = unos 10 zombis. 0 = ninguno.",
+    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "Estado perdido por zombi matado con la motosierra en marcha (estado 127). 20 = unos 6 zombis. 0 = ninguno.",
     "Sandbox_ChainsawB42_ConditionLossTree": "Desgaste al talar",
     "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "Estado perdido, una probabilidad entre 8 por corte (2,5 cortes por segundo). 0 = ninguno.",
     "Sandbox_ChainsawB42_TreeCuttingSpeed": "Velocidad de tala",

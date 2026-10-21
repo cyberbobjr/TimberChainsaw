@@ -5,7 +5,7 @@
     "Sandbox_ChainsawB42_DamageMod": "伤害",
     "Sandbox_ChainsawB42_DamageMod_tooltip": "单位为 %%，运转中的电锯的伤害。100 = 正常。",
     "Sandbox_ChainsawB42_ConditionLossCombat": "战斗磨损",
-    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "用运转中的电锯每杀死一只丧尸损失的耐久（耐久 200）。20 = 约 10 只丧尸。0 = 无。",
+    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "用运转中的电锯每杀死一只丧尸损失的耐久（耐久 127）。20 = 约 6 只丧尸。0 = 无。",
     "Sandbox_ChainsawB42_ConditionLossTree": "砍树磨损",
     "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "每次锯切有八分之一的几率损失的耐久（每秒 2.5 次锯切）。0 = 无。",
     "Sandbox_ChainsawB42_TreeCuttingSpeed": "砍树速度",

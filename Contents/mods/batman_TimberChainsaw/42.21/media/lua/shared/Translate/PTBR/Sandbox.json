@@ -5,7 +5,7 @@
     "Sandbox_ChainsawB42_DamageMod": "Dano",
     "Sandbox_ChainsawB42_DamageMod_tooltip": "Em %%, dano de uma motosserra ligada. 100 = normal.",
     "Sandbox_ChainsawB42_ConditionLossCombat": "Desgaste em combate",
-    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "Condição perdida por zumbi morto com a motosserra ligada (condição 200). 20 = cerca de 10 zumbis. 0 = nenhuma.",
+    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "Condição perdida por zumbi morto com a motosserra ligada (condição 127). 20 = cerca de 6 zumbis. 0 = nenhuma.",
     "Sandbox_ChainsawB42_ConditionLossTree": "Desgaste ao derrubar",
     "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "Condição perdida, uma chance em 8 por corte (2,5 cortes por segundo). 0 = nenhuma.",
     "Sandbox_ChainsawB42_TreeCuttingSpeed": "Velocidade de derrubada",

@@ -5,7 +5,7 @@
     "Sandbox_ChainsawB42_DamageMod": "Урон",
     "Sandbox_ChainsawB42_DamageMod_tooltip": "В %%, урон работающей бензопилы. 100 = обычный.",
     "Sandbox_ChainsawB42_ConditionLossCombat": "Износ в бою",
-    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "Потеря состояния за каждого зомби, убитого работающей пилой (состояние 200). 20 = около 10 зомби. 0 = нет.",
+    "Sandbox_ChainsawB42_ConditionLossCombat_tooltip": "Потеря состояния за каждого зомби, убитого работающей пилой (состояние 127). 20 = около 6 зомби. 0 = нет.",
     "Sandbox_ChainsawB42_ConditionLossTree": "Износ при валке",
     "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "Потеря состояния с шансом 1 из 8 за рез (2,5 реза в секунду). 0 = нет.",
     "Sandbox_ChainsawB42_TreeCuttingSpeed": "Скорость валки",
