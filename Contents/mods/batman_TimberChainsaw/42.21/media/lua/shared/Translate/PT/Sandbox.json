@@ -9,7 +9,7 @@
     "Sandbox_ChainsawB42_ConditionLossTree": "Desgaste ao abater",
     "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "Condição perdida, com uma probabilidade em 8 por corte (2,5 cortes por segundo). 0 = nenhuma.",
     "Sandbox_ChainsawB42_TreeCuttingSpeed": "Velocidade de abate",
-    "Sandbox_ChainsawB42_TreeCuttingSpeed_tooltip": "Em %%. 100 = uma árvore pequena cai em 1 a 3 segundos, a maior em cerca de 11 segundos.",
+    "Sandbox_ChainsawB42_TreeCuttingSpeed_tooltip": "Em %%. 100 = uma árvore pequena cai em 1 a 3 segundos, a maior em cerca de 11 segundos (ação de abater). Também se aplica aos ataques a uma árvore.",
     "Sandbox_ChainsawB42_EnduranceCost": "Custo de resistência",
     "Sandbox_ChainsawB42_EnduranceCost_tooltip": "Em %%, resistência perdida ao atacar com uma motosserra ligada. 100 = custo total de uma arma de 7 kg a golpear a cada 0,67 s, 0 = nenhuma.",
     "Sandbox_ChainsawB42_NoiseIdle": "Alcance do ruído (ralenti)",

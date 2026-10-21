@@ -71,6 +71,22 @@ function T.start_replaces_the_held_item_and_keeps_its_state()
     assertTrue(CSB42.isHeldRunning(p, running), "held running")
 end
 
+function T.held_attack_on_a_tree_follows_the_tree_cutting_speed()
+    local definitions = readModFile("../scripts/ChainsawB42_Items.txt")
+    local running = definitions:match("item%s+Chainsaw%s*{(.-)}")
+    assertEq(tonumber(running:match("TreeDamage%s*=%s*(%d+)")), CSB42.TREE_DAMAGE, "same as the item script")
+    local saw = API.item(CSB42.FULLTYPE_RUNNING)
+    local p = API.holding(saw)
+    CSB42.isHeldRunning(p, saw)
+    assertEq(saw:getTreeDamage(), 67, "100 % = script value")
+    SandboxVars.ChainsawB42.TreeCuttingSpeed = 200
+    CSB42.isHeldRunning(p, saw)
+    assertEq(saw:getTreeDamage(), 134, "200 % = twice")
+    SandboxVars.ChainsawB42.TreeCuttingSpeed = 25
+    CSB42.isHeldRunning(p, saw)
+    assertEq(saw:getTreeDamage(), 17, "25 %")
+end
+
 function T.running_chainsaw_hits_harder_than_a_vanilla_axe()
     local running = API.item(CSB42.FULLTYPE_RUNNING)
     -- Vanilla Base.Axe 42.21: MinDamage 0.8, MaxDamage 2.0.

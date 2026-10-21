@@ -9,7 +9,7 @@
     "Sandbox_ChainsawB42_ConditionLossTree": "Износ при валке",
     "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "Потеря состояния с шансом 1 из 8 за рез (2,5 реза в секунду). 0 = нет.",
     "Sandbox_ChainsawB42_TreeCuttingSpeed": "Скорость валки",
-    "Sandbox_ChainsawB42_TreeCuttingSpeed_tooltip": "В %%. 100 = маленькое дерево падает за 1-3 секунды, самое большое примерно за 11 секунд.",
+    "Sandbox_ChainsawB42_TreeCuttingSpeed_tooltip": "В %%. 100 = маленькое дерево падает за 1-3 секунды, самое большое примерно за 11 секунд (действие валки). Также действует на атаки по дереву.",
     "Sandbox_ChainsawB42_EnduranceCost": "Расход выносливости",
     "Sandbox_ChainsawB42_EnduranceCost_tooltip": "В %%, расход выносливости при атаке работающей бензопилой. 100 = полный расход оружия весом 7 кг с ударом каждые 0,67 с, 0 = нет.",
     "Sandbox_ChainsawB42_NoiseIdle": "Радиус шума (холостой ход)",

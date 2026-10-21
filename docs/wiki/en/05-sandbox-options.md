@@ -10,7 +10,7 @@ The options are on the **Chainsaw B42** page of the sandbox settings. They keep 
 | Damage | 100 % | 25–500 | Damage of a running Timber chainsaw, applied when it starts. |
 | Combat wear | 20 | 0–100 | Condition lost per zombie killed with a running chainsaw (out of 127). 0 = none. |
 | Tree cutting wear | 1 | 0–20 | Condition lost, one chance in 8 per cut. 0 = none. |
-| Tree cutting speed | 100 % | 25–400 | 100 = a small tree in 1 to 3 s, the biggest in about 11 s. |
+| Tree cutting speed | 100 % | 25–400 | 100 = a small tree in 1 to 3 s, the biggest in about 11 s (cut tree action). Also scales the tree damage of attacks on a tree (67 points per hit at 100 %). |
 | Endurance cost | 50 % | 0–200 | Share of the endurance cost of a 7 kg weapon swung every 0.67 s. 0 = none. |
 | Noise radius (idle) | 20 | 0–100 | Radius in tiles, every 2 s while the engine runs. 0 = silent. |
 | Noise radius (attacking, cutting) | 40 | 0–100 | Radius in tiles, every 2 s while attacking or cutting. 0 = idle noise only. |

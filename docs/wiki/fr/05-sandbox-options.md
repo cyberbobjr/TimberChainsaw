@@ -10,7 +10,7 @@ Les options se trouvent sur la page **Tronçonneuse B42** des réglages sandbox.
 | Dégâts | 100 % | 25–500 | Dégâts d'une tronçonneuse Timber en marche, appliqués au démarrage. |
 | Usure au combat | 20 | 0–100 | État perdu par zombie tué avec une tronçonneuse en marche (sur 127). 0 = aucune. |
 | Usure à l'abattage | 1 | 0–20 | État perdu, une chance sur 8 par coupe. 0 = aucune. |
-| Vitesse d'abattage | 100 % | 25–400 | 100 = un petit arbre en 1 à 3 s, le plus gros en 11 s environ. |
+| Vitesse d'abattage | 100 % | 25–400 | 100 = un petit arbre en 1 à 3 s, le plus gros en 11 s environ (action d'abattage). Règle aussi les dégâts des attaques sur un arbre (67 points par coup à 100 %). |
 | Coût en endurance | 50 % | 0–200 | Part du coût d'endurance d'une arme de 7 kg frappant toutes les 0,67 s. 0 = aucun. |
 | Portée du bruit (ralenti) | 20 | 0–100 | Rayon en cases, toutes les 2 s tant que le moteur tourne. 0 = silencieux. |
 | Portée du bruit (attaque, coupe) | 40 | 0–100 | Rayon en cases, toutes les 2 s pendant une attaque ou une coupe. 0 = bruit du ralenti seulement. |

@@ -9,7 +9,7 @@
     "Sandbox_ChainsawB42_ConditionLossTree": "Verschleiß beim Fällen",
     "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "Zustandsverlust, mit einer Chance von 1 zu 8 pro Schnitt (2,5 Schnitte pro Sekunde). 0 = keiner.",
     "Sandbox_ChainsawB42_TreeCuttingSpeed": "Fällgeschwindigkeit",
-    "Sandbox_ChainsawB42_TreeCuttingSpeed_tooltip": "In %%. 100 = ein kleiner Baum fällt in 1 bis 3 Sekunden, der größte in etwa 11 Sekunden.",
+    "Sandbox_ChainsawB42_TreeCuttingSpeed_tooltip": "In %%. 100 = ein kleiner Baum fällt in 1 bis 3 Sekunden, der größte in etwa 11 Sekunden (Fällaktion). Gilt auch für Angriffe auf einen Baum.",
     "Sandbox_ChainsawB42_EnduranceCost": "Ausdauerkosten",
     "Sandbox_ChainsawB42_EnduranceCost_tooltip": "In %%, Ausdauerverlust beim Angreifen mit einer laufenden Kettensäge. 100 = volle Kosten einer 7-kg-Waffe, die alle 0,67 s zuschlägt, 0 = keine.",
     "Sandbox_ChainsawB42_NoiseIdle": "Lärmradius (Leerlauf)",

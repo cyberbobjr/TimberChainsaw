@@ -9,7 +9,7 @@
     "Sandbox_ChainsawB42_ConditionLossTree": "砍树磨损",
     "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "每次锯切有八分之一的几率损失的耐久（每秒 2.5 次锯切）。0 = 无。",
     "Sandbox_ChainsawB42_TreeCuttingSpeed": "砍树速度",
-    "Sandbox_ChainsawB42_TreeCuttingSpeed_tooltip": "单位为 %%。100 = 小树 1 到 3 秒倒下，最大的树约 11 秒。",
+    "Sandbox_ChainsawB42_TreeCuttingSpeed_tooltip": "单位为 %%。100 = 小树 1 到 3 秒倒下，最大的树约 11 秒（砍树动作）。也适用于对树的攻击。",
     "Sandbox_ChainsawB42_EnduranceCost": "耐力消耗",
     "Sandbox_ChainsawB42_EnduranceCost_tooltip": "单位为 %%，用运转中的电锯攻击时消耗的耐力。100 = 每 0.67 秒挥动一次的 7 公斤武器的全部消耗，0 = 不消耗。",
     "Sandbox_ChainsawB42_NoiseIdle": "噪音范围（怠速）",

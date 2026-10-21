@@ -9,7 +9,7 @@
     "Sandbox_ChainsawB42_ConditionLossTree": "Desgaste ao derrubar",
     "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "Condição perdida, uma chance em 8 por corte (2,5 cortes por segundo). 0 = nenhuma.",
     "Sandbox_ChainsawB42_TreeCuttingSpeed": "Velocidade de derrubada",
-    "Sandbox_ChainsawB42_TreeCuttingSpeed_tooltip": "Em %%. 100 = uma árvore pequena cai em 1 a 3 segundos, a maior em cerca de 11 segundos.",
+    "Sandbox_ChainsawB42_TreeCuttingSpeed_tooltip": "Em %%. 100 = uma árvore pequena cai em 1 a 3 segundos, a maior em cerca de 11 segundos (ação de derrubar). Também vale para ataques a uma árvore.",
     "Sandbox_ChainsawB42_EnduranceCost": "Custo de resistência",
     "Sandbox_ChainsawB42_EnduranceCost_tooltip": "Em %%, resistência perdida ao atacar com uma motosserra ligada. 100 = custo total de uma arma de 7 kg golpeando a cada 0,67 s, 0 = nenhuma.",
     "Sandbox_ChainsawB42_NoiseIdle": "Alcance do ruído (marcha lenta)",

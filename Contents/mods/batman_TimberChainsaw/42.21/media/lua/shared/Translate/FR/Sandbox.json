@@ -9,7 +9,7 @@
     "Sandbox_ChainsawB42_ConditionLossTree": "Usure à l'abattage",
     "Sandbox_ChainsawB42_ConditionLossTree_tooltip": "État perdu, une chance sur 8 par coupe (2,5 coupes par seconde). 0 = aucune.",
     "Sandbox_ChainsawB42_TreeCuttingSpeed": "Vitesse d'abattage",
-    "Sandbox_ChainsawB42_TreeCuttingSpeed_tooltip": "En %%. 100 = un petit arbre tombe en 1 à 3 secondes, le plus gros en 11 secondes environ.",
+    "Sandbox_ChainsawB42_TreeCuttingSpeed_tooltip": "En %%. 100 = un petit arbre tombe en 1 à 3 secondes, le plus gros en 11 secondes environ (action d'abattage). S'applique aussi aux attaques sur un arbre.",
     "Sandbox_ChainsawB42_EnduranceCost": "Coût en endurance",
     "Sandbox_ChainsawB42_EnduranceCost_tooltip": "En %%, endurance perdue en attaquant avec une tronçonneuse en marche. 100 = coût complet d'une arme de 7 kg frappant toutes les 0,67 s, 0 = aucune.",
     "Sandbox_ChainsawB42_NoiseIdle": "Portée du bruit (ralenti)",

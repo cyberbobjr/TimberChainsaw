@@ -53,6 +53,7 @@ Version décrite : 1.2.0, Build 42.21. Les valeurs chiffrées sont celles des op
 
 - Tronçonneuse en marche en main, clic droit sur un arbre → **Abattre l'arbre à la tronçonneuse**. Le joueur va à côté de l'arbre, puis coupe jusqu'à sa chute.
 - 50 points d'arbre par seconde à `TreeCuttingSpeed` 100 % : un petit arbre (40 à 160 points) tombe en 1 à 3 s, le plus gros (560) en 11 s environ. L'arbre tombe et laisse ses bûches comme un abattage vanilla.
+- Attaque tenue face à un arbre (chemin vanilla `IsoTree.WeaponHit`) : `TreeDamage` 67 × `TreeCuttingSpeed`/100 par coup (arrondi, au moins 1), × 1,5 avec le trait Bûcheron (moteur). Les deux chemins gardent des vitesses différentes (environ 100 points/s pour l'attaque à 100 %).
 - Usure : `ConditionLossTree` (1) point, une chance sur 8 par coupe (2,5 coupes par seconde).
 - La coupe s'arrête si le joueur s'éloigne, marche, si le réservoir est vide ou si la tronçonneuse casse.
 - Frapper un arbre en attaquant normalement l'abîme aussi (dégâts d'arbre de l'arme) et consomme le même carburant de coupe.

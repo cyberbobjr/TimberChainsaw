@@ -101,7 +101,7 @@ Espace de noms `ChainsawB42` (mêmes noms que l'original), page `ChainsawB42`, `
 | `DamageMod` | 100 | 25 | 500 | `applyDamageMod` (familles sans `keepDamage`) |
 | `ConditionLossCombat` | 20 | 0 | 100 | `onZombieDead` |
 | `ConditionLossTree` | 1 | 0 | 20 | `CSB42_CutTreeAction:hit` |
-| `TreeCuttingSpeed` | 100 | 25 | 400 | `hitDamage` |
+| `TreeCuttingSpeed` | 100 | 25 | 400 | `hitDamage`, `CSB42.heldTreeDamage` (`setTreeDamage` de l'objet tenu en marche, sur chaque machine : champ non sauvegardé) |
 | `EnduranceCost` | 50 | 0 | 200 | `applyEnduranceCost` |
 | `NoiseIdle` | 20 | 0 | 100 | `CSB42_Engine.makeNoise` |
 | `NoiseWorking` | 40 | 0 | 100 | `CSB42_Noise` |

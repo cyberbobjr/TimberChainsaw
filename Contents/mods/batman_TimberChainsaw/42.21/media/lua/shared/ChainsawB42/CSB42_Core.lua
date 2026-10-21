@@ -143,6 +143,17 @@ local function applyEnduranceCost(item)
     end
 end
 
+--- TreeDamage of the running script (ChainsawB42_Items.txt), also set by the
+--- Authentic Z compatibility family.
+CSB42.TREE_DAMAGE = 67
+
+--- Tree points per held attack on a tree (IsoTree.WeaponHit), scaled by the
+--- TreeCuttingSpeed option like the cutting action. HandWeapon.save does not
+--- write treeDamage: every machine sets it again while the chainsaw is held.
+function CSB42.heldTreeDamage()
+    return math.max(1, math.floor(CSB42.TREE_DAMAGE * CSB42.option("TreeCuttingSpeed") / 100 + 0.5))
+end
+
 --- The engine runs only while the running item is held in both hands.
 function CSB42.isHeldRunning(character, item)
     if not character or not CSB42.isRunningType(item) then
@@ -153,6 +164,7 @@ function CSB42.isHeldRunning(character, item)
     if held then
         applyEnduranceCost(item)
         if family.prepareRunning then family.prepareRunning(item) end
+        item:setTreeDamage(CSB42.heldTreeDamage())
     end
     return held
 end
