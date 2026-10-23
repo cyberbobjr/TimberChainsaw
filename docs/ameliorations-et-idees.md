@@ -2,7 +2,7 @@
 
 - **Mod** : batman_Timber! Chainsaw (`id=batman_TimberChainsaw`), sous-mod `batman_TimberAuthenticZCompatibility`
 - **Version analysée** : 1.2.0 (`mod.info` des deux mods), Build cible 42.21, `versionMin=42.21`
-- **Date** : 2026-10-21
+- **Date** : 2026-10-21 ; **avancement mis à jour le 2026-10-23** (version publiée : 1.3.0, tag `v1.3.0`, commit `ca5649e`).
 - **Périmètre** : lecture de tout le code (`Contents/mods/**` : Lua, scripts d'objets, sons, AnimSets, traductions, `mod.info`, options sandbox), de `README.md`, `CHANGELOG.md`, `docs/`, `tests/` et `source/`. Comparaison avec le Lua vanilla installé (`D:\SteamLibrary\steamapps\common\ProjectZomboid\media`) et le Java décompilé 42.21.0 (`E:\pz-decompiled\42.21.0\java`), en s'appuyant sur la base `.claude/pz-knowledge` (arbres, tronçonneuse vanilla, `OnWeaponHitTree`, sons, MP).
 - **Vérifications faites** : `python tests/run_tests.py` passe (79 tests Lua sous lupa, luacheck, traductions, descriptions Steam). **Aucun test en jeu n'a été fait pour ce document.** Chaque point indique s'il est « confirmé statiquement » (prouvé par la lecture du code) ou « à vérifier en jeu ».
 
@@ -14,6 +14,58 @@ Abréviations des chemins :
 
 ---
 
+## Tableau de bord — ce qui est fait et ce qui reste
+
+**Légende** : ✅ fait · 🟡 fait en partie · ⬜ pas commencé. « Publié » = présent dans une version du Workshop ; « non publié » = sur `main`, pas encore dans une version publiée. Détail de chaque point dans les parties 1 et 2 ; protocole et limites du test en jeu automatique dans `docs/annexes/tests/autotest.md`.
+
+**Bilan** : améliorations de code **2 faites, 2 en partie, 12 à faire** (sur 16) ; idées de fonctionnalités **0 faite, 0 en partie, 18 à faire** (sur 18).
+
+### Améliorations de code
+
+| ID | Sujet | État | Testé | Publié | Commit | Ce qui reste |
+|---|---|---|---|---|---|---|
+| C01 | Tronçonneuse en marche accrochée au dos | ✅ Corrigé | hors jeu (lupa) ; solo et MP (pz-autotest, étape `attached`, 8/8) | 1.3.0 | `1875766` | Modèle sur le dos à vérifier à l'œil ; sauvegarde/rechargement et reconnexion non testés |
+| C02 | Infobulle « Usure au combat » ; défaut 20 → 12 | ✅ Corrigé | hors jeu ; usure de 12 par zombie en solo et MP (pz-autotest, étape `combat`) | 1.3.0 | `2936d86`, `29ebaa4` | Infobulle à relire en jeu |
+| C03 | Deux vitesses d'abattage (menu / attaque tenue) | 🟡 En partie | hors jeu (lupa, `TreeDamage` selon `TreeCuttingSpeed`) | 1.3.0 | `96a4141` | Attaque tenue à vérifier en jeu ; alignement des deux vitesses et bonus `AXEMAN`/métier sur le menu (I14) |
+| C04 | Abattage par le menu sans endurance ni effets | ⬜ À faire | — | — | — | Tout |
+| C05 | Usure et XP d'entretien différentes menu / attaque | ⬜ À faire | — | — | — | Tout |
+| C06 | Pas de surconsommation d'essence en combat | ⬜ À faire | — | — | — | Tout (changement d'équilibrage à valider) |
+| C07 | `isHeldRunning` à effets de bord | ⬜ À faire | — | — | — | Tout |
+| C08 | `CSB42.replace` vide les mains avant de vérifier | ⬜ À faire | — | — | — | Tout |
+| C09 | Bruit du moteur et administrateur invisible | ⬜ À faire | — | — | — | Tout |
+| C10 | `LootChance` ne règle pas le magazine | ⬜ À faire | — | — | — | Tout |
+| C11 | Réparation illimitée et complète | ⬜ À faire | — | — | — | Décision d'équilibrage de l'utilisateur, puis tout |
+| C12 | Page des options nommée « Chainsaw B42 » | ⬜ À faire | — | — | — | Tout |
+| C13 | Ligne de carburant de l'infobulle en dur | ⬜ À faire | — | — | — | Tout |
+| C14 | Distance d'écoute du seul joueur 0 (écran partagé) | ⬜ À faire | — | — | — | Tout |
+| C15 | Aucun scénario en jeu automatisé | 🟡 En partie | solo 8/8 (`20261021-155632-sp`), MP 8/8 client et serveur (`20261021-164448-mp`) | outil hors mod (dans le dépôt depuis 1.3.0) | `e8039ec`, `e6c8f06` | Sauvegarde/rechargement, reconnexion MP, plein, panne, enrayage, bruit, attaque tenue |
+| C16 | Documentation : versions et chemins | ⬜ À faire | — | — | — | En-tête du document Authentic Z (toujours « 1.1.1 ») ; chemin déjà déplacé par la réorganisation (`3037ad0`) |
+
+### Idées de fonctionnalités
+
+| ID | Idée | État | Remarque |
+|---|---|---|---|
+| I01 | Plein depuis le sol, un meuble, un véhicule ou une pompe | ⬜ Proposée | |
+| I02 | Mélange deux-temps et huile de chaîne | ⬜ Proposée | |
+| I03 | Débiter les bûches | ⬜ Proposée | Grosse fonctionnalité conseillée en priorisation |
+| I04 | Dessoucher et débroussailler | ⬜ Proposée | |
+| I05 | Découper une barricade, une porte ou un mur | ⬜ Proposée | |
+| I06 | Rebond et équipement de protection | ⬜ Proposée | |
+| I07 | Démarrage selon la compétence, le froid et l'état | ⬜ Proposée | |
+| I08 | Alerte de carburant bas et jauge | ⬜ Proposée | |
+| I09 | Tronçonneuse électrique sur batterie | ⬜ Proposée | |
+| I10 | Zombies bûcherons et coffres forestiers | ⬜ Proposée | |
+| I11 | Abattage d'une zone | ⬜ Proposée | C04 conseillé avant |
+| I12 | Démarrer et abattre en un clic | ⬜ Proposée | |
+| I13 | Arrêt automatique au repos | ⬜ Proposée | |
+| I14 | Bonus de métier et de trait | ⬜ Proposée | Reste de C03 |
+| I15 | Options du mod côté joueur | ⬜ Proposée | |
+| I16 | Affûtage de la chaîne | ⬜ Proposée | Mécanisme `TreeDamage` de C03 déjà en place |
+| I17 | Chaîne de rechange et réparations partielles | ⬜ Proposée | Dépend de C11 |
+| I18 | Tronçonneuse posée au sol en marche | ⬜ Proposée | |
+
+---
+
 ## Partie 1 — Améliorations de code
 
 ### C01 — Tronçonneuse en marche accrochée au dos : l'emplacement garde l'ancien objet
@@ -21,7 +73,7 @@ Abréviations des chemins :
 - **Preuve** : `V/shared/TimedActions/ISAttachItemHotbar.lua:82-92` (accroche puis `removeFromHands`), `:67-70` (champs d'accroche) ; `M/lua/server/ChainsawB42/CSB42_Engine.lua:104-105` (arrêt au déséquipement) et `:52-56` (`holder` nul si l'objet n'est pas dans la main principale) ; `M/lua/shared/ChainsawB42/CSB42_Core.lua:390-430` (aucun traitement de `getAttachedSlot`/`setAttachedItem`). Aucune occurrence de `Attached` dans le Lua du mod.
 - **Risque** : bug visible, persistance (objet accroché qui n'existe plus), MP (le serveur et le propriétaire divergent).
 - **Correction** : dans `CSB42.replace`, retrouver le propriétaire lorsque le conteneur est l'inventaire d'un `IsoPlayer`, même si l'objet n'est pas en main. Si `item:getAttachedSlot() >= 0`, retirer l'ancien objet de l'emplacement (`character:removeAttachedItem(old)`), puis accrocher le nouveau au même emplacement (`setAttachedItem`, `setAttachedSlot`, `setAttachedSlotType`, `setAttachedToModel`, comme `ISAttachItemHotbar.lua:67-70`), puis transmettre l'accroche (voie réseau à confirmer en 42.21). Autre possibilité, plus simple : arrêter le moteur avant l'accroche en enveloppant `ISAttachItemHotbar:new` ou `isValid` pour une tronçonneuse en marche. Ajouter un test lupa sur ce scénario.
-- **Statut : corrigé (commit 1875766), à vérifier en jeu** (solo et MP : accrocher au dos une tronçonneuse en marche, puis la décrocher, la démarrer, sauvegarder et recharger). Correction retenue : le nouvel objet reprend les champs d'accroche et l'ID remplacé (`CSB42_PreviousID` en ModData) ; l'autorité réaccroche et relaie (`sendAttachedItem`) ; le client propriétaire réaccroche l'objet reçu (`CSB42_Attached.lua`, 10 s d'essais), car le paquet d'accroche ignore le joueur local.
+- **Avancement : ✅ corrigé, publié en 1.3.0 (commit 1875766), testé en solo et en MP par pz-autotest (étape `attached`, runs du 2026-10-21)** — reste à vérifier à l'œil le modèle sur le dos, puis décrocher, redémarrer, sauvegarder et recharger. Correction retenue : le nouvel objet reprend les champs d'accroche et l'ID remplacé (`CSB42_PreviousID` en ModData) ; l'autorité réaccroche et relaie (`sendAttachedItem`) ; le client propriétaire réaccroche l'objet reçu (`CSB42_Attached.lua`, 10 s d'essais), car le paquet d'accroche ignore le joueur local.
 - **Priorité** : haute. **Effort** : moyen (0,5 à 1 j avec les tests).
 
 ### C02 — Infobulle « Usure au combat » périmée dans les 10 langues
@@ -29,8 +81,8 @@ Abréviations des chemins :
 - **Preuve** : `M/lua/shared/Translate/EN/Sandbox.json:8` (et la même clé dans les 9 autres langues) ; source `source/build_translations.py:63, 127` ; `M/scripts/ChainsawB42_Items.txt:83` (`ConditionMax = 127`) ; `CSB42_Engine.lua:197-216` (20 points par zombie tué).
 - **Risque** : traduction et équilibrage (un administrateur règle mal l'option, des joueurs voient l'outil casser « trop vite »).
 - **Correction** : corriger le texte dans `build_translations.py` (« état 127 ; 20 = environ 6 zombies ») puis regénérer les 10 fichiers. Décider séparément, avec l'utilisateur, si la valeur par défaut doit passer à 12 (environ 10 zombies, comme avant la 1.0.3) : c'est un changement d'équilibrage à annoncer.
-- **Statut : corrigé (commit 2936d86), à vérifier en jeu**. Texte seul.
-- **Décision de l'utilisateur (2026-10-21)** : valeur par défaut abaissée de 20 à 12 (environ 10 zombies). **Statut : corrigé (commit 29ebaa4), à vérifier en jeu** (option, infobulles des 10 langues, wiki, spécifications, CHANGELOG). Les serveurs ayant réglé l'option et les parties existantes gardent leur valeur.
+- **Décision de l'utilisateur (2026-10-21)** : valeur par défaut abaissée de 20 à 12 (environ 10 zombies). Les serveurs ayant réglé l'option et les parties existantes gardent leur valeur.
+- **Avancement : ✅ corrigé, publié en 1.3.0 (commits 2936d86 pour le texte, 29ebaa4 pour la valeur par défaut)** — option, infobulles des 10 langues, wiki, spécifications et CHANGELOG. Usure de 12 par zombie tué vérifiée en solo et en MP par pz-autotest (étape `combat`) ; infobulle à relire en jeu.
 - **Priorité** : haute. **Effort** : faible (30 min).
 
 ### C03 — Deux vitesses d'abattage : l'attaque tenue va deux fois plus vite que le menu et ignore `TreeCuttingSpeed`
@@ -38,7 +90,7 @@ Abréviations des chemins :
 - **Preuve** : `M/lua/shared/TimedActions/CSB42_CutTreeAction.lua:255-265` ; `M/scripts/ChainsawB42_Items.txt:95` (`TreeDamage = 67`) et `:71` (`Categories = Axe`) ; `J/iso/objects/IsoTree.java:217-232` (dégâts × 1,5 avec `AXEMAN`) ; cycle de 0,67 s : `M/AnimSets/player/melee/2handed/ChainsawDefault.xml:46` (`Bob_IdleAimChainsaw`).
 - **Risque** : équilibrage et cohérence des options. L'infobulle de `TreeCuttingSpeed` promet des durées que l'attaque tenue ne respecte pas.
 - **Correction** : appliquer `TreeCuttingSpeed` au `TreeDamage` de l'objet en marche, sur chaque machine, là où `applyEnduranceCost` est déjà appliqué. `TreeDamage` n'est pas sérialisé (`HandWeapon.save`), comme `EnduranceMod`. Pour le menu, appliquer le même bonus `AXEMAN` × 1,5, voire le métier `LUMBERJACK`, afin que les deux chemins suivent la même règle. Adapter les infobulles.
-- **Statut : corrigé (commit 96a4141), à vérifier en jeu** pour `TreeCuttingSpeed` sur l'attaque tenue (et infobulle). Non fait : alignement des deux vitesses et bonus `AXEMAN`/métier sur le menu (choix d'équilibrage, voir I14).
+- **Avancement : 🟡 en partie, publié en 1.3.0 (commit 96a4141), testé hors jeu (lupa), à vérifier en jeu** pour `TreeCuttingSpeed` sur l'attaque tenue (et infobulle). Non fait : alignement des deux vitesses et bonus `AXEMAN`/métier sur le menu (choix d'équilibrage, voir I14).
 - **Priorité** : moyenne. **Effort** : faible à moyen.
 
 ### C04 — L'abattage par le menu ne coûte ni endurance ni effort et n'a aucun retour visuel
@@ -47,6 +99,7 @@ Abréviations des chemins :
 - **Risque** : équilibrage et retour visuel. En MP, le coût d'endurance doit être appliqué sur le serveur (dans `hit()`), comme le vanilla dans `animEvent`.
 - **Correction** : reprendre `useEndurance` et `addCombatMuscleStrain` du vanilla dans `hit()`, multipliés par `EnduranceCost` ; ajouter les deux conditions dans `isValid` ; côté client, appeler `self.tree:WeaponHitEffects(character, chainsaw)` toutes les 0,4 s dans `update()` (le son de coup de l'arme peut faire double emploi avec la boucle bois : à vérifier).
 - **Statut** : confirmé statiquement ; rendu et son **à vérifier en jeu**.
+- **Avancement : ⬜ à faire.**
 - **Priorité** : moyenne. **Effort** : moyen.
 
 ### C05 — Usure et expérience d'entretien différentes entre le menu et l'attaque
@@ -55,6 +108,7 @@ Abréviations des chemins :
 - **Risque** : cohérence de la progression, faible.
 - **Correction** : documenter la différence, ou ajouter l'expérience d'entretien vanilla au chemin du menu (vérifier d'abord que `damageCheck` est exposé à Lua et ce qu'il rend).
 - **Statut** : confirmé statiquement ; exposition de `damageCheck` à vérifier.
+- **Avancement : ⬜ à faire.**
 - **Priorité** : basse. **Effort** : faible.
 
 ### C06 — Combattre des zombies ne consomme pas plus d'essence que le ralenti
@@ -63,6 +117,7 @@ Abréviations des chemins :
 - **Risque** : cohérence et équilibrage, faible. Côté MP, l'autorité ne voit pas directement l'attaque d'un joueur distant (`isAttacking` est local, voir pz-knowledge `multiplayer.md`, « isAttackStarted »).
 - **Correction** : sur le serveur, compter une consommation par coup reçu qui touche, par un événement déclenché sur l'autorité (`OnWeaponHitCharacter` ou `OnHitZombie`), à confirmer dans le Java 42.21. Ajouter une option (par exemple `FuelPerAttack`, 0 par défaut pour ne pas changer l'équilibrage existant).
 - **Statut** : confirmé statiquement pour l'absence ; événement serveur **à vérifier**.
+- **Avancement : ⬜ à faire.** Changement d'équilibrage : validation de l'utilisateur nécessaire.
 - **Priorité** : basse. **Effort** : moyen.
 
 ### C07 — `isHeldRunning` est un prédicat à effets de bord
@@ -71,6 +126,7 @@ Abréviations des chemins :
 - **Risque** : maintenabilité (un test de lecture modifie l'objet), coût modeste mais répété, surprises dans les tests.
 - **Correction** : séparer un prédicat pur `isHeldRunning` d'une fonction `ensureRunningStats(item)`, appelée seulement depuis le moteur (autorité) et la boucle sonore (une fois toutes les `CHECK_TICKS`), et qui n'écrit que si la valeur change (déjà fait pour l'endurance, pas pour les sons d'Authentic Z).
 - **Statut** : confirmé statiquement.
+- **Avancement : ⬜ à faire.**
 - **Priorité** : basse. **Effort** : faible.
 
 ### C08 — `CSB42.replace` vide les mains avant de vérifier qu'il peut remplacer
@@ -79,6 +135,7 @@ Abréviations des chemins :
 - **Risque** : cas limite, peu probable (objet tenu sans conteneur), mais silencieux.
 - **Correction** : tester `worldItem or container` avant `removeFromHands`, et journaliser en anglais (`[CSB42] replace failed: ...`).
 - **Statut** : confirmé statiquement ; cas réel non observé.
+- **Avancement : ⬜ à faire.**
 - **Priorité** : basse. **Effort** : très faible.
 
 ### C09 — Le bruit du moteur ignore l'invisibilité d'un administrateur
@@ -87,6 +144,7 @@ Abréviations des chemins :
 - **Risque** : MP et administration, faible.
 - **Correction** : ne pas émettre si `player:isInvisible()` (à confirmer : méthode exposée en 42.21).
 - **Statut** : confirmé statiquement pour l'absence de test ; **à vérifier en jeu**.
+- **Avancement : ⬜ à faire.**
 - **Priorité** : basse. **Effort** : très faible.
 
 ### C10 — `LootChance` ne règle pas le magazine
@@ -95,6 +153,7 @@ Abréviations des chemins :
 - **Risque** : attente des administrateurs (« aucune tronçonneuse » ne l'est pas tout à fait).
 - **Correction** : documenter ce choix dans l'infobulle, ou ajouter une option `MagazineLootChance`.
 - **Statut** : confirmé statiquement.
+- **Avancement : ⬜ à faire.**
 - **Priorité** : basse. **Effort** : faible.
 
 ### C11 — Réparation illimitée et complète, sans compteur de réparations
@@ -103,6 +162,7 @@ Abréviations des chemins :
 - **Risque** : équilibrage (outil éternel pour 2 pièces de moteur) ; toute modification change le jeu des joueurs actuels.
 - **Correction** : à décider avec l'utilisateur. Par exemple, incrémenter `HaveBeenRepaired` et rendre `max(30 %, 100 % − 10 % × réparations)`, derrière une option dont la valeur par défaut garde le comportement actuel.
 - **Statut** : confirmé statiquement.
+- **Avancement : ⬜ à faire.** Décision d'équilibrage de l'utilisateur attendue.
 - **Priorité** : basse. **Effort** : faible.
 
 ### C12 — Page des options sandbox nommée « Chainsaw B42 »
@@ -111,6 +171,7 @@ Abréviations des chemins :
 - **Risque** : traduction et ergonomie. L'espace de noms `ChainsawB42` des options doit rester inchangé (compatibilité des sauvegardes).
 - **Correction** : changer seulement le **texte affiché** en « Timber! Chainsaw » dans les 10 langues, par `build_translations.py`.
 - **Statut** : confirmé statiquement.
+- **Avancement : ⬜ à faire.**
 - **Priorité** : basse. **Effort** : très faible.
 
 ### C13 — Ligne de carburant de l'infobulle écrite en dur
@@ -119,6 +180,7 @@ Abréviations des chemins :
 - **Risque** : traduction, cosmétique.
 - **Correction** : clé `IGUI_CSB42_FuelLitres` avec `%1 / %2 L`, et séparateur décimal selon la langue (clé de traduction pour le séparateur ou `string.gsub` du point).
 - **Statut** : confirmé statiquement.
+- **Avancement : ⬜ à faire.**
 - **Priorité** : basse. **Effort** : faible.
 
 ### C14 — Distance d'écoute calculée pour le seul joueur 0 en écran partagé
@@ -127,6 +189,7 @@ Abréviations des chemins :
 - **Risque** : écran partagé seulement, faible.
 - **Correction** : prendre la distance minimale à tous les joueurs locaux actifs.
 - **Statut** : confirmé statiquement ; **à vérifier en jeu** (écran partagé).
+- **Avancement : ⬜ à faire.**
 - **Priorité** : basse. **Effort** : très faible.
 
 ### C15 — Couverture de test : aucun scénario en jeu automatisé
@@ -134,7 +197,7 @@ Abréviations des chemins :
 - **Preuve** : `tests/run_tests.py:1-16` ; `CHANGELOG.md` (1.0.1, 1.0.3, 1.1.1 « Not yet tested in game »).
 - **Risque** : régressions MP et de persistance non détectées.
 - **Correction** : ajouter un scénario `pz-autotest` (outil `.claude/tools/pz-autotest` du dossier de travail) : démarrer, abattre un arbre, déséquiper, accrocher au dos (C01), sauvegarder et recharger, puis la même suite en `--mp` avec reconnexion. Vérifier l'état, le type d'objet et le carburant.
-- **Statut : corrigé (commit e8039ec), à vérifier en jeu** — scénario `autotest.json` + `autotest/timber_hooks.lua` (solo et MP, contrôles client et serveur ; voir `docs/annexes/tests/autotest.md`). Sauvegarde/rechargement et reconnexion restent à ajouter.
+- **Avancement : 🟡 en partie (commits e8039ec, e6c8f06 ; outil hors mod, dans le dépôt depuis 1.3.0)** — scénario `autotest.json` + `autotest/timber_hooks.lua` (solo et MP, contrôles client et serveur ; voir `docs/annexes/tests/autotest.md`). Lancé le 2026-10-21 : solo 8/8 (`runs/20261021-155632-sp-…`), MP 8/8 côté client et serveur (`runs/20261021-164448-mp-…`, après la parade contre les zombies du point d'apparition). Sauvegarde/rechargement, reconnexion MP, plein, panne, enrayage, bruit et attaque tenue restent à ajouter.
 - **Priorité** : moyenne. **Effort** : moyen (1 j).
 
 ### C16 — Documentation : versions et chemins à resynchroniser
@@ -143,6 +206,7 @@ Abréviations des chemins :
 - **Risque** : maintenabilité.
 - **Correction** : mettre à jour l'en-tête et les liens une fois la réorganisation de `docs/` terminée.
 - **Statut** : confirmé statiquement.
+- **Avancement : ⬜ à faire.** Le chemin a déjà changé avec la réorganisation de `docs/` (commit 3037ad0) ; l'en-tête du document Authentic Z indique toujours « 1.1.1 » (version actuelle 1.3.0).
 - **Priorité** : basse. **Effort** : très faible.
 
 ---
@@ -299,16 +363,18 @@ Abréviations des chemins :
 
 ## Partie 3 — Priorisation : les 5 actions les plus rentables
 
-1. **C02 — Corriger l'infobulle « Usure au combat »** (30 min, 10 langues regénérées) et trancher avec l'utilisateur la valeur par défaut (20 ou 12). C'est le gain le plus immédiat pour les administrateurs et les retours « ça casse trop vite ».
-2. **C01 — Tester puis corriger l'accroche au dos d'une tronçonneuse en marche.** C'est le seul bug potentiel de persistance et de MP repéré ; il se vérifie en quelques minutes en jeu.
-3. **C03 + C04 — Aligner l'abattage du menu et de l'attaque tenue** : `TreeCuttingSpeed` sur les deux chemins, trait Bûcheron, coût d'endurance, tension et tremblement de l'arbre. Une seule règle, des options qui disent vrai.
-4. **C15 — Scénario `pz-autotest` solo et MP** : démarrer, abattre, déséquiper, accrocher, recharger, se reconnecter. Il protège les correctifs ci-dessus et les régressions déjà payées (octet signé, déséquipement en MP).
-5. **I12 puis I08 — « Démarrer et abattre » en un clic et alerte de carburant bas.** Deux gains d'ergonomie bon marché, côté client, sans nouveau paquet ni option d'équilibrage.
+Avec leur avancement au 2026-10-23 :
 
-Ensuite, si une grosse fonctionnalité est voulue : **I03 (débiter les bûches)**, qui prolonge la boucle de jeu principale avec un risque technique faible.
+1. ✅ **C02 — Corriger l'infobulle « Usure au combat »** (30 min, 10 langues regénérées) et trancher avec l'utilisateur la valeur par défaut (20 ou 12). C'est le gain le plus immédiat pour les administrateurs et les retours « ça casse trop vite ».
+2. ✅ **C01 — Tester puis corriger l'accroche au dos d'une tronçonneuse en marche.** C'est le seul bug potentiel de persistance et de MP repéré ; il se vérifie en quelques minutes en jeu.
+3. 🟡 **C03 + C04** (C03 en partie : `TreeCuttingSpeed` sur l'attaque tenue fait ; C04 à faire) **— Aligner l'abattage du menu et de l'attaque tenue** : `TreeCuttingSpeed` sur les deux chemins, trait Bûcheron, coût d'endurance, tension et tremblement de l'arbre. Une seule règle, des options qui disent vrai.
+4. 🟡 **C15** (parcours nominal solo et MP en place et vert ; rechargement et reconnexion à ajouter) **— Scénario `pz-autotest` solo et MP** : démarrer, abattre, déséquiper, accrocher, recharger, se reconnecter. Il protège les correctifs ci-dessus et les régressions déjà payées (octet signé, déséquipement en MP).
+5. ⬜ **I12 puis I08 — « Démarrer et abattre » en un clic et alerte de carburant bas.** Deux gains d'ergonomie bon marché, côté client, sans nouveau paquet ni option d'équilibrage.
+
+Ensuite, si une grosse fonctionnalité est voulue : ⬜ **I03 (débiter les bûches)**, qui prolonge la boucle de jeu principale avec un risque technique faible.
 
 ---
 
 ## Note finale
 
-Ce document est une **proposition**. Il ne modifie aucun fichier du mod, et aucune correction ni fonctionnalité ne sera implémentée sans validation explicite de l'utilisateur. Cela vaut en particulier pour les changements d'équilibrage (C02, C06, C11) et les nouvelles options. Les points « à vérifier en jeu » n'ont pas été reproduits. Les constats sur l'API vanilla valent pour 42.21.0 (sources décompilées et Lua installés) et sont à revérifier après une mise à jour du jeu.
+Ce document est une **proposition**, mise à jour au fil des corrections : l'état de chaque point est dans le tableau de bord en tête. Les points encore à faire ne seront implémentés qu'après validation explicite de l'utilisateur. Cela vaut en particulier pour les changements d'équilibrage (C06, C11 ; celui de C02 a été décidé par l'utilisateur le 2026-10-21) et les nouvelles options. Hors des passages pz-autotest cités (C01, C02, C15), les points « à vérifier en jeu » n'ont pas été reproduits. Les constats sur l'API vanilla valent pour 42.21.0 (sources décompilées et Lua installés) et sont à revérifier après une mise à jour du jeu.
