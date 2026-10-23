@@ -51,4 +51,14 @@ Au départ, le client pose « Les zombies n'attaquent pas » (`setZombiesDontAtt
   attaque tenue sur un arbre. À ajouter comme étapes suivantes (C15).
 - Le combat ne simule pas un coup réel de l'arme : il vérifie l'usure par zombie tué (`OnZombieDead`), pas les dégâts.
 - Rendu (modèle sur le dos, animations) et son : à vérifier à l'œil ; seule une capture finale est rangée.
-- Le scénario a été vérifié par `check` et luacheck ; il n'a pas encore été lancé en jeu à sa création (2026-10-21).
+
+## Résultats
+
+Campagne du 2026-10-21, sur le mod publié en 1.3.0 (code de sortie 0, aucune erreur Lua) :
+
+| Mode | Passage | Résultat |
+|---|---|---|
+| `sp` | `runs/20261021-155632-sp-0fee101905b6` | 8 PASS, 0 FAIL |
+| `mp` (1 client) | `runs/20261021-164448-mp-a5996c164dd0` | serveur 8 PASS ; client 8 PASS |
+
+Le passage `mp` précédent (`…160907-mp-75538158a45f`, joueur tué par des zombies à l'arbre, voir plus haut) a conduit à la protection du joueur de test (`e6c8f06`) ; aucun défaut du mod. Le bug C01 (tronçonneuse en marche accrochée au dos) est couvert par l'étape `attached`.
