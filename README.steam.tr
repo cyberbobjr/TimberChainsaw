@@ -1,0 +1,81 @@
+[h1]Timber! Chainsaw[/h1]
+
+[b]Build 42.21 · Tek oyunculu ve çok oyunculu[/b]
+
+Çalışan bir benzinli elektrikli testere: çalıştır, saniyeler içinde ağaç devir, zombileri biçerek geç ve benzinle doldur... Sesine de dikkat et.
+
+[h2]Chainsaw B42'den esinlenildi[/h2]
+
+Bu mod, [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3692027888]Chainsaw B42[/url] modundan (Likit) esinlenildi ve aynı özelliklerle sıfırdan yeniden yazıldı: yeni kod, sesler, afiş ve simgeler, ayrıca aşağıda sıralanan iyileştirmelerle.
+
+Aynı eşya adlarını kullanır: Chainsaw B42 ile yapılmış bir kayıtta testerelerin yakıtı korunur. [b]İkisini aynı anda açma.[/b]
+
+[h2]Gereksinimler[/h2]
+
+[list]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3694097672]TooltipLib[/url]
+[/list]
+
+[b]Uyumluluk:[/b] Better Item Info (EURY_ITEMINFO) kullanıyorsan, bildirilen eksik Vorpal silah ipuçlarını önlemek için onu Timber! Chainsaw'dan önce yükle. Better Item Info isteğe bağlıdır. Sıralamayı değiştirdikten sonra oyunu tamamen yeniden başlat.
+
+[h2]Authentic Z: isteğe bağlı uyumluluk[/h2]
+
+Bu Workshop aboneliğine dahil: [b]batman_Timber! Chainsaw - Authentic Z Compatibility[/b]. Ayrıca indirmeye gerek yok.
+[list]
+[*]Authentic Z Current veya Lite, TooltipLib ve Timber! Chainsaw'ı etkinleştir, sonra uyumluluk alt modunu oyunun mod ayarlarından etkinleştir. Mevcut bir kayıt için, o kaydın mod ayarlarından da etkinleştir.
+[*]Authentic Z'yi (ve varsa çeviri yamasını) Timber'dan önce, uyumluluk alt modunu Timber'dan sonra yükle. Oyunu tamamen yeniden başlat; çok oyunculuda sunucuyu yeniden başlat.
+[*]Bu alt modla birlikte AuthenticZChainsawFix'i etkinleştirme.
+[/list]
+Mevcut Authentic Z testereleri çalıştır/durdur, benzinle doldurma, motor sesleri ve Timber ağaç kesimi kazanır. Özgün eşya kimlikleri, görünümleri, ağırlıkları ve azami durumları korunur; aşınma buna göre ölçeklenir. Yerel dövüş hasarı korunur: DamageMod yalnızca Timber eşyalarını etkiler.
+Authentic Z açık kalmak koşuluyla bu alt modu oturumlar arasında ekleyip çıkarabilirsin. Uyumluluğa özel yeni eşya türleri eklenmez. Yakıt yeniden etkinleştirme için saklanır; normal aşınma, harcanan benzin ve devrilen ağaçlar kalır.
+[b]Sunucular:[/b] Bu Workshop kimliği değişmez. Mods= satırına, Authentic Z varyantının ve TooltipLib'in yanına, batman_TimberChainsaw'dan sonra batman_TimberAuthenticZCompatibility ekle.
+
+[b]Ağırlık ve durum:[/b] Ağırlık: 7, motor açık ya da kapalı. Azami durum: 127; hasarlı testerelerin elden bırakıldığında veya yeniden yüklendiğinde aniden kırılmasını önlemek için. Aşınma ayarları değişmedi: dayanıklılık eski 200 azami değerine göre yaklaşık %37 daha düşük.
+
+[h2]Nasıl kullanılır[/h2]
+
+[list]
+[*]Testereye sağ tıkla: [b]Testereyi çalıştır[/b]. İki elde tutulur ve yakıt ister. Aşınmış bir testere çalışmayı reddedebilir.
+[*]Saldırı tuşunu (sol tık) basılı tut: testere tam gazla önünde durur ve önündeki her şeyi, zombileri ya da ağaçları keser.
+[*]Ağaçlar: bir ağaca sağ tıkla, [b]Ağacı testereyle kes[/b]. Küçük bir ağaç 1 ile 3 saniyede, en büyüğü yaklaşık 11 saniyede devrilir.
+[*][b]Testereyi durdur[/b], sonra saf benzin içeren bir kapla [b]Testereyi doldur[/b].
+[*]İpucu kutusu motor durumunu ve yakıtı gösterir.
+[/list]
+
+[h2]Özgün sürüme göre iyileştirmeler[/h2]
+
+[list]
+[*]Ağaçlar gerçekten devrilir (eskiden her vuruşta yalnızca 1 puan kaybederlerdi). Odun kesmek, boşta çalışmaktan daha fazla yakıt tüketir.
+[*]Doldurma yalnızca tankın ihtiyacı olan litreleri alır ve yalnızca benzini (eskiden kabın içindeki sıvı ne olursa olsun tamamını boşaltıyordu).
+[*]Yakıt tüketimi, gürültü, hasar ve ganimet seçenekleri uygulanır.
+[*]Sıvı kabına (su sebili, şişeler...) bakınca artık hata çıkmaz.
+[*]Testere sesleri Ses efektleri seviyesini izler; her biri Seçenekler > Ses > Gelişmiş bölümünden ayarlanabilir.
+[*]Kırık bir testere onarılana kadar kırık kalır; onarım yakıtı korur ve onarım sayısında bir sınır yoktur.
+[*]Kereste sahalarında, orman görevlisi istasyonlarında, itfaiye istasyonlarında, ahırlarda ve garajlarda bulunur.
+[/list]
+
+[h2]Çok oyunculu[/h2]
+
+Her şeye sunucu karar verir: çalıştırma ve durdurma, yakıt, aşınma, devrilen ağaçlar. Testere ellerinden çıktığında, yakıtı bittiğinde, kırıldığında veya bir araca bindiğinde motor durur. Yakındaki oyuncular motorun çalıştığını duyar.
+
+[h2]Sandbox seçenekleri[/h2]
+
+Yakıt tüketimi, hasar, dövüş aşınması, ağaç kesme aşınması, kesme hızı, dayanıklılık maliyeti, gürültü yarıçapı (boşta, saldırırken veya keserken daha yüksek), çalıştırma arızaları, ganimet.
+
+[h2]Discord[/h2]
+
+Soru, hata bildirimi ya da fikrin mi var? Discord'a katıl:
+[url=https://discord.gg/QEsBya7hUA]https://discord.gg/QEsBya7hUA[/url]
+
+[h2]Yapay zekâ hakkında bir not[/h2]
+
+Yıllardır geliştiriciyim ve kodlama ajanları ortaya çıkmadan çok önce mod yapıyordum; bu da çoğu zaman ailemle geçirdiğim zamandan çalıyordu. Claude Code ve Codex'i açıkça kullanıyorum: her özellik hâlâ tartışılıyor, tasarlanıyor ve planlanıyor; körü körüne "vibe coding" yapılmıyor. Yapay zekâ kalıcı; direnmek yerine uyum sağlamayı seçtim. Kişisel saldırılara karşı duran herkese teşekkür ederim.
+
+[h2]Projeye destek ol[/h2]
+
+Modu beğendin mi? Bir kahve yeni özelliklerin ve çevirilerin finanse edilmesine yardımcı olur.
+[url=https://ko-fi.com/Z8Z8QJV31][img]https://storage.ko-fi.com/cdn/kofi6.png?v=6[/img][/url]
+
+[h2]Katkıda bulunanlar[/h2]
+
+Chainsaw B42 modu Likit'ten esinlenildi. Sesler: Joseph Sardin'in CC0 kayıtları, [url=https://bigsoundbank.com]BigSoundBank[/url]. Testere modeli, dokusu ve animasyonları: Project Zomboid.
