@@ -1,4 +1,4 @@
--- Timber! Chainsaw in-game nominal test (pz-autotest, single player and multiplayer).
+-- Timber! Chainsaw in-game nominal test (pzdev, single player and multiplayer).
 --
 -- The client drives the player's real gestures, step by step, from the polled done() hook:
 --   prepare   the authority gives a stopped chainsaw (full tank) and finds or plants a tree nearby;
@@ -16,8 +16,8 @@
 -- Each check runs on the client copy and, in multiplayer, on the server copy of the player too
 -- (client command "check"): the server reports its own PASS/FAIL lines.
 --
--- Single player: python .claude/tools/pz-autotest/pz_autotest.py sp TimberChainsaw --wait-idle 3600
--- Multiplayer:   python .claude/tools/pz-autotest/pz_autotest.py mp TimberChainsaw --client-run --wait-idle 3600
+-- Single player: python PZDevKit/pzdev.py sp TimberChainsaw --wait-idle 3600
+-- Multiplayer:   python PZDevKit/pzdev.py mp TimberChainsaw --client-run --wait-idle 3600
 local H = { client = {}, server = {} }
 
 local MOD = "PZATTimber"

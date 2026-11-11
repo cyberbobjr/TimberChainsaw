@@ -1,7 +1,7 @@
-# Test en jeu automatique (pz-autotest)
+# Test en jeu automatique (pzdev)
 
 Scénario nominal de Timber! Chainsaw joué sans personne devant le PC par l'outil générique
-`.claude/tools/pz-autotest` du dossier de travail (`C:\Users\cyber\Zomboid\Workshop`). Il complète les tests lupa
+`PZDevKit` du dossier de travail (`C:\Users\cyber\Zomboid\Workshop`). Il complète les tests lupa
 (`tests/run_tests.py`), qui reposent sur une API simulée : ici, le vrai Java 42.21, le vrai réseau et les vraies
 actions chronométrées.
 
@@ -15,9 +15,9 @@ actions chronométrées.
 Depuis `C:\Users\cyber\Zomboid\Workshop` :
 
 ```powershell
-python .claude/tools/pz-autotest/pz_autotest.py check TimberChainsaw
-python .claude/tools/pz-autotest/pz_autotest.py sp    TimberChainsaw --wait-idle 3600
-python .claude/tools/pz-autotest/pz_autotest.py mp    TimberChainsaw --client-run --wait-idle 3600
+python PZDevKit/pzdev.py check TimberChainsaw
+python PZDevKit/pzdev.py sp    TimberChainsaw --wait-idle 3600
+python PZDevKit/pzdev.py mp    TimberChainsaw --client-run --wait-idle 3600
 ```
 
 `--client-run` est aussi posé par `mp.clientRun` : le client 1 joue les gestes, le serveur contrôle sa propre copie du

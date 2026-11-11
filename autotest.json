@@ -1,9 +1,9 @@
-// pz-autotest configuration of Timber! Chainsaw (.claude/tools/pz-autotest/README.md; docs/annexes/tests/autotest.md).
+// pzdev configuration of Timber! Chainsaw (PZDevKit/docs/wiki/fr/01-tests-automatiques.md; docs/annexes/tests/autotest.md).
 // Nominal path driven by autotest/timber_hooks.lua: start, fuel, cut a tree from the menu, combat wear, stop,
 // restart, attach the running chainsaw on the back (C01).
-//   python .claude/tools/pz-autotest/pz_autotest.py check TimberChainsaw
-//   python .claude/tools/pz-autotest/pz_autotest.py sp    TimberChainsaw --wait-idle 3600
-//   python .claude/tools/pz-autotest/pz_autotest.py mp    TimberChainsaw --client-run --wait-idle 3600
+//   python PZDevKit/pzdev.py check TimberChainsaw
+//   python PZDevKit/pzdev.py sp    TimberChainsaw --wait-idle 3600
+//   python PZDevKit/pzdev.py mp    TimberChainsaw --client-run --wait-idle 3600
 {
   "name": "TimberChainsaw",
   "gameVersion": "42.21",
