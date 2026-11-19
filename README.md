@@ -1,6 +1,6 @@
 # Timber! Chainsaw
 
-**Build 42.21 · Singleplayer & Multiplayer**
+**Build 42.22 · Singleplayer & Multiplayer**
 
 Working gasoline chainsaw for Project Zomboid: fell trees, shred zombies with a fixed stance and a roaring engine, burn and refuel petrol.
 
@@ -75,7 +75,7 @@ python tests/run_tests.py
 
 luacheck, Lua 5.1 syntax, no `next()` (absent from Kahlua), translations (10 languages), keys used by the code, and the Lua tests under `lupa` with a simulated game API (`tests/lua/game_api.lua`). The regressions cover cutting then unequipping in multiplayer, signed-byte serialization, start/stop, repair, both item weights, changed condition maxima and Authentic Z Current/Lite compatibility. Not a substitute for an in-game test.
 
-In-game verification on Build 42.21: restart completely, cut down a tree until condition decreases, then unequip the still-running chainsaw. Verify it stops without becoming broken; also start/stop manually, repair, and save/reload. In multiplayer, check the owning client's condition after unequipping and reconnecting. Check weight 7 for both variants on a freshly created or replaced item.
+In-game verification on Build 42.22: restart completely, cut down a tree until condition decreases, then unequip the still-running chainsaw. Verify it stops without becoming broken; also start/stop manually, repair, and save/reload. In multiplayer, check the owning client's condition after unequipping and reconnecting. Check weight 7 for both variants on a freshly created or replaced item.
 
 ## License
 
@@ -94,7 +94,7 @@ que les objets Timber). Charger le sous-mod après Authentic Z et Timber ; ne pa
 activer AuthenticZChainsawFix. Ajout/retrait entre deux sessions, avec redémarrage
 complet ; Authentic Z doit rester actif. [Détails et validation](docs/annexes/recherches/authenticz-compatibility.md).
 
-Tronçonneuse à essence fonctionnelle, inspirée de **Chainsaw B42** de **Likit** (Workshop 3692027888) et refaite entièrement avec les mêmes fonctionnalités. Build 42.21, solo et multijoueur. Prérequis : TooltipLib. Incompatible avec l'original (mêmes objets, le carburant des sauvegardes est conservé). Aucune ressource de l'original n'est reprise : sons CC0 (Joseph Sardin, BigSoundBank), affiche et icônes nouvelles, modèle et animations du jeu.
+Tronçonneuse à essence fonctionnelle, inspirée de **Chainsaw B42** de **Likit** (Workshop 3692027888) et refaite entièrement avec les mêmes fonctionnalités. Build 42.22, solo et multijoueur. Prérequis : TooltipLib. Incompatible avec l'original (mêmes objets, le carburant des sauvegardes est conservé). Aucune ressource de l'original n'est reprise : sons CC0 (Joseph Sardin, BigSoundBank), affiche et icônes nouvelles, modèle et animations du jeu.
 
 Utilisation : clic droit sur la tronçonneuse, **Démarrer** ; zombies : viser (clic droit) et frapper (clic gauche) ; arbres : clic droit sur l'arbre, **Abattre l'arbre à la tronçonneuse** ; **Arrêter**, puis **Faire le plein** avec un récipient d'essence pure.
 

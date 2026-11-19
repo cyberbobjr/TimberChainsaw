@@ -1,6 +1,6 @@
 [h1]Timber! Chainsaw[/h1]
 
-[b]Build 42.21 · Solo et multijoueur[/b]
+[b]Build 42.22 · Solo et multijoueur[/b]
 
 Une vraie tronçonneuse à essence : démarrez-la, abattez des arbres en quelques secondes, taillez dans les zombies, faites le plein d'essence... et gare au bruit.
 

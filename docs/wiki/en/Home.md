@@ -2,7 +2,7 @@
 
 [Français](../fr/Home.md)
 
-A working gasoline chainsaw for Project Zomboid **Build 42.21**, singleplayer and multiplayer: start it, carve through zombies, fell trees in seconds, refuel it with petrol... and mind the noise.
+A working gasoline chainsaw for Project Zomboid **Build 42.22**, singleplayer and multiplayer: start it, carve through zombies, fell trees in seconds, refuel it with petrol... and mind the noise.
 
 ![A survivor holding the chainsaw](../../images/screenshots/chainsaw-held.png)
 

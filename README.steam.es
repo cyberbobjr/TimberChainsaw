@@ -1,6 +1,6 @@
 [h1]Timber! Chainsaw[/h1]
 
-[b]Build 42.21 · Un jugador y multijugador[/b]
+[b]Build 42.22 · Un jugador y multijugador[/b]
 
 Una motosierra de gasolina que funciona: arráncala, tala árboles en segundos, abre paso entre los zombis, repóstala con gasolina... y cuidado con el ruido.
 

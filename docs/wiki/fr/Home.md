@@ -2,7 +2,7 @@
 
 [English](../en/Home.md)
 
-Une tronçonneuse à essence fonctionnelle pour Project Zomboid **Build 42.21**, en solo et en multijoueur : démarrez-la, découpez les zombies, abattez des arbres en quelques secondes, faites le plein d'essence... et méfiez-vous du bruit.
+Une tronçonneuse à essence fonctionnelle pour Project Zomboid **Build 42.22**, en solo et en multijoueur : démarrez-la, découpez les zombies, abattez des arbres en quelques secondes, faites le plein d'essence... et méfiez-vous du bruit.
 
 ![Un survivant tenant la tronçonneuse](../../images/screenshots/chainsaw-held.png)
 

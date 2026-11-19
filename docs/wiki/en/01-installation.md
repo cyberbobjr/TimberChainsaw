@@ -4,7 +4,7 @@
 
 ## Requirements
 
-- Project Zomboid **Build 42.21** or newer.
+- Project Zomboid **Build 42.22** or newer.
 - [TooltipLib](https://steamcommunity.com/sharedfiles/filedetails/?id=3694097672) (mod ID `TooltipLib`), required.
 
 ## Subscribe and enable

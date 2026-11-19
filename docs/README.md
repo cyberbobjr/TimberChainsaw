@@ -1,6 +1,6 @@
 # Documentation — Timber! Chainsaw
 
-Tronçonneuse à essence fonctionnelle pour Project Zomboid Build 42.21 (solo et multijoueur) : démarrage, combat, abattage d'arbres, consommation et plein d'essence, bruit qui attire les zombies, avec un sous-mod facultatif de compatibilité Authentic Z.
+Tronçonneuse à essence fonctionnelle pour Project Zomboid Build 42.22 (solo et multijoueur) : démarrage, combat, abattage d'arbres, consommation et plein d'essence, bruit qui attire les zombies, avec un sous-mod facultatif de compatibilité Authentic Z.
 
 | Document | Rôle |
 |---|---|
